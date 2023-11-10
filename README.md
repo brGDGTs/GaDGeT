@@ -1,0 +1,2 @@
+# GaDGeT
+ GDGT-calculations simplified
