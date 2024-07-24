@@ -43,8 +43,8 @@
 #          11.  RI.TEX:         Zhang et al. (2015)
 #          12.  Delta.RI:       Zhang et al. (2015)
 #          13.  M.IND:          Zhang et al. (2011)
-#          14.  ANOX:           GDGT0/GDGT4
-#          15.  GDGT2.GDGT3:    Taylor et al.(2013)
+#          14.  GDGT0/GDGT4:    Blaga et al. (2009)
+#          15.  GDGT2.GDGT3:    Taylor et al. (2013)
 #          16.  GDGT2.GDGT4.2:  
 #          17.  PERC.GDGT2:  
 
