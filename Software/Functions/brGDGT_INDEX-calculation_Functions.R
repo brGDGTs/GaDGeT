@@ -30,7 +30,6 @@
 
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
-
 #           1.  CBT:            de Jonge et al. (2014)
 #           2.  CBT':           de Jonge et al. (2014)
 #           3.  CBT'.5Me:       Russell et al. (2018)
@@ -139,11 +138,20 @@ brGDGT_INDICES <- function(GDGTs){
   
   ###-------------------------------------------- PREP CALC --------------------------------------------------------------###
   
-  #FA calculations for indices
-  fIa        <- GDGTs[,c("Ia")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIIa.5Me","IIIa.6Me")])
-  fIb        <- GDGTs[,c("Ib")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIIa.5Me","IIIa.6Me")])
-  fIIa        <- GDGTs[,c("IIa.6Me")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIIa.5Me","IIIa.6Me")])
-  fIIIa        <- GDGTs[,c("IIIa.5Me")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIIa.5Me","IIIa.6Me")])
+  #FA calculations for indices for Zhao et al (2023) tropical 9 compounds
+  fIa.Zh        <- GDGTs[,c("Ia")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIIa.5Me","IIIa.6Me")])
+  fIb.Zh        <- GDGTs[,c("Ib")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIIa.5Me","IIIa.6Me")])
+  fIIa.Zh       <- GDGTs[,c("IIa.6Me")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIIa.5Me","IIIa.6Me")])
+  fIIIa.Zh      <- GDGTs[,c("IIIa.5Me")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIIa.5Me","IIIa.6Me")])
+  
+  
+  #FA calculations for indices for Loomis et al (2012) 9 compounds
+  fI.LO        <- GDGTs[,c("Ia")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me")])
+  fIb.LO       <- GDGTs[,c("Ib")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me")])
+  fII.LO       <- GDGTs[,c("IIa.5Me")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me")])
+  fIIc.LO      <- GDGTs[,c("IIc.5Me")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me")])
+  fIII.LO      <- GDGTs[,c("IIIa.5Me")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me")])
+  
   
   ###-------------------------------------------- INDEX CALC --------------------------------------------------------------###
   
@@ -300,7 +308,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 28
   #calculate MLR-lowlat, zhao et al. (2023)
-  GDGT.IND$MLR.trop       <-  (-4.11)+31.63*fIa+64.5*fIb+32.28*fIIa
+  GDGT.IND$MLR.trop       <-  (-4.11)+31.63*fIa.Zh+64.5*fIb.Zh+32.28*fIIa.Zh
   
   ### 29
   #calculate MLR-highlat
@@ -308,7 +316,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 30
   #calculate MLR-highlat
-  GDGT.IND$MLR.highlat      <-  1.44+15.88*fIa+66.92*fIb+8.33*fIIa+7.02*fIIIa
+  GDGT.IND$MLR.highlat      <-  1.44+15.88*fIa.Zh+66.92*fIb.Zh+8.33*fIIa.Zh+7.02*fIIIa.Zh
   
   ### 31
   #calculate IIIa/(IIIa+IIIa')
