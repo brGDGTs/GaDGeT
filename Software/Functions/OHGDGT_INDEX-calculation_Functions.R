@@ -31,17 +31,18 @@
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
 #           1.  PERC.OHtot:     Feitz et al. (2013)
-#           2.  RI.OH:          Lü et al. (2015)
-#           3.  RI.OH':         Lü et al. (2015)
-#           4.  fOH.0:          Lü et al. (2015)
-#           5.  fOH.2:          Lü et al. (2015)
-#           6.  RI.OH.SST:      Lü et al. (2015)
-#           7.  RI.OH'.SST:     Lü et al. (2015)
-#           8.  OH.2.SST:       Lü et al. (2015)
-#           9.  OH.0.SST:       Lü et al. (2015)
-#          10.  tot.OH.SST:     Lü et al. (2015)
-#          11.  OH.0.SST2:      Lü et al. (2020)
-#          12.  RI.OH.SST2:     Lü et al. (2020)
+#           2.  OH1318.1316:    Feitz et al. (2013)
+#           3.  RI.OH:          Lü et al. (2015)
+#           4.  RI.OH':         Lü et al. (2015)
+#           5.  fOH.0:          Lü et al. (2015)
+#           6.  fOH.2:          Lü et al. (2015)
+#           7.  RI.OH.SST:      Lü et al. (2015)
+#           8.  RI.OH'.SST:     Lü et al. (2015)
+#           9.  OH.2.SST:       Lü et al. (2015)
+#          10.  OH.0.SST:       Lü et al. (2015)
+#          11.  tot.OH.SST:     Lü et al. (2015)
+#          12.  OH.0.SST2:      Lü et al. (2020)
+#          13.  RI.OH.SST2:     Lü et al. (2020)
 
 
 
@@ -58,7 +59,7 @@ OHGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 12
+  n= 13
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -67,6 +68,7 @@ OHGDGT_INDICES <- function(GDGTs){
   
   # Set column names
   colnames(GDGT.IND)  <- c("PERC.OH.tot",
+                           "OH1.2",
                            "RI.OH",
                            "RI.OH'",
                            "fOH.0",
@@ -88,6 +90,9 @@ OHGDGT_INDICES <- function(GDGTs){
   GDGT.IND$PERC.OH.tot   <-      100*((rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")])) /
                                        rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
   
+  #calculate percent total OH-GDGTs vs iGDGTs (Feitz et al., 2013)
+  GDGT.IND$OH1.2         <-      (rowSums(GDGTs[,c("OH.GDGT.0")]) /
+                                        rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")]))
   ### 2
   #calculate ring index of OH-GDGTs (Lü et al., 2015)
   GDGT.IND$RI.OH         <-     (GDGTs[,c("OH.GDGT.1")] + (2*GDGTs[,c("OH.GDGT.2")])) / 
