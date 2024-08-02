@@ -59,7 +59,7 @@ OHGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 13
+  n= 14
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -69,6 +69,7 @@ OHGDGT_INDICES <- function(GDGTs){
   # Set column names
   colnames(GDGT.IND)  <- c("PERC.OH.tot",
                            "OH1.2",
+                           "SST.FI",
                            "RI.OH",
                            "RI.OH'",
                            "fOH.0",
@@ -90,11 +91,17 @@ OHGDGT_INDICES <- function(GDGTs){
   GDGT.IND$PERC.OH.tot   <-      100*((rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")])) /
                                        rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
   
-  #calculate percent total OH-GDGTs vs iGDGTs (Feitz et al., 2013)
+  #calculate OHGDGT1318/1316 index (Feitz et al., 2013)
   GDGT.IND$OH1.2         <-      (rowSums(GDGTs[,c("OH.GDGT.0")]) /
                                         rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")]))
+  
+  
+  #calculate SST.FI=-131.579×OH1.2+122.368 (Feitz et al., 2013)
+  GDGT.IND$SST.FI         <-      ((-131.579*GDGT.IND$OH1.2)+122.368)
+                                   
+
   ### 2
-  #calculate ring index of OH-GDGTs (Lü et al., 2015)
+  #calculate ring index of OH-GDGTs (Lü et al., 2015 eq. 1)
   GDGT.IND$RI.OH         <-     (GDGTs[,c("OH.GDGT.1")] + (2*GDGTs[,c("OH.GDGT.2")])) / 
                                  rowSums(GDGTs[,c("OH.GDGT.1","OH.GDGT.2")])
   
