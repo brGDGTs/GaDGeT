@@ -30,8 +30,8 @@
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
 #           1.  brGMGTI:        Baxter et al. (2019)
-#           2.  brGMGTI.TT:     Baxter et al. (2019)
-#           3.  brGMGT.SFS:     Baxter et al. (2019)
+#           2.  brGMGTI.MAAT:     Baxter et al. (2019)
+#           3.  brGMGT.MAAT2:     Baxter et al. (2019)
 
 
 
@@ -57,8 +57,8 @@ GMGT_INDICES <- function(GDGTs){
   
   # Set column names
   colnames(GDGT.IND)  <- c("brGMGTI",
-                           "brGMGTI.TT",
-                           "brGMGT.SFS")
+                           "brGMGTI.MAAT",
+                           "brGMGT.MAAT2")
   
   GDGT.IND <- data.frame(GDGT.IND)
   
@@ -71,7 +71,7 @@ GMGT_INDICES <- function(GDGTs){
   
   ### 2
   #calculate brGMGTI temp Baxter et al., 2019 GCA 
-  GDGT.IND$brGMGTI.TT       <-   2.86 + 26.5*GDGT.IND$brGMGTI
+  GDGT.IND$brGMGTI.MAAT       <-   2.86 + 26.5*GDGT.IND$brGMGTI
   
   
   ### PREP
@@ -86,7 +86,7 @@ GMGT_INDICES <- function(GDGTs){
   
   ### 3
   #calculate GDGT SFS temp calib (Baxter et al., 2019)
-  GDGT.IND$brGMGT.SFS       <-  1.18 + (0.47*fH1034a) + (0.12*fH1020a) + (0.5*fH1020c) 
+  GDGT.IND$brGMGT.MAAT2       <-  1.18 + (0.47*fH1034a) + (0.12*fH1020a) + (0.5*fH1020c) 
   
   
   return(GDGT.IND)
