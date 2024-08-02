@@ -35,8 +35,6 @@
 #           2.  SST.FI:         Feitz et al. (2013)
 #           3.  RI.OH:          Lü et al. (2015)
 #           4.  RI.OH':         Lü et al. (2015)
-#           5.  fOH.0:          Lü et al. (2015)
-#           6.  fOH.2:          Lü et al. (2015)
 #           7.  RI.OH.SST:      Lü et al. (2015)
 #           8.  RI.OH'.SST:     Lü et al. (2015)
 #           9.  OH.2.SST:       Lü et al. (2015)
@@ -73,8 +71,6 @@ OHGDGT_INDICES <- function(GDGTs){
                            "SST.FI",
                            "RI.OH",
                            "RI.OH'",
-                           "fOH.0",
-                           "fOH.2",
                            "RI.OH.SST",
                            "RI.OH'.SST",
                            "OH.2.SST",
@@ -97,7 +93,7 @@ OHGDGT_INDICES <- function(GDGTs){
                                         rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")]))
   
   
-  #calculate SST.FI=-131.579×OH1.2+122.368 (Feitz et al., 2013) 
+  #calculate SST.FI=-131.579×OH1.2+122.368 (Feitz et al., 2013, eq. 7) 
   GDGT.IND$SST.FI         <-      ((-131.578947*GDGT.IND$OH1.2)+122.3684211)
                                    
 
@@ -109,16 +105,6 @@ OHGDGT_INDICES <- function(GDGTs){
   ### 3
   #calculate RI-OH' (Lü et al., 2015 eq. 13)
   GDGT.IND$RI.OH.        <-    (GDGTs[,c("OH.GDGT.1")] + (2*GDGTs[,c("OH.GDGT.2")])) / 
-                                rowSums(GDGTs[,c("OH.GDGT.0","OH.GDGT.1","OH.GDGT.2")])
-  
-  ### 4
-  #calculate ratio OH-0/total OHs (Lü et al., 2015)
-  GDGT.IND$fOH.0         <-     GDGTs[,c("OH.GDGT.0")] / 
-                                rowSums(GDGTs[,c("OH.GDGT.0","OH.GDGT.1","OH.GDGT.2")])
-  
-  ### 5
-  #calculate ratio OH-2/total OHs (Lü et al., 2015)
-  GDGT.IND$fOH.2         <-     GDGTs[,c("OH.GDGT.2")] / 
                                 rowSums(GDGTs[,c("OH.GDGT.0","OH.GDGT.1","OH.GDGT.2")])
   
   ### 6
