@@ -41,6 +41,7 @@
 #           9.  INDEX1:         de Jonge et al. (2014)
 #          10.  pH.DJ:          de Jonge et al. (2014)
 #          11.  pH.RB:          Raberg et al. (2021)
+#          11.  pH.RU:          Russell et al.(2018)
 #          12.  ln(Cond):       Raberg et al. (2021)
 #          13.  Conduct:        Raberg et al. (2021)
 #          14.  MAT.DJ:         de Jonge et al. (2014)
@@ -87,7 +88,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 41
+  n= 42
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -106,6 +107,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "INDEX1",
                            "pH.DJ",
                            "pH.RB",
+                           "pH.RU",
                            "ln(Cond)",
                            "Conduct",
                            "MAT.DJ",
@@ -219,6 +221,11 @@ brGDGT_INDICES <- function(GDGTs){
   ### 11
   #calculate pH; Raberg et al (2021)
   GDGT.IND$pH.RB    <-   8.93 - (3.84*(as.numeric(brGDGT.CYCL.FA[,"Ia"])^2)) + (2.63*(as.numeric(brGDGT.CYCL.FA[,"IIa.6Me"])))
+  
+  
+  ### 11
+  #calculate pH; Russell et al. (2018)
+  GDGT.IND$pH.RU    <-   8.95 + (2.65*) - (3.84*(as.numeric(brGDGT.CYCL.FA[,"Ia"])^2)) + (2.63*(as.numeric(brGDGT.CYCL.FA[,"IIa.6Me"])))
   
   ### 12
   #calculate ln(Cond); Raberg et al (2021)
