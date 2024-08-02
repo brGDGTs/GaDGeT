@@ -2,11 +2,11 @@
  GaDGeT- GDGT calculations simplified: an adaptable R-toolbox for rapid index calculations
 
  # Features
- automated wqorkflow converting HPLC-derived isoGDGT, brGDGT, OH-GDGT, GMGT, and GDD data into concentrations, and calculates various proxies.
+ Automated workflow converting HPLC-derived isoGDGT, brGDGT, OH-GDGT, GMGT, and GDD data into concentrations, and calculates various proxies.
  provide a spreadsheet with HPLC-peak areas per sample and compound and GaDGeT will calculate everything for you
 
  # Original publication
- please find the original, open access publication in SoftwareX: Schneider and Castañeda (2024): *GaDGeT- GDGT calculations simplified: an adaptable R-toolbox for rapid index calculations*
+ Please find the original, open access publication in SoftwareX: Schneider and Castañeda (2024): *GaDGeT- GDGT calculations simplified: an adaptable R-toolbox for rapid index calculations*
  # User manual
  Please follow the instructions in the user manual.
 
