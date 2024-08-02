@@ -97,7 +97,7 @@ OHGDGT_INDICES <- function(GDGTs){
                                         rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")]))
   
   
-  #calculate SST.FI=-131.579×OH1.2+122.368 (Feitz et al., 2013)
+  #calculate SST.FI=-131.579×OH1.2+122.368 (Feitz et al., 2013) 
   GDGT.IND$SST.FI         <-      ((-131.578947*GDGT.IND$OH1.2)+122.3684211)
                                    
 
