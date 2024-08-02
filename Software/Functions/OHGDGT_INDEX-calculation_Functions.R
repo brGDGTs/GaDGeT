@@ -94,7 +94,7 @@ OHGDGT_INDICES <- function(GDGTs){
   
   
   #calculate SST.FI=-131.579×OH1.2+122.368 (Feitz et al., 2013, eq. 7) 
-  GDGT.IND$SST.FI         <-      ((-131.578947*GDGT.IND$OH1.2)+122.3684211)
+  GDGT.IND$SST.FI         <-      (((-1/0.0076)*GDGT.IND$OH1.2) + (0.93/0.0076))
                                    
 
   ### 2
@@ -108,12 +108,12 @@ OHGDGT_INDICES <- function(GDGTs){
                                 rowSums(GDGTs[,c("OH.GDGT.0","OH.GDGT.1","OH.GDGT.2")])
   
   ### 6
-  #calculate SST based on RI-OH (Lü et al., 2015 eq. 2)
-  GDGT.IND$RI.OH.SST     <-    (GDGT.IND$RI.OH-0.92) / 0.028
+  #calculate SST based on RI-OH (Lü et al., 2015 eq. 11)
+  GDGT.IND$RI.OH.SST     <-    (((1/0.018)*GDGT.IND$RI.OH) - (1.11/0.018))
   
   ### 7
   #calculate SST based RI-OH' (Lü et al., 2015 eq. 14)
-  GDGT.IND$RI.OH..SST    <-    (GDGT.IND$RI.OH.-0.1) / 0.0382
+  GDGT.IND$RI.OH..SST    <-    (((1/0.0382)*GDGT.IND$RI.OH.) - (0.1/0.0382))
   
   ### 8
   #calculate SST based on OH-2 to total OHs (Lü et al., 2015 eq. 3)
