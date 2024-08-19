@@ -37,11 +37,7 @@
 #           4.  RI.OH':         Lü et al. (2015)
 #           7.  RI.OH.SST:      Lü et al. (2015)
 #           8.  RI.OH'.SST:     Lü et al. (2015)
-#           9.  OH.2.SST:       Lü et al. (2015)
-#          10.  OH.0.SST:       Lü et al. (2015)
-#          11.  tot.OH.SST:     Lü et al. (2015)
-#          12.  OH.0.SST2:      Lü et al. (2020)
-#          13.  RI.OH.SST2:     Lü et al. (2020)
+
 
 
 
@@ -58,7 +54,7 @@ OHGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 12
+  n= 7
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -72,12 +68,7 @@ OHGDGT_INDICES <- function(GDGTs){
                            "RI.OH",
                            "RI.OH'",
                            "RI.OH.SST",
-                           "RI.OH'.SST",
-                           "OH.2.SST",
-                           "OH.0.SST",
-                           "tot.OH.SST",
-                           "OH.0.SST2",
-                           "RI.OH.SST2")
+                           "RI.OH'.SST")
   
   GDGT.IND <- data.frame(GDGT.IND)
   
@@ -115,27 +106,7 @@ OHGDGT_INDICES <- function(GDGTs){
   #calculate SST based RI-OH' (Lü et al., 2015 eq. 14)
   GDGT.IND$RI.OH..SST    <-    (((1/0.0382)*GDGT.IND$RI.OH.) - (0.1/0.0382))
   
-  ### 8
-  #calculate SST based on OH-2 to total OHs (Lü et al., 2015 eq. 3)
-  GDGT.IND$OH.2.SST      <-    (GDGT.IND$fOH.2 + 0.25) / 0.029
-  
-  ### 9
-  #calculate SST based on OH-0 to total OHs (Lü et al., 2015 eq. 4)
-  GDGT.IND$OH.0.SST      <-   (GDGT.IND$fOH.0 - 0.14) / (-0.004)
-  
-  ### 10
-  #calculate SST based on total OHs to total OH+isoGDGTs (Lü et al., 2015 eq. 5)
-  GDGT.IND$tot.OH.SST    <-   ((GDGT.IND$PERC.OH.tot/100) - 0.14) / (-0.004)
-  
-  ### 11
-  ##calculate SST based on OH-0 to total OHs (Lü et al., 2020 eq. 1)
-  GDGT.IND$OH.0.SST2     <-   (GDGT.IND$OH.0.SST-0.6138) / (-0.1636)
- 
-  ### 12
-  #calculate SST based RI-OH' (Lü et al., 2020 eq. 2)
-  GDGT.IND$RI.OH.SST2   <-   (GDGT.IND$RI.OH.-0.5061) / 0.2210
-  
-  
+
   return(GDGT.IND)
 }
 
