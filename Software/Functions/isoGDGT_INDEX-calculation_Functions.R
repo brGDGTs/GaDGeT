@@ -31,7 +31,7 @@
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
 #           1.  TEX86:          Schouten et al. (2002)
-#           2.  TEX.CASC:       Castaneda and Schouten (2011, 2015)
+
 #           3.  TEX.PW:         Powers et al. (2010)
 #           4.  TEX.TIER:       Tierney et al. (2010)
 #           5.  TEX.KIM:        Kim et al. (2008)
@@ -73,7 +73,6 @@ isoGDGT_INDICES <- function(GDGTs){
   
   # Set column names
   colnames(GDGT.IND)  <- c("TEX86",
-                           "TEX.CASC",
                            "TEX.PW",
                            "TEX.TIER",
                            "TEX.KIM",
@@ -98,10 +97,6 @@ isoGDGT_INDICES <- function(GDGTs){
   #calculate TEX86 (Schouten et al., 2002)
   GDGT.IND$TEX86           <-   rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")]) /
                                 rowSums(GDGTs[,c("GDGT.1","GDGT.2", "GDGT.3", "GDGT.4.2")])
-  
-  ### 2
-  #calculate TEX temp C and S calib (Castaneda & Schouten 2011; 2015)
-  GDGT.IND$TEX.CASC        <-   49.032*GDGT.IND$TEX86-10.989
   
   ### 3
   #calculate TEX temp Powers calib (Powers et al., 2010)
