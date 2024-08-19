@@ -35,18 +35,20 @@
 #           3.  TEX.PW:         Powers et al. (2010)
 #           4.  TEX.TIER:       Tierney et al. (2010)
 #           5.  TEX.KIM:        Kim et al. (2008)
-#           6.  TEX.IND1:       Kim et al (2010)
-#           7.  TEX.IND2:       Kim et al (2010)
-#           8.  TEX.I1.SST:     Kim et al (2010)
-#           9.  TEX.I2.SST:     Kim et al (2010)
-#          10.  RI.SMPL:        Zhang et al. (2015)
-#          11.  RI.TEX:         Zhang et al. (2015)
-#          12.  Delta.RI:       Zhang et al. (2015)
-#          13.  M.IND:          Zhang et al. (2011)
-#          14.  GDGT0/GDGT4:    Blaga et al. (2009)
-#          15.  GDGT2.GDGT3:    Taylor et al. (2013)
-#          16.  GDGT2.GDGT4.2:  
-#          17.  PERC.GDGT2:  
+#           6.  TEX.L.86:       Kim et al (2010)
+#           7.  TEX.H.86:       Kim et al (2010)
+#           8.  TEX.L.SST:      Kim et al (2010)
+#           9.  TEX.H.SST:      Kim et al (2010)
+#          10.  TEX.OH.86:      Varma et al (2024)
+#          11.  TEX.OH.86.SST:  Varma et al (2024) 
+#          12.  RI.SMPL:             Zhang et al. (2016)
+#          13.  RI.TEX:         Zhang et al. (2016)
+#          14.  Delta.RI:       Zhang et al. (2016)
+#          15.  M.IND:          Zhang et al. (2011)
+#          16.  ANOX:           Blaga et al. (2009)
+#          17.  EXDEPTH:        Taylor et al. (2013)
+#          18.  GDGT2.GDGT4.2:  
+#          19.  PERC.GDGT2:  
 
 
 
@@ -64,7 +66,7 @@ isoGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 17
+  n= 19
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -77,16 +79,18 @@ isoGDGT_INDICES <- function(GDGTs){
                            "TEX.PW",
                            "TEX.TIER",
                            "TEX.KIM",
-                           "TEX.IND1.L",
-                           "TEX.IND2.H",
+                           "TEX.L.86",
+                           "TEX.H.86",
                            "TEX.L.SST",
                            "TEX.H.SST",
+                           "TEX.OH.86",
+                           "TEX.OH.86.SST",
                            "RI.SMPL",
                            "RI.TEX",
-                           "Delta.RI",
+                           "D.RI",
                            "M.IND",
                            "ANOX",
-                           "GDGT2.GDGT3",
+                           "EXDEPTH",
                            "GDGT2.GDGT4.2",
                            "PERC.GDGT2")
   
@@ -135,17 +139,17 @@ isoGDGT_INDICES <- function(GDGTs){
   GDGT.IND$TEX.H.SST       <-    68.4*GDGT.IND$TEX.H.86+38.6
   
   ### 10
-  #calculate RingIndex Sample (Zhang et al., 2015)
-  GDGT.IND$RI.SMPL         <-   (0*GDGTs[,"GDGT.0"]+1*GDGTs[,"GDGT.1"]+2*GDGTs[,"GDGT.2"]+3*GDGTs[,"GDGT.3"]+4*GDGTs[,"GDGT.4"]+4*GDGTs[,"GDGT.4.2"]) / 
+  #calculate RingIndex Sample (Zhang et al., 2016)
+  GDGT.IND$RI.SMPL            <-   (0*GDGTs[,"GDGT.0"]+1*GDGTs[,"GDGT.1"]+2*GDGTs[,"GDGT.2"]+3*GDGTs[,"GDGT.3"]+4*GDGTs[,"GDGT.4"]+4*GDGTs[,"GDGT.4.2"]) / 
                                 rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.2")])
 
   ### 11
-  #calculate RingIndex TEX (Zhang et al., 2015)
+  #calculate RingIndex TEX (Zhang et al., 2016)
   GDGT.IND$RI.TEX          <-   -0.77*GDGT.IND$TEX86+(3.32*(GDGT.IND$TEX86)^2)+1.59
  
   ### 12
-  #calculate DeltaRI (Zhang et al., 2015)
-  GDGT.IND$Delta.RI        <-   abs(GDGT.IND$RI.TEX-GDGT.IND$RI.SMPL)
+  #calculate DeltaRI (Zhang et al., 2016)
+  GDGT.IND$D.RI        <-   abs(GDGT.IND$RI.TEX-GDGT.IND$RI.SMPL)
   
   ### 13
   #calculate Methane Index (Zhang et al. 2011)
@@ -159,7 +163,7 @@ isoGDGT_INDICES <- function(GDGTs){
   
   ### 15
   #calculate GDGT 2/3 Taylor et al., 2013
-  GDGT.IND$GDGT2.GDGT3     <-   GDGTs[,"GDGT.2"] / GDGTs[,"GDGT.3"]
+  GDGT.IND$EXDEPTH     <-   GDGTs[,"GDGT.2"] / GDGTs[,"GDGT.3"]
   
   ### 16
   #calculate GDGT 2/cren 
