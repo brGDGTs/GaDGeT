@@ -31,7 +31,7 @@
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
 #           1.  TEX86:          Schouten et al. (2002)
-
+#           2.  TEX.CASC:       Castaneda and Schouten (2011, 2015)
 #           3.  TEX.PW:         Powers et al. (2010)
 #           4.  TEX.TIER:       Tierney et al. (2010)
 #           5.  TEX.KIM:        Kim et al. (2008)
@@ -73,6 +73,7 @@ isoGDGT_INDICES <- function(GDGTs){
   
   # Set column names
   colnames(GDGT.IND)  <- c("TEX86",
+                           "TEX.CASC",
                            "TEX.PW",
                            "TEX.TIER",
                            "TEX.KIM",
@@ -98,13 +99,17 @@ isoGDGT_INDICES <- function(GDGTs){
   GDGT.IND$TEX86           <-   rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")]) /
                                 rowSums(GDGTs[,c("GDGT.1","GDGT.2", "GDGT.3", "GDGT.4.2")])
   
+  ### 2
+  #calculate TEX temp C and S calib (Castaneda & Schouten 2011; 2015)
+  GDGT.IND$TEX.CASC        <-   49.032*GDGT.IND$TEX86-10.989
+  
   ### 3
   #calculate TEX temp Powers calib (Powers et al., 2010)
   GDGT.IND$TEX.PW          <-   55.781*GDGT.IND$TEX86-13.949
   
   ### 4
   #calculate TEX temp Tierney calib (Tierney et al., 2010)
-  GDGT.IND$TEX.TIER        <-   49.032*GDGT.IND$TEX86-10.989
+  GDGT.IND$TEX.TIER        <-   39.781*GDGT.IND$TEX86-4.0133
   
   ### 5
   #calculate TEX temp Kim et al. (2008) calib (Kim et al., 2008)
@@ -112,22 +117,22 @@ isoGDGT_INDICES <- function(GDGTs){
   
   ### 6
   #calculate TEX Kim et al. (2010) GDGT Index 1 (low temp)
-  GDGT.IND$TEX.IND1.L      <-    log(GDGTs[,c("GDGT.2")] /
+  GDGT.IND$TEX.L.86      <-    log(GDGTs[,c("GDGT.2")] /
                                      rowSums(GDGTs[,c("GDGT.1","GDGT.2","GDGT.3")]),
                                      base = 10)
   
   ### 7
   #calculate TEX Kim et al. (2010) GDGT Index 2 (high temp)
-  GDGT.IND$TEX.IND2.H      <-    log(rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")]) /
+  GDGT.IND$TEX.H.86      <-    log(rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")]) /
                                      rowSums(GDGTs[,c("GDGT.1","GDGT.2","GDGT.3", "GDGT.4.2")]),
                                      base = 10)
   ### 8
   #calculate temp Kim et al. (2010) low temp calib
-  GDGT.IND$TEX.L.SST       <-    67.5*GDGT.IND$TEX.IND1.L+46.9
+  GDGT.IND$TEX.L.SST       <-    67.5*GDGT.IND$TEX.L.86+46.9
   
   ### 9
   #calculate TEX temp Kim et al. (2010) high temp
-  GDGT.IND$TEX.H.SST       <-    68.4*GDGT.IND$TEX.IND2.H+38.6
+  GDGT.IND$TEX.H.SST       <-    68.4*GDGT.IND$TEX.H.86+38.6
   
   ### 10
   #calculate RingIndex Sample (Zhang et al., 2015)
