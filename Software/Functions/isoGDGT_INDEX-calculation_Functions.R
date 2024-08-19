@@ -138,14 +138,13 @@ isoGDGT_INDICES <- function(GDGTs){
   ### 10.  
   #calculate TEX.OH.86: Varma et al (2024)
   
-  GDGT.IND$TEX.OH.86            <- 
+  GDGT.IND$TEX.OH.86            <-   rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")]) /
+                                     rowSums(GDGTs[,c("GDGT.1","GDGT.2", "GDGT.3", "GDGT.4.2","OH.GDGT.0")])
   
   ### 11.  
   # calculate TEX.OH.86.SST:  Varma et al (2024) 
   
-  GDGT.IND$TEX.OH.86.SST        <- 
-  
-  
+  GDGT.IND$TEX.OH.86.SST        <- (1/0.021) * GDGT.IND$TEX.OH.86 - (0.08/0.021)
   
   ### 12
   #calculate RingIndex Sample (Zhang et al., 2016)
