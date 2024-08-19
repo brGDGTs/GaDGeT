@@ -8,7 +8,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 19. June 2023
+# Last modification: 19. August 2024
 # Email: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 
@@ -41,7 +41,7 @@
 #           9.  TEX.H.SST:      Kim et al (2010)
 #          10.  TEX.OH.86:      Varma et al (2024)
 #          11.  TEX.OH.86.SST:  Varma et al (2024) 
-#          12.  RI.SMPL:             Zhang et al. (2016)
+#          12.  RI.SMPL:        Zhang et al. (2016)
 #          13.  RI.TEX:         Zhang et al. (2016)
 #          14.  Delta.RI:       Zhang et al. (2016)
 #          15.  M.IND:          Zhang et al. (2011)
