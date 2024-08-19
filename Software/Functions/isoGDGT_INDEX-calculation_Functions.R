@@ -47,8 +47,6 @@
 #          15.  M.IND:          Zhang et al. (2011)
 #          16.  ANOX:           Blaga et al. (2009)
 #          17.  EXDEPTH:        Taylor et al. (2013)
-#          18.  GDGT2.GDGT4.2:  
-#          19.  PERC.GDGT2:  
 
 
 
@@ -66,7 +64,7 @@ isoGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 19
+  n= 17
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -90,9 +88,7 @@ isoGDGT_INDICES <- function(GDGTs){
                            "D.RI",
                            "M.IND",
                            "ANOX",
-                           "EXDEPTH",
-                           "GDGT2.GDGT4.2",
-                           "PERC.GDGT2")
+                           "EXDEPTH")
   
   GDGT.IND <- data.frame(GDGT.IND)
   
@@ -138,41 +134,45 @@ isoGDGT_INDICES <- function(GDGTs){
   #calculate TEX temp Kim et al. (2010) high temp
   GDGT.IND$TEX.H.SST       <-    68.4*GDGT.IND$TEX.H.86+38.6
   
-  ### 10
+  
+  ### 10.  
+  #calculate TEX.OH.86: Varma et al (2024)
+  
+  GDGT.IND$TEX.OH.86            <- 
+  
+  ### 11.  
+  # calculate TEX.OH.86.SST:  Varma et al (2024) 
+  
+  GDGT.IND$TEX.OH.86.SST        <- 
+  
+  
+  
+  ### 12
   #calculate RingIndex Sample (Zhang et al., 2016)
   GDGT.IND$RI.SMPL            <-   (0*GDGTs[,"GDGT.0"]+1*GDGTs[,"GDGT.1"]+2*GDGTs[,"GDGT.2"]+3*GDGTs[,"GDGT.3"]+4*GDGTs[,"GDGT.4"]+4*GDGTs[,"GDGT.4.2"]) / 
                                 rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.2")])
 
-  ### 11
+  ### 13
   #calculate RingIndex TEX (Zhang et al., 2016)
   GDGT.IND$RI.TEX          <-   -0.77*GDGT.IND$TEX86+(3.32*(GDGT.IND$TEX86)^2)+1.59
  
-  ### 12
+  ### 14
   #calculate DeltaRI (Zhang et al., 2016)
   GDGT.IND$D.RI        <-   abs(GDGT.IND$RI.TEX-GDGT.IND$RI.SMPL)
   
-  ### 13
+  ### 15
   #calculate Methane Index (Zhang et al. 2011)
   GDGT.IND$M.IND           <-   rowSums(GDGTs[,c("GDGT.1", "GDGT.2", "GDGT.3")]) /
                                 rowSums(GDGTs[,c("GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")])
   
-  ### 14
+  ### 16
   #calculate GDGT0/GDGT4, anoxia
   GDGT.IND$ANOX            <-   GDGTs[,"GDGT.0"] / GDGTs[,"GDGT.4"]
   
   
-  ### 15
+  ### 17
   #calculate GDGT 2/3 Taylor et al., 2013
   GDGT.IND$EXDEPTH     <-   GDGTs[,"GDGT.2"] / GDGTs[,"GDGT.3"]
-  
-  ### 16
-  #calculate GDGT 2/cren 
-  GDGT.IND$GDGT2.GDGT4.2   <-   GDGTs[,"GDGT.2"] / GDGTs[,"GDGT.4.2"]
-  
-  ### 17
-  #calculate percent GDGT.2
-  GDGT.IND$PERC.GDGT2      <-   GDGTs[,"GDGT.2"] / 
-                                rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.2")]) *100
   
   return(GDGT.IND)
 }
