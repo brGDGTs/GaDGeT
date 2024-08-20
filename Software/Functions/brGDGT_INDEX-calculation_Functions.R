@@ -382,7 +382,7 @@ brGDGT_INDICES <- function(GDGTs){
  
   ### 41
   #calculate BIT
-  GDGT.IND$BIT      <-  rowSums(GDGTs[,c("Ia","IIa.5Me","IIIa.5Me")])/rowSums(GDGTs[,c("Ia","IIa.5Me","IIIa.5Me","GDGT.4")]) 
+  GDGT.IND$BIT      <-  rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me")])/rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me","GDGT.4")]) 
   
   return(GDGT.IND)
 }
