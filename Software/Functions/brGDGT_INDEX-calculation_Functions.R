@@ -34,8 +34,8 @@
 #           2.  CBT':           de Jonge et al. (2014)
 #           3.  CBT'.5Me:       Russell et al. (2018)
 #           4.  MBT:            Weijers et al. (2007)
-#           5.  MBT':           Peterse et al. (2012)
-#           6.  MBT.5Me:        Dang et al. (2018)
+#           5.  MBT':           de Jonge et al. (2014)
+#           6.  MBT.5Me:        de Jonge et al. (2014)
 #           7.  MBT.6Me:        Dang et al. (2018)
 #           8.  IR:             de Jonge et al. (2014)
 #           9.  INDEX1:         de Jonge et al. (2014)
@@ -88,7 +88,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 41
+  n= 42
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -100,6 +100,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "CBT'",
                            "CBT'.5Me",
                            "MBT",
+                           "MBT.", 
                            "MBT.5Me",
                            "MBT.6Me",
                            "IR",
@@ -185,6 +186,12 @@ brGDGT_INDICES <- function(GDGTs){
                                                   "IIc.5Me","IIc.6Me","IIIa.5Me","IIIa.6Me","IIIb.5Me","IIIb.6Me",
                                                   "IIIc.5Me","IIIc.6Me")]))
   
+  ### 5
+  #calculate MBT'; de Jonge et al (2014)
+  GDGT.IND$MBT.          <-   (rowSums(GDGTs[,c("Ia","Ib","Ic")])/
+                                 rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIc.5Me",
+                                                  "IIc.6Me","IIIa.5Me","IIIa.6Me")]))
+  
   ### 6
   #calculate MBT'.5Me; de Jonge et al (2014)
   GDGT.IND$MBT.5Me       <-   (rowSums(GDGTs[,c("Ia","Ib","Ic")])/
@@ -218,7 +225,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 11
   #calculate pH; Russell et al. (2018)
-  GDGT.IND$pH.RU    <-   8.95 + (2.65*) - (3.84*(as.numeric(brGDGT.CYCL.FA[,"Ia"])^2)) + (2.63*(as.numeric(brGDGT.CYCL.FA[,"IIa.6Me"])))
+  GDGT.IND$pH.RU    <-   8.95 + (2.65*GDGT.IND$CBT.)
   
   ### 12
   #calculate ln(Cond); Raberg et al (2021)
