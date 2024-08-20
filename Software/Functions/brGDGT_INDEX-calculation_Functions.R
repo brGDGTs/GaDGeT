@@ -166,14 +166,14 @@ brGDGT_INDICES <- function(GDGTs){
   ### 1
   #calculate CBT; de Jonge et al (2014)
   GDGT.IND$CBT           <-   (-log(rowSums(GDGTs[,c("Ib","IIb.5Me","IIb.6Me")])/
-                                      rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me")]),
+                                    rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me")]),
                                     base = 10))
   
   ### 2
   #calculate CBT'; de Jonge et al (2014)
-  GDGT.IND$CBT.          <-   (-log(rowSums(GDGTs[,c("Ic","IIa.6Me","IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")])/
-                                      rowSums(GDGTs[,c("Ia","IIa.5Me","IIIa.5Me")]),
-                                    base = 10))
+  GDGT.IND$CBT.          <-   log(rowSums(GDGTs[,c("Ic","IIa.6Me","IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")])/
+                                  rowSums(GDGTs[,c("Ia","IIa.5Me","IIIa.5Me")]),
+                                  base = 10)
   
   ### 3
   #calculate CBT'. 5Me; Russell et al (2018)
