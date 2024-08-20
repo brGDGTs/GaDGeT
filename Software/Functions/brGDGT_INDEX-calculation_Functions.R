@@ -88,7 +88,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 42
+  n= 41
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -100,7 +100,6 @@ brGDGT_INDICES <- function(GDGTs){
                            "CBT'",
                            "CBT'.5Me",
                            "MBT",
-                           "MBT'",
                            "MBT.5Me",
                            "MBT.6Me",
                            "IR",
@@ -186,14 +185,8 @@ brGDGT_INDICES <- function(GDGTs){
                                                   "IIc.5Me","IIc.6Me","IIIa.5Me","IIIa.6Me","IIIb.5Me","IIIb.6Me",
                                                   "IIIc.5Me","IIIc.6Me")]))
   
-  ### 5
-  #calculate MBT'; Peterse et al. (2012)
-  GDGT.IND$MBT.          <-   (rowSums(GDGTs[,c("Ia","Ib","Ic")])/
-                                 rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIc.5Me",
-                                                  "IIc.6Me","IIIa.5Me","IIIa.6Me")]))
-  
   ### 6
-  #calculate MBT'.5Me; Dang et al (2018)
+  #calculate MBT'.5Me; de Jonge et al (2014)
   GDGT.IND$MBT.5Me       <-   (rowSums(GDGTs[,c("Ia","Ib","Ic")])/
                                  rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me")]))
   
