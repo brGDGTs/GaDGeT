@@ -71,6 +71,7 @@
 #          36.  RINGpenta 5Me:  Raberg et al (2021)
 #          37.  RINGpenta 6Me:  Raberg et al (2021)
 #          38.  DC:             Raberg et al (2021)
+#          38.  DC':            de Jonge et al (2024)
 #          39.  IBT:            Ding et al (2015)
 #          40.  CI:             Raberg et al (2021)
 #          41.  BIT:            Hopmans et al (2004)
@@ -89,7 +90,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 43
+  n= 44
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -137,6 +138,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "RINGpenta5",
                            "RINGpenta6",
                            "DC",
+                           "DC.",
                            "IBT",
                            "CI",
                            "BIT")
@@ -362,6 +364,11 @@ brGDGT_INDICES <- function(GDGTs){
   #calculate DC
   GDGT.IND$DC          <-   (GDGTs$Ib + 2*GDGTs$Ic + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
                             rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me")])
+
+  ### 38
+  #calculate DC'
+  GDGT.IND$DC.          <-   (GDGTs$Ib + 2*GDGTs$Ic + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
+    rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me")])
   
   ### 39
   #calculate IBT
