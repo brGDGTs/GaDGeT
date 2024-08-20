@@ -74,8 +74,8 @@
 #          38.  DC':            de Jonge et al (2024)
 #          39.  IBT:            Ding et al (2015)
 #          40.  CI:             Raberg et al (2021)
-#          41.  BIT:            Hopmans et al (2004)
-
+#          41.  BIT:            Hopmans et al (2004), Dang et al (2016)
+#          41.  PI.bones:       Zhao et al (2020)
 
 ############################################################################################################################
 ############################################# INDEX CALCULATIONS ###########################################################
@@ -90,7 +90,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 44
+  n= 45
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -141,7 +141,8 @@ brGDGT_INDICES <- function(GDGTs){
                            "DC.",
                            "IBT",
                            "CI",
-                           "BIT")
+                           "BIT",
+                           "PI.bones")
   
   
   ###-------------------------------------------- PREP CALC --------------------------------------------------------------###
@@ -383,6 +384,11 @@ brGDGT_INDICES <- function(GDGTs){
   ### 41
   #calculate BIT
   GDGT.IND$BIT      <-  rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me")])/rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me","GDGT.4")]) 
+  
+  ### 41
+  #calculate PI.bones
+  GDGT.IND$PI.bones      <-  rowSums(GDGTs[,c("Ia","Ib")])/rowSums(GDGTs[,c("Ia","Ib", "IIIa.5Me","IIa.6Me","IIIa.6Me")]) 
+  
   
   return(GDGT.IND)
 }
