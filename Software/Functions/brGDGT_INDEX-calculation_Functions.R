@@ -40,6 +40,7 @@
 #           8.  IR:             de Jonge et al. (2014)
 #           9.  INDEX1:         de Jonge et al. (2014)
 #          10.  pH.DJ:          de Jonge et al. (2014)
+#          10.  pH.DJ2:          de Jonge et al. (2014)
 #          11.  pH.RB:          Raberg et al. (2021)
 #          11.  pH.RU:          Russell et al.(2018)
 #          12.  ln(Cond):       Raberg et al. (2021)
@@ -88,7 +89,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 42
+  n= 43
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -106,6 +107,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "IR",
                            "INDEX1",
                            "pH.DJ",
+                           "pH.DJ2",
                            "pH.RB",
                            "pH.RU",
                            "ln(Cond)",
@@ -218,6 +220,10 @@ brGDGT_INDICES <- function(GDGTs){
   #calculate pH; deJonge et al (2014)
   GDGT.IND$pH.DJ   <-   7.84 - 1.73*GDGT.IND$CBT..5Me
  
+  ### 10
+  #calculate pH; deJonge et al (2014)
+  GDGT.IND$pH.DJ2   <-   7.15 + 1.59*GDGT.IND$CBT.
+  
   ### 11
   #calculate pH; Raberg et al (2021)
   GDGT.IND$pH.RB    <-   8.93 - (3.84*(as.numeric(brGDGT.CYCL.FA[,"Ia"])^2)) + (2.63*(as.numeric(brGDGT.CYCL.FA[,"IIa.6Me"])))
@@ -269,7 +275,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 21
   #calculate MAAT; Loomis et al. (2012): 2.54+45.28*MBT-5.02*CBT
-  GDGT.IND$MAAT1.LO    <-   2.54 + (45.28*GDGT.IND$
+  GDGT.IND$MAAT1.LO    <-   2.54 + 45.28*GDGT.IND$MBT-5.02*GDGT.IND$CBT
   
   ### 22
   #calculate MAAT; Loomis et al. (2012)
