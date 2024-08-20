@@ -206,9 +206,8 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 8
   #calculate IR; de Jonge et al (2014)
-  GDGT.IND$IR            <-   (rowSums(GDGTs[,c("IIa.6Me","IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")])/
-                                 rowSums(GDGTs[,c("IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIc.5Me","IIc.6Me",
-                                                  "IIIa.5Me","IIIa.6Me","IIIb.5Me","IIIb.6Me","IIIc.5Me","IIIc.6Me")]))
+  GDGT.IND$IR            <-   (rowSums(GDGTs[,c("IIa.6Me","IIIa.6Me")])/
+                                 rowSums(GDGTs[,c("IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me")]))
   
   ### 9
   #calculate INDEX1; deJonge et al (2014)
