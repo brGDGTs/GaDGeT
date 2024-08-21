@@ -269,8 +269,7 @@ brGDGT_INDICES <- function(GDGTs){
    
   ### 20
   #calculate Growth Temperature; Dang et al (2018)
-  GDGT.IND$GT.DA        <-   21.39*GDGT.IND$MBT.6Me+2.27
-  
+  GDGT.IND$GT.DA        <-   NA
   ### 21
   #calculate UK37-temp, Harning et al (2020)
   GDGT.IND$UKT.HA       <-   (-0.154*GDGTs$IIIa.5Me)+(0.3538*GDGTs$Ia)+(1.0016*GDGTs$IIIa.6Me)-0.7537
