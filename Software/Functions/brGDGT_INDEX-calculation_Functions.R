@@ -45,38 +45,39 @@
 #          13.  pH.RU:          Russell et al.(2018)
 #          14.  ln(Cond):       Raberg et al. (2021)
 #          15.  Conduct:        Raberg et al. (2021)
-#          16.  MAT.DJ:         de Jonge et al. (2014)
-#          17.  MAT.mrs:        de Jonge et al. (2014)
-#          18.  GT.DA:          Dang et al. (2018)
-#          19.  UKT.HA:         Harning et al. (2020)
-#          20.  MAAT1.RU:       Russell et al (2018)
-#          21.  MAAT2.RU:       Russell et al (2018)
-#          22.  SFS.RU:         Russell et al (2018)
-#          23.  MWT.ZH:         Zhao et al (2020)
-#          24.  MAF.METH:       Raberg et al (2021)
-#          25.  MAF.FULL:       Raberg et al (2021)
-#          26.  MAAT.trop:      Zhao et al. (2023)
-#          27.  MLR.trop:       Zhao et al. (2023)
-#          28.  MAF.highlat:    Zhao et al. (2023)
-#          29.  MLR.highlat:    Zhao et al. (2023)
-#          30.  MAAT.BA1        Bauersachs et al. (2023)
-#          31.  MAAT.BA2        Bauersachs et al. (2023)
-#          32.  MAF.BA1         Bauersachs et al. (2023)
-#          33.  MAF.BA2         Bauersachs et al. (2023)
+#          16.  MAT.DJ1:        de Jonge et al. (2014)
+#          17.  MAT.DJ2:        de Jonge et al. (2014)
+#          18.  MAT.mrs:        de Jonge et al. (2014)
+#          19.  GT.DA:          Dang et al. (2018)
+#          20.  UKT.HA:         Harning et al. (2020)
+#          21.  MAAT1.RU:       Russell et al (2018)
+#          22.  MAAT2.RU:       Russell et al (2018)
+#          23.  SFS.RU:         Russell et al (2018)
+#          24.  MWT.ZH:         Zhao et al (2020)
+#          25.  MAF.METH:       Raberg et al (2021)
+#          26.  MAF.FULL:       Raberg et al (2021)
+#          27.  MAAT.trop:      Zhao et al. (2023)
+#          28.  MLR.trop:       Zhao et al. (2023)
+#          29.  MAF.highlat:    Zhao et al. (2023)
+#          30.  MLR.highlat:    Zhao et al. (2023)
+#          31.  MAAT.BA1        Bauersachs et al. (2023)
+#          32.  MAAT.BA2        Bauersachs et al. (2023)
+#          33.  MAF.BA1         Bauersachs et al. (2023)
+#          34.  MAF.BA2         Bauersachs et al. (2023)
 
-#          34.  IIIa.IIIaIIIa:  Raberg et al (2021)
-#          35.  IIIa.IIa:       Raberg et al (2021)
+#          35.  IIIa.IIIaIIIa:  Raberg et al (2021)
+#          36.  IIIa.IIa:       Raberg et al (2021)
 
-#          36.  HP5Me:          Yao et al (2020)
-#          37.  RINGtetra:      Raberg et al (2021) 
-#          38.  RINGpenta 5Me:  Raberg et al (2021)
-#          39.  RINGpenta 6Me:  Raberg et al (2021)
-#          40.  DC:             Raberg et al (2021)
-#          41.  DC':            de Jonge et al (2024)
-#          42.  IBT:            Ding et al (2015)
-#          43.  CI:             Raberg et al (2021)
-#          44.  BIT:            Hopmans et al (2004), Dang et al (2016)
-#          45.  PI.bones:       Zhao et al (2020)
+#          37.  HP5Me:          Yao et al (2020)
+#          38.  RINGtetra:      Raberg et al (2021) 
+#          39.  RINGpenta 5Me:  Raberg et al (2021)
+#          40.  RINGpenta 6Me:  Raberg et al (2021)
+#          41.  DC:             Raberg et al (2021)
+#          42.  DC':            de Jonge et al (2024)
+#          43.  IBT:            Ding et al (2015)
+#          44.  CI:             Raberg et al (2021)
+#          45.  BIT:            Hopmans et al (2004), Dang et al (2016)
+#          46.  PI.bones:       Zhao et al (2020)
 
 ############################################################################################################################
 ############################################# INDEX CALCULATIONS ###########################################################
@@ -91,7 +92,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 45
+  n= 46
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -114,7 +115,8 @@ brGDGT_INDICES <- function(GDGTs){
                            "pH.RU",
                            "ln(Cond)",
                            "Conduct",
-                           "MAT.DJ",
+                           "MAT.DJ1",
+                           "MAT.DJ2",
                            "MAT.mrs",
                            "GT.DA",
                            "UKT.HA",
@@ -247,41 +249,44 @@ brGDGT_INDICES <- function(GDGTs){
   #calculate Conduct; Raberg et al. (2021)
   GDGT.IND$Conduct      <-   exp(GDGT.IND$ln.Cond.)
   
-  
   ### 16
   #calculate MAT; deJonge et al (2014)
-  GDGT.IND$MAT.DJ       <-   -8.57 + 31.45*GDGT.IND$MBT.5Me
+  GDGT.IND$MAT.DJ1       <-   -8.57 + 31.45*GDGT.IND$MBT.5Me
  
   ### 17
-  #calculate MAT.mrs; deJonge et al (2014)
-  GDGT.IND$MAT.mrs       <-   5.58 + 17.91*GDGTs[,c("Ia")] + 18.77*GDGTs[,c("IIa")]
-   
+  #calculate MAT; deJonge et al (2014)
+  GDGT.IND$MAT.DJ2       <-   5.05+ (14.86*GDGT.IND$INDEX1) 
+  
   ### 18
+  #calculate MAT.mrs; deJonge et al (2014)
+  GDGT.IND$MAT.mrs       <-   5.58 + (17.91*GDGTs$Ia) + (18.77*GDGTs$IIa.5Me)
+   
+  ### 19
   #calculate Growth Temperature; Dang et al (2018)
   GDGT.IND$GT.DA        <-   21.39*GDGT.IND$MBT.6Me+2.27
   
-  ### 19
+  ### 20
   #calculate UK37-temp, Harning et al (2020)
   GDGT.IND$UKT.HA       <-   (-0.154*GDGTs$IIIa.5Me)+(0.3538*GDGTs$Ia)+(1.0016*GDGTs$IIIa.6Me)-0.7537
   
-  ### 20
+  ### 21
   #calculate MAAT; Russell et al (2018)
   GDGT.IND$MAAT1.RU     <-   (-1.21)+(32.42*GDGT.IND$MBT.5Me)
   
-  ### 21
+  ### 22
   #calculate MAAT; Russell et al (2018)
   GDGT.IND$MAAT2.RU     <-   12.22+(18.79*GDGT.IND$INDEX1)
 
-  ### 22
+  ### 23
   #calculate MAAT SFS; Russell et al (2018)
   GDGT.IND$SFS.RU     <-   23.81 -(31.02*GDGTs[,c("IIIa.5Me")])-(41.91*GDGTs[,c("IIIb.5Me")])
                             -(51.59*GDGTs[,c("IIb.6Me")])-(24.7*GDGTs[,c("IIa.5Me")])+(68.8*GDGTs[,c("Ib")])
   
-  ### 23
+  ### 24
   #calculate MWT; Zhao et al. (2020)
   GDGT.IND$MWT.ZH       <-    -1.82 + 56.06*GDGT.IND$MBT.5Me
   
-  ### 24
+  ### 25
   #calculate MAF.METH; Raberg et al. (2021)
   brGDGT.ME.FA        <- as.matrix(brGDGT.METH.5Me.FA)# for col assignment
   
@@ -293,7 +298,7 @@ brGDGT_INDICES <- function(GDGTs){
                                   -(40.54*as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")]))-(80.47*as.numeric(brGDGT.ME.FA[i,c("IIIb.5Me")])))
   }
 
-  ### 25
+  ### 26
   #calculate MAF.FULL; Raberg et al. (2021)
   brGDGT.F  <- as.matrix(brGDGT.FA) #for col assignment
   
@@ -304,87 +309,87 @@ brGDGT_INDICES <- function(GDGTs){
                                     +(58.15*(as.numeric(brGDGT.F[r,c("IIIa.6Me")])^2))+(12.79*as.numeric(brGDGT.F[r,c("IIIa.5Me")])))
   }
   
-  ### 26
+  ### 27
   #calculate MAAT.trop, zhao et al. (2023)
   GDGT.IND$MAAT.trop      <-  (-1.78)+31.01*GDGT.IND$MBT.5Me
   
-  ### 27
+  ### 28
   #calculate MLR-lowlat, zhao et al. (2023)
   GDGT.IND$MLR.trop       <-  (-4.11)+31.63*fIa.Zh+64.5*fIb.Zh+32.28*fIIa.Zh
   
-  ### 28
+  ### 29
   #calculate MLR-highlat
   GDGT.IND$MAF.highlat      <-  3.36+17.25*GDGT.IND$MBT.5Me
   
-  ### 29
+  ### 30
   #calculate MLR-highlat
   GDGT.IND$MLR.highlat      <-  1.44+15.88*fIa.Zh+66.92*fIb.Zh+8.33*fIIa.Zh+7.02*fIIIa.Zh
   
-  ### 30
+  ### 31
   #calculate MAAT.BA1
   GDGT.IND$MMAT.BA1      <-  (-2.19)+ (31.91*GDGT.IND$MBT.5Me) 
   
-  ### 31
+  ### 32
   #calculate MAAT.BA2
   GDGT.IND$MMAT.BA2      <-  7.11 + (67.66*GDGTs$Ib) - (13.54*GDGTs$IIIa.5Me)
   
-  ### 32
+  ### 33
   #calculate MAF.BA1
   GDGT.IND$MAF.BA1      <-  4.81 + (15.64*GDGT.IND$MBT.5Me) 
   
-  ### 33
+  ### 34
   #calculate MAF.BA2
   GDGT.IND$MAF.BA2      <-  5.91 + (16.22*GDGT.IND$Ia)
   
-  ### 34
+  ### 35
   #calculate IIIa/(IIIa+IIIa')
   GDGT.IND$IIIa.IIIaIIIa  <-   GDGTs$IIIa.5Me/ rowSums(GDGTs[,c("IIIa.5Me","IIIa.6Me")])
   
-  ### 35
+  ### 36
   #calculate sum (IIIa)/ sum (IIa)
   GDGT.IND$IIIa.IIa  <-   rowSums(GDGTs[,c("IIIa.5Me","IIIa.6Me")]) / rowSums(GDGTs[,c("IIa.5Me","IIa.6Me")])
   
-  ### 36
+  ### 37
   #calculate HP 5Me
   GDGT.IND$HP5Me        <-   GDGTs$IIIa.5Me/rowSums(GDGTs[,c("IIIa.5Me","IIa.5Me")])
   
-  ### 37
+  ### 38
   #calculate RING tetra
   GDGT.IND$RINGtetra    <-   (GDGTs$Ib + 2*GDGTs$Ic)/rowSums(GDGTs[,c("Ia","Ib","Ic")])
   
-  ### 38
+  ### 39
   #calculate RING penta 5Me
   GDGT.IND$RINGpenta5    <-   (GDGTs$IIb.5Me + 2*GDGTs$IIc.5Me)/rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me")])
   
-  ### 39
+  ### 40
   #calculate RING penta 6Me
   GDGT.IND$RINGpenta6    <-   (GDGTs$IIb.6Me + 2*GDGTs$IIc.6Me)/rowSums(GDGTs[,c("IIa.6Me","IIb.6Me","IIc.6Me")])
   
-  ### 40
+  ### 41
   #calculate DC
   GDGT.IND$DC          <-   (GDGTs$Ib + 2*GDGTs$Ic + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
                             rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me")])
 
-  ### 41
+  ### 42
   #calculate DC'
   GDGT.IND$DC.          <-   (GDGTs$Ib + 2*GDGTs$Ic + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
     rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me")])
   
-  ### 42
+  ### 43
   #calculate IBT
   GDGT.IND$IBT      <-   (-log(rowSums(GDGTs[,c("IIa.6Me","IIIa.6Me")])/
                                       rowSums(GDGTs[,c("IIa.5Me","IIIa.5Me")]),
                                     base = 10))
   
-  ### 43
-  #calculate IBT
+  ### 44
+  #calculate CI
   GDGT.IND$CI      <-   GDGTs$Ia/rowSums(GDGTs[,c("Ia","IIa.5Me","IIIa.5Me")])
  
-  ### 44
+  ### 45
   #calculate BIT
   GDGT.IND$BIT      <-  rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me")])/rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me","GDGT.4")]) 
   
-  ### 45
+  ### 46
   #calculate PI.bones
   GDGT.IND$PI.bones      <-  rowSums(GDGTs[,c("Ia","Ib")])/rowSums(GDGTs[,c("Ia","Ib", "IIIa.5Me","IIa.6Me","IIIa.6Me")]) 
   
