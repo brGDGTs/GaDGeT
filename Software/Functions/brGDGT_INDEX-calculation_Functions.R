@@ -40,7 +40,7 @@
 #           8.  IR:             de Jonge et al. (2014)
 #           9.  INDEX1:         de Jonge et al. (2014)
 #          10.  pH.DJ:          de Jonge et al. (2014)
-#          10.  pH.DJ2:          de Jonge et al. (2014)
+#          10.  pH.DJ2:         de Jonge et al. (2014)
 #          11.  pH.RB:          Raberg et al. (2021)
 #          11.  pH.RU:          Russell et al.(2018)
 #          12.  ln(Cond):       Raberg et al. (2021)
@@ -49,12 +49,8 @@
 #          15.  MAT.mrs:        de Jonge et al. (2014)
 #          16.  GT.DA:          Dang et al. (2018)
 #          17.  UKT.HA:         Harning et al. (2020)
-#          18.  MAAT.SUN:       Sun et al. (2011)
 #          19.  MAAT1.RU:       Russell et al (2018)
 #          20.  MAAT2.RU:       Russell et al (2018)
-#          21.  MAAT1.LO:       Loomis et al. (2012)
-#          22.  MAAT2.LO:       Loomis et al. (2012)
-#          23.  MAAT3.Lo:       Loomis et al (2012)
 #          24.  SFS.RU:         Russell et al (2018)
 #          25.  MWT.ZH:         Zhao et al (2020)
 #          26.  MAF.METH:       Raberg et al (2021)
@@ -63,6 +59,11 @@
 #          29.  MLR.trop:       Zhao et al. (2023)
 #          30.  MAF.highlat:    Zhao et al. (2023)
 #          31.  MLR.highlat:    Zhao et al. (2023)
+#               MAAT.BA1        Bauersachs et al. (2023)
+#               MAAT.BA2        Bauersachs et al. (2023)
+#               MAF.BA1         Bauersachs et al. (2023)
+#               MAF.BA2         Bauersachs et al. (2023)
+
 #          32.  IIIa.IIIaIIIa:  Raberg et al (2021)
 #          33.  IIIa.IIa:       Raberg et al (2021)
 
@@ -117,12 +118,8 @@ brGDGT_INDICES <- function(GDGTs){
                            "MAT.mrs",
                            "GT.DA",
                            "UKT.HA",
-                           "MAAT.SUN",
                            "MAAT1.RU",
                            "MAAT2.RU",
-                           "MAAT1.LO",
-                           "MAAT2.LO",
-                           "MAAT3.LO",
                            "SFS.RU",
                            "MWT.ZH",
                            "MAF.METH",
@@ -131,6 +128,10 @@ brGDGT_INDICES <- function(GDGTs){
                            "MLR.trop",
                            "MAF.highlat",
                            "MLR.highlat",
+                           "MAAT.BA1",
+                           "MAAT.BA2",
+                           "MAF.BA1",
+                           "MAF.BA2",
                            "IIIa.IIIaIIIa",
                            "IIIa.IIa",
                            "HP5Me",
@@ -263,10 +264,7 @@ brGDGT_INDICES <- function(GDGTs){
   #calculate UK37-temp, Harning et al (2020)
   GDGT.IND$UKT.HA       <-   (-0.154*GDGTs$IIIa.5Me)+(0.3538*GDGTs$Ia)+(1.0016*GDGTs$IIIa.6Me)-0.7537
   
-  ### 18
-  #calculate MAAT; SUN et al
-  GDGT.IND$MAAT.SUN     <-   6.803 - (7.062*GDGT.IND$CBT)+(37.09*GDGT.IND$MBT)
-  
+
   ### 19
   #calculate MAAT; Russell et al (2018)
   GDGT.IND$MAAT1.RU     <-   (-1.21)+(32.42*GDGT.IND$MBT.5Me)
@@ -274,19 +272,7 @@ brGDGT_INDICES <- function(GDGTs){
   ### 20
   #calculate MAAT; Russell et al (2018)
   GDGT.IND$MAAT2.RU     <-   12.22+(18.79*GDGT.IND$INDEX1)
-  
-  ### 21
-  #calculate MAAT; Loomis et al. (2012): 2.54+45.28*MBT-5.02*CBT
-  GDGT.IND$MAAT1.LO    <-   2.54 + 45.28*GDGT.IND$MBT-5.02*GDGT.IND$CBT
-  
-  ### 22
-  #calculate MAAT; Loomis et al. (2012)
-  GDGT.IND$MAAT2.LO    <-   36.90 - (50.14*fIII.LO) - (35.52*fII.LO) - (0.96+fI.LO)
 
-  
-  ### 23
-  #calculate MAAT; Loomis et al. (2012)
-  GDGT.IND$MAAT3.LO    <-   22.77 - (33.58*fIII.LO) - (12.88*fII.LO) - (418.53*fIIc.LO) + (86.43*fIb.LO)
   
   ### 24
   #calculate MAAT SFS; Russell et al (2018)
@@ -336,6 +322,22 @@ brGDGT_INDICES <- function(GDGTs){
   ### 31
   #calculate MLR-highlat
   GDGT.IND$MLR.highlat      <-  1.44+15.88*fIa.Zh+66.92*fIb.Zh+8.33*fIIa.Zh+7.02*fIIIa.Zh
+  
+  ### 31
+  #calculate MAAT.BA1
+  GDGT.IND$MMAT.BA1      <-  (-2.19)+ (31.91*GDGT.IND$MBT.5Me) 
+  
+  ### 31
+  #calculate MAAT.BA2
+  GDGT.IND$MMAT.BA2      <-  7.11 + (67.66*GDGTs$Ib) - (13.54*GDGTs$IIIa.5Me)
+  
+  ### 31
+  #calculate MAF.BA1
+  GDGT.IND$MAF.BA1      <-  4.81 + (15.64*GDGT.IND$MBT.5Me) 
+  
+  ### 31
+  #calculate MAF.BA2
+  GDGT.IND$MAF.BA2      <-  5.91 + (16.22*GDGT.IND$Ia)
   
   ### 32
   #calculate IIIa/(IIIa+IIIa')
