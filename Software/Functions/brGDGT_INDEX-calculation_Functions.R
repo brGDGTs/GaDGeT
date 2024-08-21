@@ -101,8 +101,8 @@ brGDGT_INDICES <- function(GDGTs){
   
   # Set column names
   colnames(GDGT.IND)  <- c("CBT",
-                           "CBT'",
-                           "CBT'.5Me",
+                           "CBT.",
+                           "CBT5Me",
                            "MBT",
                            "MBT.", 
                            "MBT.5Me",
@@ -183,7 +183,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 3
   #calculate CBT'. 5Me; Russell et al (2018)
-  GDGT.IND$CBT..5Me       <-   (-log(rowSums(GDGTs[,c("Ib","IIb.5Me")])/
+  GDGT.IND$CBT5Me       <-   (-log(rowSums(GDGTs[,c("Ib","IIb.5Me")])/
                                       rowSums(GDGTs[,c("Ia","IIa.5Me")]),
                                     base = 10))
   
@@ -223,7 +223,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 10
   #calculate pH; deJonge et al (2014)
-  GDGT.IND$pH.DJ   <-   7.84 - 1.73*GDGT.IND$CBT..5Me
+  GDGT.IND$pH.DJ   <-   7.84 - 1.73*GDGT.IND$CBT5Me
  
   ### 11
   #calculate pH; deJonge et al (2014)
