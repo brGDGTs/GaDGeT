@@ -69,7 +69,7 @@
 #          36.  IIIa.IIIaIIIa:  Raberg et al (2021)
 #          37.  IIIa.IIa:       Raberg et al (2021)
 
-#          38.  HP5Me:          Yao et al (2020)
+#          38.  HP5:            Yao et al (2020)
 #          39.  RINGtetra:      Raberg et al (2021) 
 #          40.  RINGpenta 5Me:  Raberg et al (2021)
 #          41.  RINGpenta 6Me:  Raberg et al (2021)
@@ -138,7 +138,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "MAF.BA2",
                            "IIIa.IIIaIIIa",
                            "IIIa.IIa",
-                           "HP5Me",
+                           "HP5",
                            "RINGtetra",
                            "RINGpenta5",
                            "RINGpenta6",
@@ -356,7 +356,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 38
   #calculate HP 5Me
-  GDGT.IND$HP5Me        <-   GDGTs$IIIa.5Me/rowSums(GDGTs[,c("IIIa.5Me","IIa.5Me")])
+  GDGT.IND$HP5        <-   GDGTs$IIIa.5Me/rowSums(GDGTs[,c("IIIa.5Me","IIa.5Me")])
   
   ### 39
   #calculate RING tetra
