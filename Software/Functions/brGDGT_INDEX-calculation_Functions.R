@@ -79,6 +79,7 @@
 #          45.  CI:             Raberg et al (2021)
 #          46.  BIT:            Hopmans et al (2004), Dang et al (2016)
 #          47.  PI.bones:       Zhao et al (2020)
+#          48.  MAP.bones:      Zhao et al (2020)
 
 ############################################################################################################################
 ############################################# INDEX CALCULATIONS ###########################################################
@@ -93,7 +94,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 47
+  n= 48
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -147,7 +148,8 @@ brGDGT_INDICES <- function(GDGTs){
                            "IBT",
                            "CI",
                            "BIT",
-                           "PI.bones")
+                           "PI.bones",
+                           "MAP.bones")
   
   
   ###-------------------------------------------- PREP CALC --------------------------------------------------------------###
@@ -400,6 +402,11 @@ brGDGT_INDICES <- function(GDGTs){
   ### 47
   #calculate PI.bones
   GDGT.IND$PI.bones      <-  rowSums(GDGTs[,c("Ia","Ib")])/rowSums(GDGTs[,c("Ia","Ib", "IIIa.5Me","IIa.6Me","IIIa.6Me")]) 
+  
+  
+  ### 48
+  #calculate PI.bones
+  GDGT.IND$MAP      <-  913.41*GDGT.IND$PI.bones+112 
   
   
   return(GDGT.IND)
