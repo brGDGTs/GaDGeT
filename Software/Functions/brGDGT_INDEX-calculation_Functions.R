@@ -380,8 +380,8 @@ brGDGT_INDICES <- function(GDGTs){
 
   ### 43
   #calculate DC'
-  GDGT.IND$DC.          <-   (GDGTs$Ib + 2*GDGTs$Ic + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
-    rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me")])
+  GDGT.IND$DC.          <-   (GDGTs$Ib + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
+                              rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","Ib","IIb.5Me","IIb.6Me")])
   
   ### 44
   #calculate IBT
