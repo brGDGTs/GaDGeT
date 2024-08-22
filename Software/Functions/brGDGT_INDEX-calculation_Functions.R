@@ -67,7 +67,7 @@
 #          35.  MAF.BA2         Bauersachs et al. (2023)
 
 #          36.  IIIa.IIIaIIIa:  Raberg et al (2021)
-#          37.  IIIa.IIa:       Raberg et al (2021)
+#          37.  DO:             Raberg et al (2021)
 
 #          38.  HP5:            Yao et al (2020)
 #          39.  RINGtetra:      Raberg et al (2021) 
@@ -137,7 +137,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "MAF.BA1",
                            "MAF.BA2",
                            "IIIa.IIIaIIIa",
-                           "IIIa.IIa",
+                           "DO",
                            "HP5",
                            "RINGtetra",
                            "RINGpenta5",
@@ -351,8 +351,11 @@ brGDGT_INDICES <- function(GDGTs){
   GDGT.IND$IIIa.IIIaIIIa  <-   GDGTs$IIIa.5Me/ rowSums(GDGTs[,c("IIIa.5Me","IIIa.6Me")])
   
   ### 37
-  #calculate sum (IIIa)/ sum (IIa)
-  GDGT.IND$IIIa.IIa  <-   rowSums(GDGTs[,c("IIIa.5Me","IIIa.6Me")]) / rowSums(GDGTs[,c("IIa.5Me","IIa.6Me")])
+  #calculate DO, Raberg et al. (2021)
+  GDGT.IND$DO          <-  (7.6-(12.03*(as.numeric(brGDGT.ME.FA[i,c("Ia")])^2))-(2.1*(as.numeric(brGDGT.ME.FA[i,c("Ic")])^2))
+                            -(28.66*(as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])^2))+(31.09*(as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])))
+                            +(36.85*(as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")])^2))-(35.89*(as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")])))
+                            -(15.29*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])^2)+(15.82*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])))
   
   ### 38
   #calculate HP 5Me
