@@ -1,4 +1,4 @@
-#****************************************************   GMGTS INDICES   ********************************************************
+#****************************************************   GDDS  INDICES   ********************************************************
 #****************************************************     FUNCTIONS     ********************************************************
 #****************************************************        TS         ********************************************************
 
@@ -93,13 +93,13 @@ GMGT_INDICES <- function(GDGTs){
   
   ### 4
   #calculate GDGT SFS temp calib (Baxter et al., 2019)
-  GDGT.IND$brGMGT.P     <-  rowSums(GDGTs[,c("H1020a","H1020b","H1020c","H1034a", "H1034b","H1034c", "H1048")])/(rowSums(GDGTs[,c("Ia",
+  GDGT.IND$brGMGT.P         <-    rowSums(GDGTs[,c("H1020a","H1020b","H1020c","H1034a", "H1034b","H1034c", "H1048")])/(rowSums(GDGTs[,c("Ia",
                                                    "Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me",
                                                    "IIa.6Me","IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")])+
                                   rowSums(GDGTs[,c("H1020a","H1020b","H1020c","H1034a", "H1034b","H1034c", "H1048")]))
   
-  GDGT.IND$DMbrGMGT          <-   rowSums(GDGTs[,c("H1048", "H1034b")]) /
-    rowSums(GDGTs[,c("H1020a","H1020b","H1034b", "H1048")])
+  GDGT.IND$DMbrGMGT         <-    rowSums(GDGTs[,c("H1048", "H1034b")]) /
+                                  rowSums(GDGTs[,c("H1020a","H1020b","H1034b", "H1048")])
   
   
   return(GDGT.IND)
