@@ -29,11 +29,10 @@
 
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
-#           1.  brGMGTI:          Baxter et al. (2019)
-#           2.  brGMGTI.MAAT:     Baxter et al. (2019)
-#           3.  brGMGT.MAAT2:     Baxter et al. (2019)
-#           4.  brGMGT%:          Baxter et al. (2021)
-#           5.  DM.brGMGT:        Baxter et al. (2019)
+#           1.  RI.GDD:           Hingley et al. (2024), eq. 2
+#           2.  GDD%:             Hingley et al. (2024), eq. 3
+#           3.  GDD%tot:          Hingley et al. (2024), eq. 4
+
 
 
 ############################################################################################################################
@@ -44,12 +43,12 @@
 ###-------------------------------------------- INDEX CALC --------------------------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
-GMGT_INDICES <- function(GDGTs){
+GDD_INDICES <- function(GDGTs){
 
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 5
+  n= 3
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -57,49 +56,32 @@ GMGT_INDICES <- function(GDGTs){
   row.names(GDGT.IND) <- rownames(GDGTs)
   
   # Set column names
-  colnames(GDGT.IND)  <- c("brGMGTI",
-                           "brGMGTI.MAAT",
-                           "brGMGT.MAAT2",
-                           "brGMGT.P",
-                           "DMbrGMGT")
+  colnames(GDGT.IND)  <- c("RI.GDD",
+                           "GDD.P",
+                           "GDD.Ptot")
   
   GDGT.IND <- data.frame(GDGT.IND)
   
   ###-------------------------------------------- INDEX CALC --------------------------------------------------------------###
   
   ### 1
-  #calculate brGMGTI Baxter et al., 2019 GCA
-  GDGT.IND$brGMGTI          <-   rowSums(GDGTs[,c("H1020c", "H1034a", "H1034c")]) /
-                                 rowSums(GDGTs[,c("H1020b","H1020c","H1034a", "H1034c", "H1048")])
+  #calculate RI.GDD (Hingley et al., 2024)
+  GDGT.IND$RI.GDD          <-   (isoGDD1+2*isoGDD2+3*isoGDD3+4*isoGDDCren) /
+                                 rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")])
   
   ### 2
-  #calculate brGMGTI temp Baxter et al., 2019 GCA 
-  GDGT.IND$brGMGTI.MAAT       <-   2.86 + 26.5*GDGT.IND$brGMGTI
-  
-  
-  ### PREP
-  fH1034a                   <-    GDGTs[,"H1034a"]/
-                                  rowSums(GDGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")])
-  
-  fH1020a                   <-    GDGTs[,"H1020a"]/
-                                  rowSums(GDGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")])
-  
-  fH1020c                   <-    GDGTs[,"H1020c"]/
-                                  rowSums(GDGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")])
+  #calculate GDD% (Hingley et al., 2024) 
+  GDGT.IND$GDD.P           <-   rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) /
+                                (rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) +  
+                                           rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.2")]))
   
   ### 3
-  #calculate GDGT SFS temp calib (Baxter et al., 2019)
-  GDGT.IND$brGMGT.MAAT2       <-  1.18 + (0.47*fH1034a) + (0.12*fH1020a) + (0.5*fH1020c) 
-  
-  ### 4
-  #calculate GDGT SFS temp calib (Baxter et al., 2019)
-  GDGT.IND$brGMGT.P     <-  rowSums(GDGTs[,c("H1020a","H1020b","H1020c","H1034a", "H1034b","H1034c", "H1048")])/(rowSums(GDGTs[,c("Ia",
-                                                   "Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me",
-                                                   "IIa.6Me","IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")])+
-                                  rowSums(GDGTs[,c("H1020a","H1020b","H1020c","H1034a", "H1034b","H1034c", "H1048")]))
-  
-  GDGT.IND$DMbrGMGT          <-   rowSums(GDGTs[,c("H1048", "H1034b")]) /
-    rowSums(GDGTs[,c("H1020a","H1020b","H1034b", "H1048")])
+  #calculate GDD% total (Hingley et al., 2024)
+  GDGT.IND$GDD.Ptot       <-   rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) /
+                              (rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) +  
+                                       rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.2")]) +
+                                       rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIc.5Me","IIc.6Me","IIIa.5Me","IIIa.6Me","IIIb.5Me","IIIb.6Me","IIIc.5Me","IIIc.6Me")]))
+
   
   
   return(GDGT.IND)
