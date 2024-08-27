@@ -164,39 +164,54 @@
 
 #------ brGDGTs ----------
 
-#           1.  GDGT0.GDGT4:    anoxia
-#           2.  CBT:            de Jonge et al (2014)
-#           3.  CBT':           de Jonge et al (2014)
-#           4.  CBT'.5Me:       Russell et al (2018)
-#           5.  MBT:            Castaneda and Schouten (2011)
-#           6.  MBT':           Dang et al (2018)
-#           7.  MBT.5Me:        Dang et al (2018)
-#           8.  MBT.6Me:        Dang et al (2018)
-#           9.  IR:             de Jonge et al (2014)
-#          10.  INDEX1:         de Jonge et al (2014)
-#          11.  pH-deJonge:     de Jonge et al (2014)
-#          12.  pH-Raberg:      Raberg et al (2021)
-#          13.  ln(Cond):       Raberg et al (2021)
-#          14.  Conduct:        Raberg et al (2021)
-#          15.  MAT.DJ:         de Jonge et al (2014)
-#          16.  GT.DA:          Dang et al (2018)
-#          17.  UKT.HA:         Harning et al (2020)
-#          18.  MAAT.SUN:       Sun et al 
-#          19.  MAAT1.RU:       Russell et al (2018)
-#          20.  MAAT2.RU:       Russell et al (2018)
-#          21.  MWT.ZH:         Zhao et al (2020)
-#          22.  MAF.METH:       Raberg et al (2021)
-#          23.  MAF.FULL:       Raberg et al (2021)
-#          24.  IIIa.IIIaIIIa:  Raberg et al (2021)
-#          25.  HP5Me:          Yao et al (2020)
-#          26.  RINGtetra:      Raberg et al (2021) 
-#          27.  RINGpenta 5Me:  Raberg et al (2021)
-#          28.  RINGpenta 6Me:  Raberg et al (2021)
-#          29.  DC:             Raberg et al (2021)
-#          30.  IBT:            Ding et al (2015)
-#          31.  CI:             Raberg et al (2021)
-#          32.  BIT:            Hopmans et al (2004)
-
+#           1.  CBT:            de Jonge et al. (2014)
+#           2.  CBT':           de Jonge et al. (2014)
+#           3.  CBT'.5Me:       Russell et al. (2018)
+#           4.  MBT:            Weijers et al. (2007)
+#           5.  MBT':           de Jonge et al. (2014)
+#           6.  MBT.5Me:        de Jonge et al. (2014)
+#           7.  MBT.6Me:        Dang et al. (2018)
+#           8.  IR:             de Jonge et al. (2014)
+#           9.  IR6Me:          de Jonge et al. (2015)
+#          10.  INDEX1:         de Jonge et al. (2014)
+#          11.  pH.DJ:          de Jonge et al. (2014)
+#          12.  pH.DJ2:         de Jonge et al. (2014)
+#          13.  pH.RB:          Raberg et al. (2021)
+#          14.  pH.RU:          Russell et al.(2018)
+#          15.  ln(Cond):       Raberg et al. (2021)
+#          16.  Conduct:        Raberg et al. (2021)
+#          17.  MAT.DJ1:        de Jonge et al. (2014)
+#          18.  MAT.DJ2:        de Jonge et al. (2014)
+#          19.  MAT.mrs:        de Jonge et al. (2014)
+#          20.  GT.DA:          Dang et al. (2018)
+#          21.  UKT.HA:         Harning et al. (2020)
+#          22.  MAAT1.RU:       Russell et al (2018)
+#          23.  MAAT2.RU:       Russell et al (2018)
+#          24.  SFS.RU:         Russell et al (2018)
+#          25.  MWT.ZH:         Zhao et al (2020)
+#          26.  MAF.METH:       Raberg et al (2021)
+#          27.  MAF.FULL:       Raberg et al (2021)
+#          28.  MAAT.trop:      Zhao et al. (2023)
+#          29.  MLR.trop:       Zhao et al. (2023)
+#          30.  MAF.highlat:    Zhao et al. (2023)
+#          31.  MLR.highlat:    Zhao et al. (2023)
+#          32.  MAAT.BA1        Bauersachs et al. (2023)
+#          33.  MAAT.BA2        Bauersachs et al. (2023)
+#          34.  MAF.BA1         Bauersachs et al. (2023)
+#          35.  MAF.BA2         Bauersachs et al. (2023)
+#          36.  IIIa.IIIaIIIa:  Raberg et al (2021)
+#          37.  DO:             Raberg et al (2021)
+#          38.  HP5:            Yao et al (2020)
+#          39.  RINGtetra:      Raberg et al (2021) 
+#          40.  RINGpenta 5Me:  Raberg et al (2021)
+#          41.  RINGpenta 6Me:  Raberg et al (2021)
+#          42.  DC:             Raberg et al (2021)
+#          43.  DC':            de Jonge et al (2024)
+#          44.  IBT:            Ding et al (2015)
+#          45.  CI:             Raberg et al (2021)
+#          46.  BIT:            Hopmans et al (2004), Dang et al (2016)
+#          47.  PI.bones:       Zhao et al (2020)
+#          48.  MAP.bones:      Zhao et al (2020)
 
 
 #------ isoGDGTs ---------
@@ -212,18 +227,18 @@
 #           3.  TEX.PW:         Powers et al. (2010)
 #           4.  TEX.TIER:       Tierney et al. (2010)
 #           5.  TEX.KIM:        Kim et al. (2008)
-#           6.  TEX.IND1:       Kim et al (2010)
-#           7.  TEX.IND2:       Kim et al (2010)
-#           8.  TEX.I1.SST:     Kim et al (2010)
-#           9.  TEX.I2.SST:     Kim et al (2010)
-#          10.  RI.SMPL:        Zhang et al. (2015)
-#          11.  RI.TEX:         Zhang et al. (2015)
-#          12.  Delta.RI:       Zhang et al. (2015)
-#          13.  M.IND:          Zhang et al. (2011)
-#          14.  ANOX:           GDGT0/GDGT4
-#          15.  GDGT2.GDGT3:    Taylor et al.(2013)
-#          16.  GDGT2.GDGT4.2:  
-#          17.  PERC.GDGT2: 
+#           6.  TEX.L.86:       Kim et al (2010)
+#           7.  TEX.H.86:       Kim et al (2010)
+#           8.  TEX.L.SST:      Kim et al (2010)
+#           9.  TEX.H.SST:      Kim et al (2010)
+#          10.  TEX.OH.86:      Varma et al (2024)
+#          11.  TEX.OH.86.SST:  Varma et al (2024) 
+#          12.  RI.SMPL:        Zhang et al. (2016)
+#          13.  RI.TEX:         Zhang et al. (2016)
+#          14.  Delta.RI:       Zhang et al. (2016)
+#          15.  M.IND:          Zhang et al. (2011)
+#          16.  ANOX:           Blaga et al. (2009)
+#          17.  EXDEPTH:        Taylor et al. (2013)
 
 
 
@@ -236,28 +251,42 @@
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
 #           1.  PERC.OHtot:     Feitz et al. (2013)
-#           2.  RI.OH:          Lü et al. (2015)
-#           3.  RI.OH':         Lü et al. (2015)
-#           4.  fOH.0:          Lü et al. (2015)
-#           5.  fOH.2:          Lü et al. (2015)
-#           6.  RI.OH.SST:      Lü et al. (2015)
-#           7.  RI.OH'.SST:     Lü et al. (2015)
-#           8.  OH.2.SST:       Lü et al. (2015)
-#           9.  OH.0.SST:       Lü et al. (2015)
-#          10.  tot.OH.SST:     Lü et al. (2015)
-#          11.  OH.0.SST2:      Lü et al. (2020)
-#          12.  RI.OH.SST2:     Lü et al. (2020)
+#           2.  OH1318.1316:    Feitz et al. (2013)
+#           2.  SST.FI:         Feitz et al. (2013)
+#           3.  RI.OH:          Lü et al. (2015)
+#           4.  RI.OH':         Lü et al. (2015)
+#           7.  RI.OH.SST:      Lü et al. (2015)
+#           8.  RI.OH'.SST:     Lü et al. (2015)
 
 
 
 #------ GMGTs ----------
 
+#--------- FUNCTION CALL:
+
+#          GMGT_INDICES(GDGTs)
+
+#--------- INDEX-CALCULATION-DESCRIPTIONS:
+
+#           1.  brGMGTI:          Baxter et al. (2019)
+#           2.  brGMGTI.MAAT:     Baxter et al. (2019)
+#           3.  brGMGT.MAAT2:     Baxter et al. (2019)
+#           4.  brGMGT%:          Baxter et al. (2021)
+#           5.  DM.brGMGT:        Baxter et al. (2024)
 
 
 
+#------ GDDs ----------
 
+#--------- FUNCTION CALL:
 
+#          GDD_INDICES(GDGTs)
 
+#--------- INDEX-CALCULATION-DESCRIPTIONS:
+
+#           1.  RI.GDD:           Hingley et al. (2024), eq. 2
+#           2.  GDD%:             Hingley et al. (2024), eq. 3
+#           3.  GDD%tot:          Hingley et al. (2024), eq. 4
 
 
 
@@ -275,7 +304,7 @@
 ######################################################################################################################################################################
 
 #*******************************
-# A. Workspace preparation
+# A. WORKSPACE PREPARATION
 #*******************************
 
 
@@ -295,7 +324,7 @@
 
 
 #*******************************
-# IV. CONCENtRATION-CALCULATIONS
+# IV. CONCENTRATION-CALCULATIONS
 #*******************************
 
 
