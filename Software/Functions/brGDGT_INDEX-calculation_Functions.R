@@ -222,7 +222,8 @@ brGDGT_INDICES <- function(GDGTs){
   ### 9
   #calculate IR; de Jonge et al (2015)
   GDGT.IND$IR6Me            <-   (rowSums(GDGTs[,c("IIa.6Me","IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")])/
-                                 rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me","IIa.6Me","IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")]))
+                                 rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me","IIa.6Me",
+                                                  "IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")]))
   
   ### 10
   #calculate INDEX1; deJonge et al (2014)
@@ -295,7 +296,8 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 26
   #calculate MAF.METH; Raberg et al. (2021)
-  brGDGT.ME.FA        <- as.matrix(brGDGT.METH.5Me.FA)# for col assignment
+  brGDGT.ME.FA        <- as.matrix(cbind(brGDGT.METH.5Me.FA,brGDGT.METH.6Me.FA))# for col assignment
+  
   
   for(i in 1:nrow(brGDGT.ME.FA)){
   
@@ -354,7 +356,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 37
   #calculate DO, Raberg et al. (2021)
-  GDGT.IND$DO          <-  (7.6-(12.03*(as.numeric(brGDGT.ME.FA[i,c("Ia")])^2))-(2.1*(as.numeric(brGDGT.ME.FA[i,c("Ic")])^2))
+  GDGT.IND$DO            <-  (7.6-(12.03*(as.numeric(brGDGT.ME.FA[i,c("Ia")])^2))-(2.1*(as.numeric(brGDGT.ME.FA[i,c("Ic")])^2))
                             -(28.66*(as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])^2))+(31.09*(as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])))
                             +(36.85*(as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")])^2))-(35.89*(as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")])))
                             -(15.29*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])^2)+(15.82*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])))
