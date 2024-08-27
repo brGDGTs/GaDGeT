@@ -361,6 +361,7 @@ source("Functions/brGDGT_INDEX-calculation_Functions.R")
 source("Functions/isoGDGT_INDEX-calculation_Functions.R")
 source("Functions/OHGDGT_INDEX-calculation_Functions.R")
 source("Functions/GMGT_INDEX-calculation_Functions.R")
+source("Functions/GDD_INDEX-calculation_Functions.R")
 
 #********************************************************************************************************************************************************************* 
 #******************************************************************* SCRIPT STARTS ***********************************************************************************
@@ -445,6 +446,9 @@ GDGTs <- c("GDGT.0", "GDGT.1", "OH-GDGT.0", "GDGT.2", "OH-GDGT.1", "2OH-GDGT.0",
 GMGTs <- c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")
 
 
+GDDs <- c("isoGDD0", "isoGDD2","isoGDD3","isoGDD4", "isoGDDCren")
+
+
 # select only std, don't move the order, as it will affect the print later on
 
 IS <- c("Label", "cum.depth", "Age", "SEDIEXTR", "IS_AREA","IS_AMOUNT")
@@ -473,6 +477,11 @@ GMGTs <- GDGT.temp[,GMGTs] # comprises now the 15 columns containing the 15 brGD
 # fill NAs with 0
 GMGTs[is.na(GMGTs)] <-0
 
+# select only brGDGTs, don't move the order, as it will affect the print later on 
+GDDs <- GDGT.temp[,GDDs] # comprises now the 15 columns containing the 15 brGDGTs
+
+# fill NAs with 0
+GDDs[is.na(GDDs)] <-0
 
 
 # select only brGDGTs, don't move the order, as it will affect the print later on 
