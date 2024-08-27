@@ -346,7 +346,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 35
   #calculate MAF.BA2
-  GDGT.IND$MAF.BA2      <-  5.91 + (16.22*GDGT.IND$Ia)
+  GDGT.IND$MAF.BA2      <-  5.91 + (16.22*GDGTs$Ia)
   
   ### 36
   #calculate IIIa/(IIIa+IIIa')
