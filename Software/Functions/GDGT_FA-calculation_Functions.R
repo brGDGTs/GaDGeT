@@ -212,24 +212,24 @@ brGDGT_METH_FA <- function(brGDGTs){
 
 
 #Initialize Function
-brGDGT_METH_5Me_FA <- function(brGDGTs){
+brGDGT_METH_5Me_I_FA <- function(brGDGTs){
   
   # prepare data subsets
-  brGDGT.METH.a    <- brGDGTs[,c("Ia","IIa.5Me","IIIa.5Me")]
-  brGDGT.METH.b    <- brGDGTs[,c("Ib","IIb.5Me","IIIb.5Me")]
-  brGDGT.METH.c    <- brGDGTs[,c("Ic","IIc.5Me","IIIc.5Me")]
+  brGDGT.METH.I.a    <- brGDGTs[,c("Ia","IIa.5Me","IIIa.5Me")]
+  brGDGT.METH.I.b    <- brGDGTs[,c("Ib","IIb.5Me","IIIb.5Me")]
+  brGDGT.METH.I.c    <- brGDGTs[,c("Ic","IIc.5Me","IIIc.5Me")]
   
   # initialize FA matrices
-  brGDGT.FA.METH.a <- brGDGT.METH.a
-  brGDGT.FA.METH.b <- brGDGT.METH.b
-  brGDGT.FA.METH.c <- brGDGT.METH.c
+  brGDGT.FA.METH.I.a <- brGDGT.METH.I.a
+  brGDGT.FA.METH.I.b <- brGDGT.METH.I.b
+  brGDGT.FA.METH.I.c <- brGDGT.METH.I.c
   
   # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
-  for(c in 1: ncol(brGDGT.FA.METH.a)){
+  for(c in 1: ncol(brGDGT.FA.METH.I.a)){
     
-    brGDGT.FA.METH.a[,c] <- brGDGT.METH.a[,c]/rowSums(brGDGT.METH.a)
-    brGDGT.FA.METH.b[,c] <- brGDGT.METH.b[,c]/rowSums(brGDGT.METH.b)
-    brGDGT.FA.METH.c[,c] <- brGDGT.METH.c[,c]/rowSums(brGDGT.METH.c)
+    brGDGT.FA.METH.I.a[,c] <- brGDGT.METH.I.a[,c]/rowSums(brGDGT.METH.I.a)
+    brGDGT.FA.METH.I.b[,c] <- brGDGT.METH.I.b[,c]/rowSums(brGDGT.METH.I.b)
+    brGDGT.FA.METH.I.c[,c] <- brGDGT.METH.I.c[,c]/rowSums(brGDGT.METH.I.c)
     
   }
   
@@ -237,12 +237,12 @@ brGDGT_METH_5Me_FA <- function(brGDGTs){
   ###---------------------------------------------- FA METH PRINT -------------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  brGDGT.FA.METH<-cbind(rownames(brGDGTs), brGDGT.FA.METH.a[,1], brGDGT.FA.METH.b[,1], brGDGT.FA.METH.c[,1],
-                        brGDGT.FA.METH.a[,2:3], brGDGT.FA.METH.b[,2:3], brGDGT.FA.METH.c[,2:3])
+  brGDGT.FA.METH.I<-cbind(rownames(brGDGTs), brGDGT.FA.METH.I.a[,1], brGDGT.FA.METH.I.b[,1], brGDGT.FA.METH.I.c[,1],
+                        brGDGT.FA.METH.I.a[,2:3], brGDGT.FA.METH.I.b[,2:3], brGDGT.FA.METH.I.c[,2:3])
   
-  colnames(brGDGT.FA.METH)[1:4] <- c("Label","Ia","Ib","Ic")
+  colnames(brGDGT.FA.METH.I)[1:4] <- c("Label","Ia","Ib","Ic")
   
-  return(brGDGT.FA.METH)
+  return(brGDGT.FA.METH.I)
 }
 
 ###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
