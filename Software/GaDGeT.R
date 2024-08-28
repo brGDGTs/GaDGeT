@@ -360,6 +360,7 @@ graphics.off()
 # Get the working directory, or define it by yourself, to the right directory/folder with our data files: 
 
 workingdir<-getwd()#'C://Users//name/Desktop/GaDGeT/'
+workingdir<-"C:/Users/tobia/Dropbox/UMASS/Papers/ongoing/GaDGeT/GaDGeT/GaDGeT/Software/"
 
 setwd(workingdir)
 
@@ -367,7 +368,7 @@ setwd(workingdir)
 
 packs<-c("stringr", "RColorBrewer", "readxl")
 
-install.packages(packs)# only install if you need to install these packages, else comment out this line
+#install.packages(packs)# only install if you need to install these packages, else comment out this line
 lapply(packs, require, character.only = TRUE)
 
 
@@ -553,14 +554,14 @@ dir.create(path = DirCONC)
 # calculate the FA following 1. brGDGT_FA
 brGDGT.FA            <- brGDGT_FA(brGDGTs = brGDGTs)
 
-# calculate the FA following 2. brGDGT_Mi_FA
+# calculate the FA following 2. brGDGT_MI_FA
 brGDGT.MI.FA         <- brGDGT_MI_FA(brGDGTs = brGDGTs)
 
 # calculate the FA following 3. brGDGT_METH_5MeP_FA
 brGDGT.METH.5Mep.FA  <- brGDGT_METH_5Mep_FA(brGDGTs = brGDGTs)
 
 # calculate the FA following 4. brGDGT_METH_6MeP_FA
-brGDGT.METH.6Mep.FA  <- brGDGT_METH_6MeP_FA(brGDGTs = brGDGTs)
+brGDGT.METH.6Mep.FA  <- brGDGT_METH_6Mep_FA(brGDGTs = brGDGTs)
 
 # calculate the FA following 4. brGDGT_METH_5Me_FA
 brGDGT.METH.5Me.FA   <- brGDGT_METH_5Mep_FA(brGDGTs = brGDGTs)
@@ -625,8 +626,8 @@ write.csv(x    = brGDGT.FA,
           file = paste(DirFA.br,"/",data.sets.name,"_FA-FULL_",Sys.Date(),".csv",sep=""))
 
 
-# write a csv file into the Output directory containing 2. brGDGT_METH_FA, sort them acc. the subsets
-write.csv(x    = brGDGT.METH.FA[,c(1,2,5,6,11,12,3,7,8,13,14,4,9,10,15,16)],
+# write a csv file into the Output directory containing 2. brGDGT_MI_FA, sort them acc. the subsets
+write.csv(x    = brGDGT.MI.FA[,c(1,2,5,6,11,12,3,7,8,13,14,4,9,10,15,16)],
           row.names = F, 
           file = paste(DirFA.br,"/",data.sets.name,"_FA-MI_",Sys.Date(),".csv",sep=""))
 
@@ -740,6 +741,8 @@ OHGDGT.IND   <- OHGDGT_INDICES(GDGTs = GDGTs)
 
 GMGT.IND    <- GMGT_INDICES(GDGTs = GDGTs)
 
+GDD.IND    <- GDD_INDICES(GDGTs = GDGTs)
+
 ###----------------------------------------------------------------------------------------------------------------------###
 ###-------------------------------------------------- INDICES-PRINT -----------------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
@@ -820,6 +823,26 @@ colnames(GMGT.IND.print)[1:3] <- c("Label",
 write.csv(GMGT.IND.print,
           row.names = F, 
           file = paste(DirIND,"/",data.sets.name,"_GMGT_INDICES_",Sys.Date(),".csv",sep=""))
+
+
+
+#------ GDDs ----------
+
+# prepare the print file
+
+GDD.IND.print              <- cbind(rownames(GDD.IND),
+                                     GDGTs$cum.depth,
+                                     GDGTs$Age,
+                                     GDD.IND)
+
+colnames(GDD.IND.print)[1:3] <- c("Label", 
+                                   "mid.depth",
+                                   "Age")
+
+# print the csv file into the Output directory
+write.csv(GDD.IND.print,
+          row.names = F, 
+          file = paste(DirIND,"/",data.sets.name,"_GDD_INDICES_",Sys.Date(),".csv",sep=""))
 
 
 
