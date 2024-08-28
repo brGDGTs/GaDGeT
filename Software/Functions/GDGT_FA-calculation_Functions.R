@@ -209,7 +209,7 @@ brGDGT_MI_FA <- function(brGDGTs){
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
-###--------------------------------- 3. brGDGTs FA METHYLIZATION 5Me-FUNCTION -------------------------------------------###
+###--------------------------------- 3. brGDGTs FA METHYLIZATION 5Me+-FUNCTION ------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
 
@@ -260,42 +260,42 @@ brGDGT_METH_5Mep_FA <- function(brGDGTs){
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
-###--------------------------------- 4. brGDGTs FA METHYLIZATION 6Me-FUNCTION -------------------------------------------###
+###--------------------------------- 4. brGDGTs FA METHYLIZATION 6Me+-FUNCTION ------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
 
 #Initialize Function
-brGDGT_METH_6Me_FA <- function(brGDGTs){
+brGDGT_METH_6Mep_FA <- function(brGDGTs){
   
   # prepare data subsets
-  brGDGT.METH.a    <- brGDGTs[,c("Ia","IIa.6Me","IIIa.6Me")]
-  brGDGT.METH.b    <- brGDGTs[,c("Ib","IIb.6Me","IIIb.6Me")]
-  brGDGT.METH.c    <- brGDGTs[,c("Ic","IIc.6Me","IIIc.6Me")]
+  brGDGT.6Mep.a    <- brGDGTs[,c("Ia","IIa.6Me","IIIa.6Me")]
+  brGDGT.6Mep.b    <- brGDGTs[,c("Ib","IIb.6Me","IIIb.6Me")]
+  brGDGT.6Mep.c    <- brGDGTs[,c("Ic","IIc.6Me","IIIc.6Me")]
   
   # initialize FA matrices
-  brGDGT.FA.METH.a <- brGDGT.METH.a
-  brGDGT.FA.METH.b <- brGDGT.METH.b
-  brGDGT.FA.METH.c <- brGDGT.METH.c
+  brGDGT.FA.6Mep.a <- brGDGT.6Mep.a
+  brGDGT.FA.6Mep.b <- brGDGT.6Mep.b
+  brGDGT.FA.6Mep.c <- brGDGT.6Mep.c
   
   # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
-  for(c in 1: ncol(brGDGT.FA.METH.a)){
+  for(c in 1: ncol(brGDGT.FA.6Mep.a)){
     
-    brGDGT.FA.METH.a[,c] <- brGDGT.METH.a[,c]/rowSums(brGDGT.METH.a)
-    brGDGT.FA.METH.b[,c] <- brGDGT.METH.b[,c]/rowSums(brGDGT.METH.b)
-    brGDGT.FA.METH.c[,c] <- brGDGT.METH.c[,c]/rowSums(brGDGT.METH.c)
+    brGDGT.FA.6Mep.a[,c] <- brGDGT.6Mep.a[,c]/rowSums(brGDGT.6Mep.a)
+    brGDGT.FA.6Mep.b[,c] <- brGDGT.6Mep.b[,c]/rowSums(brGDGT.6Mep.b)
+    brGDGT.FA.6Mep.c[,c] <- brGDGT.6Mep.c[,c]/rowSums(brGDGT.6Mep.c)
     
   }
   
   
-  ###---------------------------------------------- FA METH PRINT -------------------------------------------------------###
+  ###---------------------------------------------- FA 6Mep PRINT -------------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  brGDGT.FA.METH<-cbind(rownames(brGDGTs), brGDGT.FA.METH.a[,1], brGDGT.FA.METH.b[,1], brGDGT.FA.METH.c[,1],
-                        brGDGT.FA.METH.a[,2:3], brGDGT.FA.METH.b[,2:3], brGDGT.FA.METH.c[,2:3])
+  brGDGT.FA.6Mep<-cbind(rownames(brGDGTs), brGDGT.FA.6Mep.a[,1], brGDGT.FA.6Mep.b[,1], brGDGT.FA.6Mep.c[,1],
+                        brGDGT.FA.6Mep.a[,2:3], brGDGT.FA.6Mep.b[,2:3], brGDGT.FA.6Mep.c[,2:3])
   
-  colnames(brGDGT.FA.METH)[1:4] <- c("Label","Ia","Ib","Ic")
+  colnames(brGDGT.FA.6Mep)[1:4] <- c("Label","Ia","Ib","Ic")
   
-  return(brGDGT.FA.METH)
+  return(brGDGT.FA.6Mep)
 }
 
 ###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
