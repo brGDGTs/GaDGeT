@@ -9,7 +9,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 27. August 2024
+# Last modification: 28. August 2024
 # Email: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # DISCLAIMER
@@ -890,8 +890,6 @@ write.csv(GDGTs.conc.IS,
 
 }
 
-all_warnings <- warnings()
-print(all_warnings)
 
 #**************************************************************************************************************************#
 #******************************************************* SCRIPT ENDS ******************************************************#
