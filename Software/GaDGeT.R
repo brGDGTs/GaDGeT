@@ -553,22 +553,31 @@ dir.create(path = DirCONC)
 # calculate the FA following 1. brGDGT_FA
 brGDGT.FA            <- brGDGT_FA(brGDGTs = brGDGTs)
 
-# calculate the FA following 2. brGDGT_METH_FA
-brGDGT.MI.FA       <- brGDGT_MI_FA(brGDGTs = brGDGTs)
+# calculate the FA following 2. brGDGT_Mi_FA
+brGDGT.MI.FA         <- brGDGT_MI_FA(brGDGTs = brGDGTs)
 
-# calculate the FA following 3. brGDGT_METH_5Me_FA
-brGDGT.METH.5Mep.FA   <- brGDGT_METH_5Mep_FA(brGDGTs = brGDGTs)
+# calculate the FA following 3. brGDGT_METH_5MeP_FA
+brGDGT.METH.5Mep.FA  <- brGDGT_METH_5Mep_FA(brGDGTs = brGDGTs)
 
-# calculate the FA following 4. brGDGT_METH_6Me_FA
-brGDGT.METH.6Mep.FA   <- brGDGT_METH_6Me_FA(brGDGTs = brGDGTs)
+# calculate the FA following 4. brGDGT_METH_6MeP_FA
+brGDGT.METH.6Mep.FA  <- brGDGT_METH_6MeP_FA(brGDGTs = brGDGTs)
 
-# calculate the FA following 5. brGDGT_CYCL_FA
+# calculate the FA following 4. brGDGT_METH_5Me_FA
+brGDGT.METH.5Me.FA   <- brGDGT_METH_5Mep_FA(brGDGTs = brGDGTs)
+
+# calculate the FA following 5. brGDGT_METH_6Me_FA
+brGDGT.METH.6Me.FA   <- brGDGT_METH_6Me_FA(brGDGTs = brGDGTs)
+
+# calculate the FA following 7. brGDGT_METH_FA
+brGDGT.METH.FA       <- brGDGT_METH_FA(brGDGTs = brGDGTs)
+
+# calculate the FA following 8. brGDGT_CYCL_FA
 brGDGT.CYCL.FA       <- brGDGT_CYCL_FA(brGDGTs = brGDGTs)
 
-# calculate the FA following 6. brGDGT_CYCL_5Me_FA
+# calculate the FA following 9. brGDGT_CYCL_5Me_FA
 brGDGT.CYCL.5Me.FA   <- brGDGT_CYCL_5Me_FA(brGDGTs = brGDGTs)
 
-# calculate the FA following 7. brGDGT_CYCL_6Me_FA
+# calculate the FA following 10. brGDGT_CYCL_6Me_FA
 brGDGT.CYCL.6Me.FA   <- brGDGT_CYCL_6Me_FA(brGDGTs = brGDGTs)
 
 
@@ -577,7 +586,7 @@ brGDGT.CYCL.6Me.FA   <- brGDGT_CYCL_6Me_FA(brGDGTs = brGDGTs)
 
 #------ isoGDGTs ---------
 
-# calculate the FA following 8-13. fGDGTs0-4.2
+# calculate the FA following 11-16. fGDGTs0-4.2
 fGDGTs.FA           <- fGDGTs(isoGDGTs = GDGTs)
 
 
@@ -586,7 +595,7 @@ fGDGTs.FA           <- fGDGTs(isoGDGTs = GDGTs)
 
 #------ OHDGTs ----------
 
-# calculate the FA following 14-16. fOHGDGTs0-2
+# calculate the FA following 17-19. fOHGDGTs0-2
 fOHGDGTs.FA         <- fOHGDGTs(OHGDGTs = GDGTs)
 
 
@@ -595,7 +604,7 @@ fOHGDGTs.FA         <- fOHGDGTs(OHGDGTs = GDGTs)
 
 #------ GMGTs ----------
 
-# calculate the FA following 17-23. fGMGTs1-3
+# calculate the FA following 20-26. fGMGTs1-3
 fGMGTs.FA         <- fGMGTs(GMGTs = GMGTs)
 
 
@@ -622,38 +631,34 @@ write.csv(x    = brGDGT.METH.FA[,c(1,2,5,6,11,12,3,7,8,13,14,4,9,10,15,16)],
           file = paste(DirFA.br,"/",data.sets.name,"_FA-MI_",Sys.Date(),".csv",sep=""))
 
 
-# write a csv file into the Output directory containing 3. brGDGT_METH_5Me_FA, sort them acc.the subsets
+# write a csv file into the Output directory containing 3. brGDGT_METH_5Mep_FA, sort them acc.the subsets
 write.csv(x    = brGDGT.METH.5Mep.FA[,c(1,2,5,6,3,7,8,4,9,10)],
           row.names = F, 
           file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-5Mep_",Sys.Date(),".csv",sep=""))
 
 
-# write a csv file into the Output directory containing 4. brGDGT_METH_6Me_FA, sort them acc. the subsets
+# write a csv file into the Output directory containing 4. brGDGT_METH_6Mep_FA, sort them acc. the subsets
 write.csv(x    = brGDGT.METH.6Mep.FA[,c(1,2,5,6,3,7,8,4,9,10)],
           row.names = F, 
           file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-6Mep_",Sys.Date(),".csv",sep=""))
 
 
-
-
-
-
-# write a csv file into the Output directory containing 3. brGDGT_METH_5Me_FA, sort them acc.the subsets
-write.csv(x    = brGDGT.METH.5Me.FA[,c(1,2,5,6,3,7,8,4,9,10)],
+# write a csv file into the Output directory containing 5. brGDGT_METH_5Me_FA, sort them acc.the subsets
+write.csv(x    = brGDGT.METH.5Me.FA,
           row.names = F, 
           file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-5Me_",Sys.Date(),".csv",sep=""))
 
 
-# write a csv file into the Output directory containing 4. brGDGT_METH_6Me_FA, sort them acc. the subsets
-write.csv(x    = brGDGT.METH.6Me.FA[,c(1,2,5,6,3,7,8,4,9,10)],
+# write a csv file into the Output directory containing 6. brGDGT_METH_6Me_FA, sort them acc. the subsets
+write.csv(x    = brGDGT.METH.6Me.FA,
           row.names = F, 
           file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-6Me_",Sys.Date(),".csv",sep=""))
 
 
-
-
-
-
+# write a csv file into the Output directory containing 7. brGDGT_METH_FA, sort them acc. the subsets
+write.csv(x    = brGDGT.METH.FA,
+          row.names = F, 
+          file = paste(DirFA.br,"/",data.sets.name,"_FA-METH_",Sys.Date(),".csv",sep=""))
 
 
 # write a csv file into the Output directory containing 5. brGDGT_CYCL_FA
