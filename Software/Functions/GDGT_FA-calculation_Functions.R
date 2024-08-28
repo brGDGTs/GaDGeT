@@ -194,7 +194,7 @@ brGDGT_MI_FA <- function(brGDGTs){
   ###---------------------------------------------- FA METH PRINT -----------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  brGDGT.FA.MI<-cbind(rownames(brGDGTs), brGDGT.FA.MI.a[,1], brGDGT.FA.MI.b[,1], brGDGT.FA.MI.c[,1],
+  brGDGT.FA.MI <- cbind(rownames(brGDGTs), brGDGT.FA.MI.a[,1], brGDGT.FA.MI.b[,1], brGDGT.FA.MI.c[,1],
                         brGDGT.FA.MI.a[,2:3], brGDGT.FA.MI.b[,2:3], brGDGT.FA.MI.c[,2:3],
                         brGDGT.FA.MI.a[,4:5], brGDGT.FA.MI.b[,4:5], brGDGT.FA.MI.c[,4:5])
   
@@ -214,24 +214,24 @@ brGDGT_MI_FA <- function(brGDGTs){
 
 
 #Initialize Function
-brGDGT_METH_5Me_I_FA <- function(brGDGTs){
+brGDGT_METH_5Mep_FA <- function(brGDGTs){
   
   # prepare data subsets
-  brGDGT.METH.I.a    <- brGDGTs[,c("Ia","IIa.5Me","IIIa.5Me")]
-  brGDGT.METH.I.b    <- brGDGTs[,c("Ib","IIb.5Me","IIIb.5Me")]
-  brGDGT.METH.I.c    <- brGDGTs[,c("Ic","IIc.5Me","IIIc.5Me")]
+  brGDGT.5Mep.a    <- brGDGTs[,c("Ia","IIa.5Me","IIIa.5Me")]
+  brGDGT.5Mep.b    <- brGDGTs[,c("Ib","IIb.5Me","IIIb.5Me")]
+  brGDGT.5Mep.c    <- brGDGTs[,c("Ic","IIc.5Me","IIIc.5Me")]
   
   # initialize FA matrices
-  brGDGT.FA.METH.I.a <- brGDGT.METH.I.a
-  brGDGT.FA.METH.I.b <- brGDGT.METH.I.b
-  brGDGT.FA.METH.I.c <- brGDGT.METH.I.c
+  brGDGT.FA.5Mep.a <- brGDGT.5Mep.a
+  brGDGT.FA.5Mep.b <- brGDGT.5Mep.b
+  brGDGT.FA.5Mep.c <- brGDGT.5Mep.c
   
   # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
-  for(c in 1: ncol(brGDGT.FA.METH.I.a)){
+  for(c in 1: ncol(brGDGT.FA.5Mep.a)){
     
-    brGDGT.FA.METH.I.a[,c] <- brGDGT.METH.I.a[,c]/rowSums(brGDGT.METH.I.a)
-    brGDGT.FA.METH.I.b[,c] <- brGDGT.METH.I.b[,c]/rowSums(brGDGT.METH.I.b)
-    brGDGT.FA.METH.I.c[,c] <- brGDGT.METH.I.c[,c]/rowSums(brGDGT.METH.I.c)
+    brGDGT.FA.5Mep.a[,c] <- brGDGT.5Mep.a[,c]/rowSums(brGDGT.5Mep.a)
+    brGDGT.FA.5Mep.b[,c] <- brGDGT.5Mep.b[,c]/rowSums(brGDGT.5Mep.b)
+    brGDGT.FA.5Mep.c[,c] <- brGDGT.5Mep.c[,c]/rowSums(brGDGT.5Mep.c)
     
   }
   
@@ -239,12 +239,12 @@ brGDGT_METH_5Me_I_FA <- function(brGDGTs){
   ###---------------------------------------------- FA METH PRINT -------------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  brGDGT.FA.METH.I<-cbind(rownames(brGDGTs), brGDGT.FA.METH.I.a[,1], brGDGT.FA.METH.I.b[,1], brGDGT.FA.METH.I.c[,1],
-                        brGDGT.FA.METH.I.a[,2:3], brGDGT.FA.METH.I.b[,2:3], brGDGT.FA.METH.I.c[,2:3])
+  brGDGT.FA.5Mep<-cbind(rownames(brGDGTs), brGDGT.FA.5Mep.a[,1], brGDGT.FA.5Mep.b[,1], brGDGT.FA.5Mep.c[,1],
+                        brGDGT.FA.5Mep.a[,2:3], brGDGT.FA.5Mep.b[,2:3], brGDGT.FA.5Mep.c[,2:3])
   
-  colnames(brGDGT.FA.METH.I)[1:4] <- c("Label","Ia","Ib","Ic")
+  colnames(brGDGT.FA.5Mep)[1:4] <- c("Label","Ia","Ib","Ic")
   
-  return(brGDGT.FA.METH.I)
+  return(brGDGT.FA.5Mep)
 }
 
 ###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
