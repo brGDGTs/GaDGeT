@@ -88,7 +88,7 @@
 
 #          8. Fractional Abundances, calculated acc. Raberg et al. (2021) CI:               IIa/(IIa+IIb+IIc+IIa'+IIb'+IIc'), same for I and III
 #          9. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-5Me+:         IIa/(IIa+IIb+IIc), same for I and III
-#          10. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-6Me+:         IIa'/(IIa'+IIb'+IIc'), same for I and III
+#          10. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-6Me+:        IIa'/(IIa'+IIb'+IIc'), same for I and III
 
 
 #------ isoGDGTs ---------
