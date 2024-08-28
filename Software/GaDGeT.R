@@ -53,9 +53,11 @@
 # the calculation functions are sourced from two files, below.
 
 
-#--------- FRACTIONAL ABUNDANCES --------------
+#---------------------------------------------------------------
+#--------- FRACTIONAL ABUNDANCE: -------------------------------
+#---------------------------------------------------------------
 
-#          contains 23 Functions:
+#          contains 26 Functions:
 
 #---------------------------------------------------------------
 #--------- FUNCTION CALLS: -------------------------------------
@@ -65,41 +67,44 @@
 
 #          1. brGDGT_FA
 
-#          2. brGDGT_METH_FA
-#          3. brGDGT_METH_5Me_FA
-#          4. brGDGT_METH_6Me_FA
+#          2. brGDGT_MI_FA
+#          3. brGDGT_METH_5Mep_FA
+#          4. brGDGT_METH_6Mep_FA
+#          5. brGDGT_METH_5Me_FA
+#          6. brGDGT_METH_6Me_FA
+#          7. brGDGT_METH_FA
 
-#          5. brGDGT_CYCL_FA
-#          6. brGDGT_CYCL_5Me_FA
-#          7. brGDGT_CYCL_6Me_FA
+#          8. brGDGT_CYCL_FA
+#          9. brGDGT_CYCL_5Me_FA
+#          10. brGDGT_CYCL_6Me_FA
 
 
 #------ isoGDGTs ---------
 
-#          8. fGDGT0
-#          9. fGDGT1
-#         10. fGDGT2
-#         11. fGDGT3
-#         12. fGDGT4
-#         13. fGDGT4.2
+#         11. fGDGT0
+#         12. fGDGT1
+#         13. fGDGT2
+#         13. fGDGT3
+#         14. fGDGT4
+#         15. fGDGT4.2
 
 
 #------ OHDGTs ----------
 
-#         14. fOH.0
-#         15. fOH.1
-#         16. fOH.2
+#         17. fOH.0
+#         18. fOH.1
+#         19. fOH.2
 
 
 #------ GMGTs ----------
 
-#         17. fGMGT1
-#         18. fGMGT2a
-#         19. fGMGT2b
-#         20. fGMGT2c
-#         21. fGMGT3a
-#         22. fGMGT3b
-#         23. fGMGT3c
+#         20. fGMGT1
+#         21. fGMGT2a
+#         22. fGMGT2b
+#         23. fGMGT2c
+#         24. fGMGT3a
+#         25. fGMGT3b
+#         26. fGMGT3c
 
 #---------------------------------------------------------------
 #--------- CALCULATION-DESCRIPTIONS: ---------------------------
@@ -112,52 +117,58 @@
 #          2. Fractional Abundances, calculated acc. Raberg et al. (2021) MI:               Ia/(Ia+IIa+IIIa+IIa'+IIIa'), same for b and c
 #          3. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-5Me+:        Ia/(Ia+IIa+IIIa), same for b and c
 #          4. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-6Me+:        Ia/(Ia+IIa'+IIIa'), same for b and c
+#          5. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-5Me:         IIa/(IIa+IIIa), same for b and c
+#          6. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-6Me:         IIa´/(IIa'+IIIa'), same for b and c
+#          7. Fractional Abundances, calculated acc. Raberg et al. (2021) METH:             METH-5Me+ and METH-6Me
 
-#          5. Fractional Abundances, calculated acc. Raberg et al. (2021) CI:               IIa/(IIa+IIb+IIc+IIa'+IIb'+IIc'), same for I and III
-#          6. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-5Me+:         IIa/(IIa+IIb+IIc), same for I and III
-#          7. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-6Me+:         IIa'/(IIa'+IIb'+IIc'), same for I and III
+#          8. Fractional Abundances, calculated acc. Raberg et al. (2021) CI:               IIa/(IIa+IIb+IIc+IIa'+IIb'+IIc'), same for I and III
+#          9. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-5Me+:         IIa/(IIa+IIb+IIc), same for I and III
+#          10. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-6Me+:        IIa'/(IIa'+IIb'+IIc'), same for I and III
 
 
 #------ isoGDGTs ---------
 
-#          8. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT0 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#          9. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT1 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         10. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT2 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         11. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT3 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         12. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT4 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         13. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT4.2 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
+#         11. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT0 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
+#         12. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT1 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
+#         13. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT2 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
+#         14. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT3 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
+#         15. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT4 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
+#         16. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT4.2 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
 
 
 #------ OHDGTs ----------
 
-#         14. Fractional Abundances of OHGDGTs, calculated as follows:                      OHGDGT.0 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
-#         15. Fractional Abundances of OHGDGTs, calculated as follows:                      OHGDGT.1 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
-#         16. Fractional Abundances of OHGDGTs, calculated as follows:                      OHGDGT.2 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
+#         17. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.0 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
+#         18. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.1 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
+#         19. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.2 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
 
 
 #------ GMGTs ----------
 
-#         17. Fractional Abundances of fGMGT1 (H1048), calculated as follows:                H1048  / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         18. Fractional Abundances of fGMGT2a (H1034a), calculated as follows:              H1034a / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         19. Fractional Abundances of fGMGT2b (H1034b), calculated as follows:              H1034b / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         20. Fractional Abundances of fGMGT2c (H1034c), calculated as follows:              H1034c / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         21. Fractional Abundances of fGMGT3a (H1020a), calculated as follows:              H1020a / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         22. Fractional Abundances of fGMGT3b (H1020b), calculated as follows:              H1020b / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         23. Fractional Abundances of fGMGT3c (H1020c), calculated as follows:              H1020c / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
+#         20. Fractional Abundances of fGMGT1 (H1048), calculated as follows:                H1048  / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
+#         21. Fractional Abundances of fGMGT2a (H1034a), calculated as follows:              H1034a / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
+#         22. Fractional Abundances of fGMGT2b (H1034b), calculated as follows:              H1034b / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
+#         23. Fractional Abundances of fGMGT2c (H1034c), calculated as follows:              H1034c / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
+#         24. Fractional Abundances of fGMGT3a (H1020a), calculated as follows:              H1020a / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
+#         25. Fractional Abundances of fGMGT3b (H1020b), calculated as follows:              H1020b / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
+#         26. Fractional Abundances of fGMGT3c (H1020c), calculated as follows:              H1020c / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
 
 
 
 
-#--------- GDGT INDICES ------------------
+#---------------------------------------------------------------
+#--------- GDGT INDICES: -------------------------------
+#---------------------------------------------------------------
 
-#          contains four functions:
+#          contains 5 functions:
 
 #--------- FUNCTION CALL:
 
-#         A. brGDGT_INDICES(brGDGTs)
-#         B. isoGDGT_INDICES(isoGDGTs)
-#         C. OHGDGT_INDICES (OHGDGTs)
-#         D. GMGT_INDICES(GMGTs)
+#         1. brGDGT_INDICES(brGDGTs)
+#         2. isoGDGT_INDICES(isoGDGTs)
+#         3. OHGDGT_INDICES (OHGDGTs)
+#         4. GMGT_INDICES(GMGTs)
+#         5. GDD_INDICES(GDDs)
 
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
@@ -356,7 +367,7 @@ setwd(workingdir)
 
 packs<-c("stringr", "RColorBrewer", "readxl")
 
-#install.packages(packs)
+install.packages(packs)# only install if you need to install these packages, else comment out this line
 lapply(packs, require, character.only = TRUE)
 
 
@@ -451,7 +462,7 @@ GDGTs <- c("GDGT.0", "GDGT.1", "OH-GDGT.0", "GDGT.2", "OH-GDGT.1", "2OH-GDGT.0",
 GMGTs <- c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")
 
 
-GDDs <- c("isoGDD0", "isoGDD2","isoGDD3","isoGDD4", "isoGDDCren")
+GDDs <- c("isoGDD0", "isoGDD1","isoGDD2","isoGDD3", "isoGDDCren")
 
 
 # select only std, don't move the order, as it will affect the print later on
@@ -543,13 +554,13 @@ dir.create(path = DirCONC)
 brGDGT.FA            <- brGDGT_FA(brGDGTs = brGDGTs)
 
 # calculate the FA following 2. brGDGT_METH_FA
-brGDGT.METH.FA       <- brGDGT_METH_FA(brGDGTs = brGDGTs)
+brGDGT.MI.FA       <- brGDGT_MI_FA(brGDGTs = brGDGTs)
 
 # calculate the FA following 3. brGDGT_METH_5Me_FA
-brGDGT.METH.5Me.FA   <- brGDGT_METH_5Me_FA(brGDGTs = brGDGTs)
+brGDGT.METH.5Mep.FA   <- brGDGT_METH_5Mep_FA(brGDGTs = brGDGTs)
 
 # calculate the FA following 4. brGDGT_METH_6Me_FA
-brGDGT.METH.6Me.FA   <- brGDGT_METH_6Me_FA(brGDGTs = brGDGTs)
+brGDGT.METH.6Mep.FA   <- brGDGT_METH_6Me_FA(brGDGTs = brGDGTs)
 
 # calculate the FA following 5. brGDGT_CYCL_FA
 brGDGT.CYCL.FA       <- brGDGT_CYCL_FA(brGDGTs = brGDGTs)
@@ -612,6 +623,22 @@ write.csv(x    = brGDGT.METH.FA[,c(1,2,5,6,11,12,3,7,8,13,14,4,9,10,15,16)],
 
 
 # write a csv file into the Output directory containing 3. brGDGT_METH_5Me_FA, sort them acc.the subsets
+write.csv(x    = brGDGT.METH.5Mep.FA[,c(1,2,5,6,3,7,8,4,9,10)],
+          row.names = F, 
+          file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-5Mep_",Sys.Date(),".csv",sep=""))
+
+
+# write a csv file into the Output directory containing 4. brGDGT_METH_6Me_FA, sort them acc. the subsets
+write.csv(x    = brGDGT.METH.6Mep.FA[,c(1,2,5,6,3,7,8,4,9,10)],
+          row.names = F, 
+          file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-6Mep_",Sys.Date(),".csv",sep=""))
+
+
+
+
+
+
+# write a csv file into the Output directory containing 3. brGDGT_METH_5Me_FA, sort them acc.the subsets
 write.csv(x    = brGDGT.METH.5Me.FA[,c(1,2,5,6,3,7,8,4,9,10)],
           row.names = F, 
           file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-5Me_",Sys.Date(),".csv",sep=""))
@@ -621,6 +648,12 @@ write.csv(x    = brGDGT.METH.5Me.FA[,c(1,2,5,6,3,7,8,4,9,10)],
 write.csv(x    = brGDGT.METH.6Me.FA[,c(1,2,5,6,3,7,8,4,9,10)],
           row.names = F, 
           file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-6Me_",Sys.Date(),".csv",sep=""))
+
+
+
+
+
+
 
 
 # write a csv file into the Output directory containing 5. brGDGT_CYCL_FA
