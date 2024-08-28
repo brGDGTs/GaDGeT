@@ -343,6 +343,8 @@ brGDGT_METH_5Me_FA <- function(brGDGTs){
   # put GDGTs in correct order for follow up scripts
   brGDGT.FA.5Me<-cbind(rownames(brGDGTs), brGDGT.FA.5Me.a, brGDGT.FA.5Me.b, brGDGT.FA.5Me.c)
   
+  colnames(brGDGT.FA.5Me)[1] <- "Label"
+  
   return(brGDGT.FA.5Me)
 }
 
@@ -359,7 +361,7 @@ brGDGT_METH_5Me_FA <- function(brGDGTs){
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
-###--------------------------------- 4. brGDGTs FA METHYLIZATION 6Me-FUNCTION ------------------------------------------###
+###--------------------------------- 6. brGDGTs FA METHYLIZATION 6Me-FUNCTION ------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
 
@@ -391,12 +393,85 @@ brGDGT_METH_6Me_FA <- function(brGDGTs){
   # put GDGTs in correct order for follow up scripts
   brGDGT.FA.6Me<-cbind(rownames(brGDGTs), brGDGT.FA.6Me.a, brGDGT.FA.6Me.b, brGDGT.FA.6Me.c)
   
+  colnames(brGDGT.FA.6Me)[1] <- "Label"
+  
   return(brGDGT.FA.6Me)
 }
 
 ###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
 
 
+
+
+
+
+
+
+
+
+
+###----------------------------------------------------------------------------------------------------------------------###
+###--------------------------------- 7. brGDGTs FA METHYLation FUNCTION -------------------------------------------------###
+###----------------------------------------------------------------------------------------------------------------------###
+
+
+#Initialize Function
+brGDGT_METH_FA <- function(brGDGTs){
+  
+  # prepare data subsets
+  brGDGT.METH.a    <- brGDGTs[,c("Ia","IIa.5Me","IIIa.5Me")]
+  brGDGT.METH.a2   <- brGDGTs[,c("IIa.6Me","IIIa.6Me")]
+  
+  brGDGT.METH.b    <- brGDGTs[,c("Ib","IIb.5Me","IIIb.5Me")]
+  brGDGT.METH.b2   <- brGDGTs[,c("IIb.6Me","IIIb.6Me")]
+  
+  brGDGT.METH.c    <- brGDGTs[,c("Ic","IIc.5Me","IIIc.5Me")]
+  brGDGT.METH.c2   <- brGDGTs[,c("IIc.6Me","IIIc.6Me")]
+  
+  # initialize FA matrices
+  brGDGT.FA.METH.a <- brGDGT.METH.a
+  brGDGT.FA.METH.b <- brGDGT.METH.b
+  brGDGT.FA.METH.c <- brGDGT.METH.c
+  
+  # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
+  for(c in 1: ncol(brGDGT.FA.METH.a)){
+    
+    brGDGT.FA.METH.a[,c] <- brGDGT.METH.a[,c]/rowSums(brGDGT.METH.a)
+    brGDGT.FA.METH.b[,c] <- brGDGT.METH.b[,c]/rowSums(brGDGT.METH.b)
+    brGDGT.FA.METH.c[,c] <- brGDGT.METH.c[,c]/rowSums(brGDGT.METH.c)
+    
+  }
+  
+  # initialize FA matrices
+  brGDGT.FA.METH.a2 <- brGDGT.METH.a2
+  brGDGT.FA.METH.b2 <- brGDGT.METH.b2
+  brGDGT.FA.METH.c2 <- brGDGT.METH.c2
+  
+  # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
+  for(c in 1: ncol(brGDGT.FA.METH.a2)){
+    
+    brGDGT.FA.METH.a2[,c] <- brGDGT.METH.a2[,c]/rowSums(brGDGT.METH.a2)
+    brGDGT.FA.METH.b2[,c] <- brGDGT.METH.b2[,c]/rowSums(brGDGT.METH.b2)
+    brGDGT.FA.METH.c2[,c] <- brGDGT.METH.c2[,c]/rowSums(brGDGT.METH.c2)
+    
+  }
+  
+  
+  
+  ###---------------------------------------------- FA METH PRINT -------------------------------------------------------###
+  
+  # put GDGTs in correct order for follow up scripts
+  brGDGT.FA.METH  <- cbind(rownames(brGDGTs),  brGDGT.FA.METH.a, brGDGT.FA.METH.a2, brGDGT.FA.METH.b, brGDGT.FA.METH.b2, brGDGT.FA.METH.c, brGDGT.FA.METH.c2)
+  
+  colnames(brGDGT.FA.METH)[1] <- "Label"
+  return(brGDGT.FA.6Me)
+}
+
+###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
+
+
+
+colnames(brGDGT.FA.METH)
 
 
 
