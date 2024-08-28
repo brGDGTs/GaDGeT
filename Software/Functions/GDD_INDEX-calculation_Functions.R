@@ -68,7 +68,7 @@ GDD_INDICES <- function(GDGTs){
   #calculate RI.GDD (Hingley et al., 2024)
   GDGT.IND$RI.GDD          <-   (GDGTs$isoGDD1+2*GDGTs$isoGDD2+3*GDGTs$isoGDD3+4*GDGTs$isoGDDCren) /
                                  rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")])
-  
+
   ### 2
   #calculate GDD% (Hingley et al., 2024) 
   GDGT.IND$GDD.P           <-   rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) /

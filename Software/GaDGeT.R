@@ -723,7 +723,7 @@ write.csv(x    = fGMGTs.FA,
 
 #cut out and shape the GDGTs ad the brGDGT Fractional Abundances
 
-GDGTs                  <-   cbind(IS,GDGTs,GMGTs, apply(brGDGT.FA[,-1],2,as.double))
+GDGTs                  <-   cbind(IS,GDGTs,GMGTs, apply(brGDGT.FA[,-1],2,as.double),GDDs)
 GDGTs[is.na(GDGTs)]    <-   0
 GDGTs                  <-   data.frame(GDGTs)
 
