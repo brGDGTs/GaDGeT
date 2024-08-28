@@ -30,9 +30,9 @@
 
 #--------- INDEX-CALCULATION-DESCRIPTIONS:
 
-#           1.  PERC.OHtot:     Feitz et al. (2013)
-#           2.  OH1318.1316:    Feitz et al. (2013)
-#           2.  SST.FI:         Feitz et al. (2013)
+#           1.  PERC.OHtot:     Huguet et al. (2013)
+#           2.  OH1318.1316:    Fietz et al. (2013)
+#           2.  SST.FI:         Fietz et al. (2013)
 #           3.  RI.OH:          Lü et al. (2015)
 #           4.  RI.OH':         Lü et al. (2015)
 #           7.  RI.OH.SST:      Lü et al. (2015)
@@ -63,7 +63,7 @@ OHGDGT_INDICES <- function(GDGTs){
   
   # Set column names
   colnames(GDGT.IND)  <- c("PERC.OH.tot",
-                           "OH1.2",
+                           "OH0.1",
                            "SST.FI",
                            "RI.OH",
                            "RI.OH'",
@@ -75,16 +75,16 @@ OHGDGT_INDICES <- function(GDGTs){
   ###-------------------------------------------- INDEX CALC --------------------------------------------------------------###
   
   ### 1
-  #calculate percent total OH-GDGTs vs iGDGTs (Feitz et al., 2013)
+  #calculate percent total OH-GDGTs vs iGDGTs (Fietz et al., 2013)
   GDGT.IND$PERC.OH.tot   <-      100*((rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")])) /
                                        rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
   
-  #calculate OHGDGT1318/1316 index (Feitz et al., 2013)
-  GDGT.IND$OH1.2         <-      (rowSums(GDGTs[,c("OH.GDGT.0")]) /
-                                        rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")]))
+  #calculate OHGDGT1318/1316 index (Fietz et al., 2013)
+  GDGT.IND$OH1.2         <-      (GDGTs[,c("OH.GDGT.0")] /
+                                        rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1")]))
   
   
-  #calculate SST.FI=-131.579×OH1.2+122.368 (Feitz et al., 2013, eq. 7) 
+  #calculate SST.FI=-131.579×OH1.2+122.368 (Fietz et al., 2013, eq. 7) 
   GDGT.IND$SST.FI         <-      (((-1/0.0076)*GDGT.IND$OH1.2) + (0.93/0.0076))
                                    
 
