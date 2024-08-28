@@ -306,6 +306,10 @@ brGDGT_METH_6Mep_FA <- function(brGDGTs){
 
 
 
+
+
+
+
 ###----------------------------------------------------------------------------------------------------------------------###
 ###--------------------------------- 5. brGDGTs FA METHYLIZATION 5Me-FUNCTION ------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
@@ -345,6 +349,52 @@ brGDGT_METH_5Me_FA <- function(brGDGTs){
 ###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
 
 
+
+
+
+
+
+
+
+
+
+###----------------------------------------------------------------------------------------------------------------------###
+###--------------------------------- 4. brGDGTs FA METHYLIZATION 6Me-FUNCTION ------------------------------------------###
+###----------------------------------------------------------------------------------------------------------------------###
+
+
+#Initialize Function
+brGDGT_METH_6Me_FA <- function(brGDGTs){
+  
+  # prepare data subsets
+  brGDGT.6Me.a    <- brGDGTs[,c("IIa.6Me","IIIa.6Me")]
+  brGDGT.6Me.b    <- brGDGTs[,c("IIb.6Me","IIIb.6Me")]
+  brGDGT.6Me.c    <- brGDGTs[,c("IIc.6Me","IIIc.6Me")]
+  
+  # initialize FA matrices
+  brGDGT.FA.6Me.a <- brGDGT.6Me.a
+  brGDGT.FA.6Me.b <- brGDGT.6Me.b
+  brGDGT.FA.6Me.c <- brGDGT.6Me.c
+  
+  # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
+  for(c in 1: ncol(brGDGT.FA.6Me.a)){
+    
+    brGDGT.FA.6Me.a[,c] <- brGDGT.6Me.a[,c]/rowSums(brGDGT.6Me.a)
+    brGDGT.FA.6Me.b[,c] <- brGDGT.6Me.b[,c]/rowSums(brGDGT.6Me.b)
+    brGDGT.FA.6Me.c[,c] <- brGDGT.6Me.c[,c]/rowSums(brGDGT.6Me.c)
+    
+  }
+  
+  
+  ###---------------------------------------------- FA 6Me PRINT -------------------------------------------------------###
+  
+  # put GDGTs in correct order for follow up scripts
+  brGDGT.FA.6Me<-cbind(rownames(brGDGTs), brGDGT.FA.6Me.a, brGDGT.FA.6Me.b, brGDGT.FA.6Me.c)
+  
+  return(brGDGT.FA.6Me)
+}
+
+###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
 
 
 
