@@ -468,7 +468,7 @@ brGDGT_METH_FA <- function(brGDGTs){
   brGDGT.FA.METH  <- cbind(rownames(brGDGTs),  brGDGT.FA.METH.a, brGDGT.FA.METH.a2, brGDGT.FA.METH.b, brGDGT.FA.METH.b2, brGDGT.FA.METH.c, brGDGT.FA.METH.c2)
   
   colnames(brGDGT.FA.METH)[1] <- "Label"
-  return(brGDGT.FA.6Me)
+  return(brGDGT.FA.METH)
 }
 
 ###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
