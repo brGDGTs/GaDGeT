@@ -306,6 +306,52 @@ brGDGT_METH_6Mep_FA <- function(brGDGTs){
 
 
 
+###----------------------------------------------------------------------------------------------------------------------###
+###--------------------------------- 5. brGDGTs FA METHYLIZATION 5Me-FUNCTION ------------------------------------------###
+###----------------------------------------------------------------------------------------------------------------------###
+
+
+#Initialize Function
+brGDGT_METH_5Me_FA <- function(brGDGTs){
+  
+  # prepare data subsets
+  brGDGT.5Me.a    <- brGDGTs[,c("IIa.5Me","IIIa.5Me")]
+  brGDGT.5Me.b    <- brGDGTs[,c("IIb.5Me","IIIb.5Me")]
+  brGDGT.5Me.c    <- brGDGTs[,c("IIc.5Me","IIIc.5Me")]
+  
+  # initialize FA matrices
+  brGDGT.FA.5Me.a <- brGDGT.5Me.a
+  brGDGT.FA.5Me.b <- brGDGT.5Me.b
+  brGDGT.FA.5Me.c <- brGDGT.5Me.c
+  
+  # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
+  for(c in 1: ncol(brGDGT.FA.5Me.a)){
+    
+    brGDGT.FA.5Me.a[,c] <- brGDGT.5Me.a[,c]/rowSums(brGDGT.5Me.a)
+    brGDGT.FA.5Me.b[,c] <- brGDGT.5Me.b[,c]/rowSums(brGDGT.5Me.b)
+    brGDGT.FA.5Me.c[,c] <- brGDGT.5Me.c[,c]/rowSums(brGDGT.5Me.c)
+    
+  }
+  
+  
+  ###---------------------------------------------- FA METH PRINT -------------------------------------------------------###
+  
+  # put GDGTs in correct order for follow up scripts
+  brGDGT.FA.5Me<-cbind(rownames(brGDGTs), brGDGT.FA.5Me.a, brGDGT.FA.5Me.b, brGDGT.FA.5Me.c)
+  
+  return(brGDGT.FA.5Me)
+}
+
+###----------------------------------------------- FUNCTION ENDS --------------------------------------------------------###
+
+
+
+
+
+
+
+
+
 
 
 
