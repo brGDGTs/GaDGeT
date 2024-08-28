@@ -32,7 +32,7 @@
 
 #          1. brGDGT_FA
 
-#          2. brGDGT_METH_FA
+#          2. brGDGT_MI_FA
 #          3. brGDGT_METH_5Me_FA
 #          4. brGDGT_METH_6Me_FA
 
@@ -79,6 +79,8 @@
 #          2. Fractional Abundances, calculated acc. Raberg et al. (2021) MI:               Ia/(Ia+IIa+IIIa+IIa'+IIIa'), same for b and c
 #          3. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-5Me+:        Ia/(Ia+IIa+IIIa), same for b and c
 #          4. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-6Me+:        Ia/(Ia+IIa'+IIIa'), same for b and c
+#          5. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-5Me:         IIa/(IIa+IIIa), same for b and c
+#          6. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-6Me:         IIa´/(IIa'+IIIa'), same for b and c
 
 #          5. Fractional Abundances, calculated acc. Raberg et al. (2021) CI:               IIa/(IIa+IIb+IIc+IIa'+IIb'+IIc'), same for I and III
 #          6. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-5Me+:         IIa/(IIa+IIb+IIc), same for I and III
@@ -162,29 +164,29 @@ brGDGT_FA <- function(brGDGTs){
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
-###----------------------------------- 2. brGDGTs FA METHYLIZATION-FUNCTION ---------------------------------------------###
+###----------------------------------- 2. brGDGTs FA MI METHYLIZATION-FUNCTION ------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
 
 #Initialize Function
-brGDGT_METH_FA <- function(brGDGTs){
+brGDGT_MI_FA <- function(brGDGTs){
   
   # prepare data subsets
-  brGDGT.METH.a    <- brGDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me")]
-  brGDGT.METH.b    <- brGDGTs[,c("Ib","IIb.5Me","IIb.6Me","IIIb.5Me","IIIb.6Me")]
-  brGDGT.METH.c    <- brGDGTs[,c("Ic","IIc.5Me","IIc.6Me","IIIc.5Me","IIIc.6Me")]
+  brGDGT.MI.a    <- brGDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me")]
+  brGDGT.MI.b    <- brGDGTs[,c("Ib","IIb.5Me","IIb.6Me","IIIb.5Me","IIIb.6Me")]
+  brGDGT.MI.c    <- brGDGTs[,c("Ic","IIc.5Me","IIc.6Me","IIIc.5Me","IIIc.6Me")]
   
   # initialize FA matrices
-  brGDGT.FA.METH.a <- brGDGT.METH.a
-  brGDGT.FA.METH.b <- brGDGT.METH.b
-  brGDGT.FA.METH.c <- brGDGT.METH.c
+  brGDGT.FA.MI.a <- brGDGT.MI.a
+  brGDGT.FA.MI.b <- brGDGT.MI.b
+  brGDGT.FA.MI.c <- brGDGT.MI.c
   
   # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
-  for(c in 1: ncol(brGDGT.FA.METH.a)){
+  for(c in 1: ncol(brGDGT.FA.MI.a)){
     
-    brGDGT.FA.METH.a[,c] <- brGDGT.METH.a[,c]/rowSums(brGDGT.METH.a)
-    brGDGT.FA.METH.b[,c] <- brGDGT.METH.b[,c]/rowSums(brGDGT.METH.b)
-    brGDGT.FA.METH.c[,c] <- brGDGT.METH.c[,c]/rowSums(brGDGT.METH.c)
+    brGDGT.FA.MI.a[,c] <- brGDGT.MI.a[,c]/rowSums(brGDGT.MI.a)
+    brGDGT.FA.MI.b[,c] <- brGDGT.MI.b[,c]/rowSums(brGDGT.MI.b)
+    brGDGT.FA.MI.c[,c] <- brGDGT.MI.c[,c]/rowSums(brGDGT.MI.c)
     
   }
   
@@ -192,14 +194,14 @@ brGDGT_METH_FA <- function(brGDGTs){
   ###---------------------------------------------- FA METH PRINT -----------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  brGDGT.FA.METH<-cbind(rownames(brGDGTs), brGDGT.FA.METH.a[,1], brGDGT.FA.METH.b[,1], brGDGT.FA.METH.c[,1],
-                        brGDGT.FA.METH.a[,2:3], brGDGT.FA.METH.b[,2:3], brGDGT.FA.METH.c[,2:3],
-                        brGDGT.FA.METH.a[,4:5], brGDGT.FA.METH.b[,4:5], brGDGT.FA.METH.c[,4:5])
+  brGDGT.FA.MI<-cbind(rownames(brGDGTs), brGDGT.FA.MI.a[,1], brGDGT.FA.MI.b[,1], brGDGT.FA.MI.c[,1],
+                        brGDGT.FA.MI.a[,2:3], brGDGT.FA.MI.b[,2:3], brGDGT.FA.MI.c[,2:3],
+                        brGDGT.FA.MI.a[,4:5], brGDGT.FA.MI.b[,4:5], brGDGT.FA.MI.c[,4:5])
   
-  colnames(brGDGT.FA.METH)[1:4] <- c("Label","Ia","Ib","Ic")
+  colnames(brGDGT.FA.MI)[1:4] <- c("Label","Ia","Ib","Ic")
   
   
-  return(brGDGT.FA.METH)
+  return(brGDGT.FA.MI)
 }
 
 ###----------------------------------------------- FUNCTION ENDS ------------------------------------------------------###
