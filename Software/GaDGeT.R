@@ -28,7 +28,7 @@
 #   the calculated results into the 'Output' directory.
 
 #   For more information, please read the corresponding article in 
-#   organic Geochemistry "GaDGeT – GDGT calculations simplified: an 
+#   Organic Geochemistry "GaDGeT – GDGT calculations simplified: an 
 #   adaptable R-toolbox for rapid GDGT index calculations" and the 
 #   manual by Schneider and Castaneda (2024).
 
@@ -349,81 +349,98 @@
 #*******************************
 
 
-######################################################################################################################################################################
-############################################# GADGET SOFTWARE STARTS HERE ############################################################################################
-######################################################################################################################################################################
+#********************************************************************************************************************************************************************* 
+#***************************************************** GADGET SCRIPT STARTS ******************************************************************************************
+#*********************************************************************************************************************************************************************
 
 
 ######################################################################################################################################################################
-############################################# A. PREPARE WORKSPACE ###################################################################################################
+############################################# A. WORKSPACE PREPARATION ###############################################################################################
 ######################################################################################################################################################################
 
-# Clean the stored variables.
-rm(list=ls(all=TRUE))
+# Clean workspace
+rm(list = ls(all = TRUE))
+cat("\014")  # Clear console
+graphics.off()  # Close all graphics windows
 
-# This line deletes the console entries.
-cat("\014")
 
-# Clear the plot windows.
-graphics.off()
-
-# Get the working directory, or define it by yourself, to the right directory/folder with our data files: 
-
-workingdir<-getwd()#'C://Users//name/Desktop/GaDGeT/'
+# Set working directory (you can change to `choose.dir()` for flexibility)
+workingdir <- getwd() # Use default working directory
 workingdir<-"C:/Users/tobia/Dropbox/UMASS/Papers/ongoing/GaDGeT/GaDGeT/GaDGeT/Software/"
 
 setwd(workingdir)
 
-# Get and install the right packages
+
+# ================ Load Required Packages ===================
+
 
 packs<-c("stringr", "readxl")
 
-#install.packages(packs)# only install if you need to install these packages, else comment out this line
-lapply(packs, require, character.only = TRUE)
+# Install missing packages (uncomment if needed)
+# install.packages(setdiff(packs, installed.packages()[, "Package"]))
+
+# Load the packages
+invisible(lapply(packs, library, character.only = TRUE))
 
 
-# Load Functions from function files
-source("Functions/GDGT_FA-calculation_Functions.R")
-source("Functions/brGDGT_INDEX-calculation_Functions.R")
-source("Functions/isoGDGT_INDEX-calculation_Functions.R")
-source("Functions/OHGDGT_INDEX-calculation_Functions.R")
-source("Functions/GMGT_INDEX-calculation_Functions.R")
-source("Functions/GDD_INDEX-calculation_Functions.R")
+# ================ Load Custom Functions ====================
 
-#********************************************************************************************************************************************************************* 
-#******************************************************************* SCRIPT STARTS ***********************************************************************************
-#*********************************************************************************************************************************************************************
+# List of function files to source
+function_files <- c("GDGT_FA-calculation_Functions.R", 
+                    "brGDGT_INDEX-calculation_Functions.R",
+                    "isoGDGT_INDEX-calculation_Functions.R",
+                    "OHGDGT_INDEX-calculation_Functions.R",
+                    "GMGT_INDEX-calculation_Functions.R",
+                    "GDD_INDEX-calculation_Functions.R")
+
+# Source all files in the list
+invisible(lapply(function_files, function(file) source(file.path("Functions", file))))
+
+
+# ================ Helper Functions =========================
+# Function to create directories if they don't exist
+create_dir <- function(path) {
+  if (!dir.exists(path)) {
+    dir.create(path, recursive = TRUE)
+  }
+}
+
+
 
 ######################################################################################################################################################################
 ########################################## I. DATA PREPARATION #######################################################################################################
 ######################################################################################################################################################################
 
-# Check Directory for available data files in "Input"
-GDGT.files<-list.files(path = paste(workingdir,"/Input/",sep=""))
+# Get list of Excel files in the 'Input' directory
+GDGT.files <- list.files(path = paste0(workingdir, "/Input/"), pattern = "\\.xlsx$")
 
-
+if (length(GDGT.files) == 0) {
+  stop("No input files found in the 'Input' directory. Please add input files according to the template.")
+}
 
 ###----------------------------------------------------------------------------------------------------------------------###
 ###------------------------------------------- READ DATA ----------------------------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
-# Initialize list for data-compilation
+# Initialize list for data compilation
 data.sets<-list()
 
-for (i in 1:length(GDGT.files)){
+# Loop through each file and read data
+for (i in seq_along(GDGT.files)) {
+  file_path <- paste0(workingdir, "/Input/", GDGT.files[i])
   
-  # Open file and read out information
-  table.temp<-read_xlsx(path = paste(workingdir,"/Input/",GDGT.files[i],sep=""),
-                        sheet = "GDGTs")
+  # Read data from the specified sheet
+  table.temp <- tryCatch({
+    read_xlsx(path = file_path, sheet = "GDGTs")
+  }, error = function(e) {
+    stop("Error reading Excel file: ", file_path, "\n", e)
+  })
   
-  # Append info to a list.
-  data.sets[[i]]<-table.temp
+  data.sets[[i]] <- table.temp
 }
 
-# Create a list containing the datasets names to be printed (without the ".csv")
-data.sets.names<-str_remove(string = GDGT.files,
-                            pattern = ".xlsx")
-
+# Get dataset names by removing the file extension
+data.sets.names <- str_remove(string = GDGT.files, pattern = ".xlsx")
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
