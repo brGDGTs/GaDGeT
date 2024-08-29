@@ -61,14 +61,14 @@ OHGDGT_INDICES <- function(GDGTs){
   # Set rownames, take those from the input file
   row.names(GDGT.IND) <- rownames(GDGTs)
   
-  # Set column names
-  colnames(GDGT.IND)  <- c("PERC.OH.tot",
-                           "OH0.1",
-                           "SST.FI",
-                           "RI.OH",
-                           "RI.OH'",
-                           "RI.OH.SST",
-                           "RI.OH'.SST")
+  # # Set column names
+  # colnames(GDGT.IND)  <- c("PERC.OH.tot",
+  #                          "OH0.1",
+  #                          "SST.FI",
+  #                          "RI.OH",
+  #                          "RI.OH'",
+  #                          "RI.OH.SST",
+  #                          "RI.OH'.SST")
   
   GDGT.IND <- data.frame(GDGT.IND)
   
