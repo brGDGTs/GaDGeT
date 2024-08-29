@@ -9,23 +9,33 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 28. August 2024
-# Email: tobiaschnei@gmail.com, www.drtobiasschneider.com
+# Last modification: 29. August 2024
+# COntact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # DISCLAIMER
 
-# The author does not guarantee for the functionality of this script. Please do not hesitate to get back to the author
-# to report problems, or for troubleshooting, or for modifications.
+#   This script is provided "as is" without any warranties.Please 
+#   contact the author for troubleshooting or modifications.
 
 
 #-------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------- SCRIPT DESCRIPTION --------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------------
 
-# This script contains the main script to calculate different kinds of fractional abundances of brGDGTs.
-# Furthermore, the script calculates different GDGT-indices as taken from published and peer-reviewed studies.
-# Finally, this script will calculate compound amounts and concentrations for the different GDGT fractions.
-# Details can be found below
+#   This script calculates fractional abundances and GDGT-indices 
+#   from brGDGT and other GDGT data. It processes data from Excel 
+#   files in the 'Input' directory and outputs CSV files containing 
+#   the calculated results into the 'Output' directory.
+
+#   For more information, please read the corresponding article in 
+#   organic Geochemistry "GaDGeT – GDGT calculations simplified: an 
+#   adaptable R-toolbox for rapid GDGT index calculations" and the 
+#   manual by Schneider and Castaneda (2024).
+
+
+# Requirements:
+#   - R version 3.5 or above
+#   - Packages: stringr, readxl
 
 
 #--------- TO PROVIDE BY THE USER ------------------
@@ -366,7 +376,7 @@ setwd(workingdir)
 
 # Get and install the right packages
 
-packs<-c("stringr", "RColorBrewer", "readxl")
+packs<-c("stringr", "readxl")
 
 #install.packages(packs)# only install if you need to install these packages, else comment out this line
 lapply(packs, require, character.only = TRUE)
