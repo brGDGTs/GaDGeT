@@ -336,11 +336,11 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 32
   #calculate MAAT.BA1
-  GDGT.IND$MAT.BA1      <-  (-2.19)+ (31.91*GDGT.IND$MBT.5Me) 
+  GDGT.IND$MAAT.BA1      <-  (-2.19)+ (31.91*GDGT.IND$MBT.5Me) 
   
   ### 33
   #calculate MAAT.BA2
-  GDGT.IND$MAT.BA2      <-  7.11 + (67.66*GDGTs$Ib) - (13.54*GDGTs$IIIa.5Me)
+  GDGT.IND$MAAT.BA2      <-  7.11 + (67.66*GDGTs$Ib) - (13.54*GDGTs$IIIa.5Me)
   
   ### 34
   #calculate MAF.BA1
