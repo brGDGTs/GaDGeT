@@ -472,67 +472,39 @@ colnames(GDGT.temp) <- colnames(data.sets[[f]])
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
-###------------------------------------ SEPERATE brGDGTs + GDGTs + std --------------------------------------------------###
+###------------------------------------------- SEPARATION OF COMPOUNDS --------------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
-# select only brGDGTs, don't move the order, as it will affect the print later on 
+# === Select Relevant Data Columns ===
 
-brGDGTs <- c("IIIa.5Me", "IIIa.6Me", "IIIb.5Me", "IIIb.6Me", "IIIc.5Me", "IIIc.6Me",
-             "IIa.5Me", "IIa.6Me","IIb.5Me", "IIb.6Me", "IIc.5Me",
-             "IIc.6Me", "Ia", "Ib", "Ic")
+# Define the sets of compounds to extract
+brGDGTs_cols <- c("IIIa.5Me", "IIIa.6Me", "IIIb.5Me", "IIIb.6Me", "IIIc.5Me", "IIIc.6Me",
+                  "IIa.5Me", "IIa.6Me","IIb.5Me", "IIb.6Me", "IIc.5Me",
+                  "IIc.6Me", "Ia", "Ib", "Ic")
 
-# select only GDGTs, don't move the order, as it will affect the print later on
+GDGTs_cols   <- c("GDGT.0", "GDGT.1", "OH-GDGT.0", "GDGT.2", "OH-GDGT.1", "2OH-GDGT.0", 
+                "GDGT.3", "OH-GDGT.2", "GDGT.4","GDGT.4.2")
 
-GDGTs <- c("GDGT.0", "GDGT.1", "OH-GDGT.0", "GDGT.2", "OH-GDGT.1", "2OH-GDGT.0", 
-           "GDGT.3", "OH-GDGT.2", "GDGT.4","GDGT.4.2")
+GMGTs_cols   <- c("H1048", "H1034a", "H1034b","H1034c", "H1020a", "H1020b", "H1020c")
 
+GDDs_cols    <- c("isoGDD0", "isoGDD1","isoGDD2","isoGDD3", "isoGDDCren")
 
-GMGTs <- c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")
-
-
-GDDs <- c("isoGDD0", "isoGDD1","isoGDD2","isoGDD3", "isoGDDCren")
-
-
-# select only std, don't move the order, as it will affect the print later on
-
-IS <- c("Label", "cum.depth", "Age", "SEDIEXTR", "IS_AREA","IS_AMOUNT")
+IS_cols      <- c("Label", "cum.depth", "Age", "SEDIEXTR", "IS_AREA","IS_AMOUNT")
 
 
+# === Extract relevant data, filling NAs with 0 ===
 
-###----------------------------------------------------------------------------------------------------------------------###
-###------------------------------------------- GET THE DATA -------------------------------------------------------------###
-###----------------------------------------------------------------------------------------------------------------------###
+brGDGTs <- GDGT.temp[, brGDGTs_cols, drop = FALSE]
+GDGTs <- GDGT.temp[, GDGTs_cols, drop = FALSE]
+GMGTs <- GDGT.temp[, GMGTs_cols, drop = FALSE]
+GDDs <- GDGT.temp[, GDDs_cols, drop = FALSE]
+IS <- GDGT.temp[, IS_cols, drop = FALSE]
 
-# select only brGDGTs, don't move the order, as it will affect the print later on 
-brGDGTs <- GDGT.temp[,brGDGTs] # comprises now the 15 columns containing the 15 brGDGTs
-
-# fill NAs with 0
-brGDGTs[is.na(brGDGTs)] <-0
-
-# select only brGDGTs, don't move the order, as it will affect the print later on 
-GDGTs <- GDGT.temp[,GDGTs] # comprises now the 15 columns containing the 15 brGDGTs
-
-# fill NAs with 0
-GDGTs[is.na(GDGTs)] <-0
-
-# select only brGDGTs, don't move the order, as it will affect the print later on 
-GMGTs <- GDGT.temp[,GMGTs] # comprises now the 15 columns containing the 15 brGDGTs
-
-# fill NAs with 0
-GMGTs[is.na(GMGTs)] <-0
-
-# select only brGDGTs, don't move the order, as it will affect the print later on 
-GDDs <- GDGT.temp[,GDDs] # comprises now the 15 columns containing the 15 brGDGTs
-
-# fill NAs with 0
-GDDs[is.na(GDDs)] <-0
-
-
-# select only brGDGTs, don't move the order, as it will affect the print later on 
-IS <- GDGT.temp[,IS] # comprises now the 15 columns containing the 15 brGDGTs
-
-# fill NAs with 0
-IS[is.na(IS)] <-0
+brGDGTs[is.na(brGDGTs)] <- 0
+GDGTs[is.na(GDGTs)] <- 0
+GMGTs[is.na(GMGTs)] <- 0
+GDDs[is.na(GDDs)] <- 0
+IS[is.na(IS)] <- 0
 
 #compile the compounds for concentration calculation later on
 GDGTs.conc <- cbind(GDGTs,brGDGTs)
