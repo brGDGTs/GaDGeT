@@ -15,8 +15,7 @@
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
 # for rapid GDGT index calculations." Organic Geochemistry. DOI: xxxx/yyyy
 
-#software version, don't change this
-software_version <-"GaDGeT v1.0"
+
 
 # DISCLAIMER
 
@@ -141,21 +140,17 @@ software_version <-"GaDGeT v1.0"
 # A. WORKSPACE PREPARATION
 #*******************************
 
-
 #*******************************
 # I. DATA PREPARATION
 #*******************************
-
 
 #*******************************
 # II. FRACTIONAL ABUNDANCES
 #*******************************
 
-
 #*******************************
 # III. INDEX-CALCULATIONS
 #*******************************
-
 
 #*******************************
 # IV. CONCENTRATION-CALCULATIONS
@@ -189,8 +184,8 @@ setwd(workingdir)
 
 packs<-c("stringr", "readxl")
 
-# Install missing packages (uncomment if needed)
-# install.packages(setdiff(packs, installed.packages()[, "Package"]))
+# Install missing packages
+install.packages(setdiff(packs, installed.packages()[, "Package"]))
 
 # Load the packages
 invisible(lapply(packs, library, character.only = TRUE))
@@ -557,8 +552,11 @@ write.csv(GDGTs.conc.IS, file = paste0(DirCONC, data.sets.name, "_CONC_", Sys.Da
 ###----------------------------------------------------------------------------------------------------------------------###
 # Save session info for reproducibility, no need to change anything
 
+#software version, don't change this
+software_version <-"GaDGeT v1.0"
+
 # Prepare a file to store session information including software version
-session_info_file <- paste0("SESSION_INFO_",Sys.Date(),".txt")
+session_info_file <- paste0("Output/SESSION_INFO_",data.sets.name,"_",Sys.Date(),".txt")
 
 # Open the file in write mode
 session_info_con <- file(session_info_file, open = "wt")
