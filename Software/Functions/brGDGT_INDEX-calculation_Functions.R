@@ -116,7 +116,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "pH.DJ2",
                            "pH.RB",
                            "pH.RU",
-                           "ln(Cond)",
+                           "ln.Cond.",
                            "Conduct",
                            "MAT.DJ1",
                            "MAT.DJ2",
@@ -336,11 +336,11 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 32
   #calculate MAAT.BA1
-  GDGT.IND$MMAT.BA1      <-  (-2.19)+ (31.91*GDGT.IND$MBT.5Me) 
+  GDGT.IND$MAT.BA1      <-  (-2.19)+ (31.91*GDGT.IND$MBT.5Me) 
   
   ### 33
   #calculate MAAT.BA2
-  GDGT.IND$MMAT.BA2      <-  7.11 + (67.66*GDGTs$Ib) - (13.54*GDGTs$IIIa.5Me)
+  GDGT.IND$MAT.BA2      <-  7.11 + (67.66*GDGTs$Ib) - (13.54*GDGTs$IIIa.5Me)
   
   ### 34
   #calculate MAF.BA1
@@ -408,7 +408,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 48
   #calculate MAP
-  GDGT.IND$MAP      <-  913.41*GDGT.IND$PI.bones+112 
+  GDGT.IND$MAP.bones      <-  913.41*GDGT.IND$PI.bones+112 
   
   
   return(GDGT.IND)
