@@ -10,7 +10,13 @@
 # Author: Tobias Schneider
 # Date: 05.12.2020
 # Last modification: 29. August 2024
-# COntact: tobiaschnei@gmail.com, www.drtobiasschneider.com
+# Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
+
+# Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
+# for rapid GDGT index calculations." Organic Geochemistry. DOI: xxxx/yyyy
+
+
+software_version <-"GaDGeT v1.0"
 
 # DISCLAIMER
 
@@ -737,6 +743,33 @@ write.csv(GDGTs.amount.IS, file = paste0(DirCONC, data.sets.name, "_AMOUNT_", Sy
 GDGTs.conc.IS <- cbind(rownames(IS), IS[, 2:4], IS.factor, GDGTs.conc)
 colnames(GDGTs.conc.IS)[1] <- "Label"
 write.csv(GDGTs.conc.IS, file = paste0(DirCONC, data.sets.name, "_CONC_", Sys.Date(), ".csv"), row.names = FALSE)
+
+
+
+
+###----------------------------------------------------------------------------------------------------------------------###
+###--------------------------------------- SAVE SESSION INFO FOR REPRODUCIBILITY ----------------------------------------###
+###----------------------------------------------------------------------------------------------------------------------###
+# Save session info for reproducibility, no need to change anything
+
+# Prepare a file to store session information including software version
+session_info_file <- paste0("SESSION_INFO_",Sys.Date(),".txt")
+
+# Open the file in write mode
+session_info_con <- file(session_info_file, open = "wt")
+
+# Write the software version at the top of the session info file
+writeLines(paste("Software Version:", software_version), session_info_con)
+
+# Write the current date and time
+writeLines(paste("Date:", Sys.time()), session_info_con)
+
+# Append the session information
+writeLines(capture.output(sessionInfo()), session_info_con)
+
+# Close the connection
+close(session_info_con)
+
 
 }
 
