@@ -515,27 +515,22 @@ GDGTs.conc <- cbind(GDGTs,brGDGTs)
 ###------------------------------------ CREATE STORAGE FOLDERS ----------------------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
-# for Fractional Abundance files according to Raberg et al. 2021
-dir.create(path = paste(workingdir,"/Output/",data.sets.name,sep =""))
+# === Create Output Directories ===
 
-DirFA.br <- paste(workingdir,"/Output/",data.sets.name,"/FAs/brGDGTs/",sep ="")
-DirFA    <- paste(workingdir,"/Output/",data.sets.name,"/FAs/",sep ="")
+base_dir <- paste0(workingdir, "/Output/", data.sets.name)
+create_dir(base_dir)
 
-dir.create(path = DirFA)
-dir.create(path = DirFA.br)
+# Directories for outputs
+DirFA.br <- paste0(base_dir, "/FAs/brGDGTs/")
+DirFA <- paste0(base_dir, "/FAs/")
+DirIND <- paste0(base_dir, "/GDGT-INDICES/")
+DirCONC <- paste0(base_dir, "/GDGT-CONCENTRATIONS/")
 
-# for GDGT INDICES according to the above literature review
-DirIND   <- paste(workingdir,"/Output/",data.sets.name,"/","GDGT-INDICES",sep ="")
-dir.create(path = DirIND)
-
-# for GDGT concentration files
-DirCONC  <- paste(workingdir,"/Output/",data.sets.name,"/","GDGT-CONCENTRATIONS",sep ="")
-dir.create(path = DirCONC)
-
-
-
-
-
+# Create directories if they do not exist
+create_dir(DirFA.br)
+create_dir(DirFA)
+create_dir(DirIND)
+create_dir(DirCONC)
 
 
 
@@ -581,16 +576,10 @@ brGDGT.CYCL.5Me.FA   <- brGDGT_CYCL_5Me_FA(brGDGTs = brGDGTs)
 brGDGT.CYCL.6Me.FA   <- brGDGT_CYCL_6Me_FA(brGDGTs = brGDGTs)
 
 
-
-
-
 #------ isoGDGTs ---------
 
 # calculate the FA following 11-16. fGDGTs0-4.2
 fGDGTs.FA           <- fGDGTs(isoGDGTs = GDGTs)
-
-
-
 
 
 #------ OHDGTs ----------
@@ -599,16 +588,10 @@ fGDGTs.FA           <- fGDGTs(isoGDGTs = GDGTs)
 fOHGDGTs.FA         <- fOHGDGTs(OHGDGTs = GDGTs)
 
 
-
-
-
 #------ GMGTs ----------
 
 # calculate the FA following 20-26. fGMGTs1-3
 fGMGTs.FA         <- fGMGTs(GMGTs = GMGTs)
-
-
-
 
 
 ###-------------------------------------------------------------------------------------------------------------------------###
@@ -616,100 +599,55 @@ fGMGTs.FA         <- fGMGTs(GMGTs = GMGTs)
 ###-------------------------------------------------------------------------------------------------------------------------###
 
 
-#------ brDGTs ----------
+# Define a list of datasets and corresponding filenames
+csv_exports <- list(
+  list(data = brGDGT.FA, 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-FULL_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.MI.FA[, c(1,2,5,6,11,12,3,7,8,13,14,4,9,10,15,16)], 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-MI_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.METH.5Mep.FA[, c(1,2,5,6,3,7,8,4,9,10)], 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH-5Mep_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.METH.6Mep.FA[, c(1,2,5,6,3,7,8,4,9,10)], 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH-6Mep_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.METH.5Me.FA, 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH-5Me_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.METH.6Me.FA, 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH-6Me_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.METH.FA, 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.CYCL.FA, 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-CI_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.CYCL.5Me.FA, 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-CYC-5Me_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.CYCL.6Me.FA, 
+       file = paste(DirFA.br, "/", data.sets.name, "_FA-CYC-6Me_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = brGDGT.FA, 
+       file = paste(DirFA, "/", data.sets.name, "_FAs_brGDGTs_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = fGDGTs.FA, 
+       file = paste(DirFA, "/", data.sets.name, "_FAs_isoGDGTs_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = fOHGDGTs.FA, 
+       file = paste(DirFA, "/", data.sets.name, "_FAs_OHGDGTs_", Sys.Date(), ".csv", sep = "")),
+  
+  list(data = fGMGTs.FA, 
+       file = paste(DirFA, "/", data.sets.name, "_FAs_GMGTs_", Sys.Date(), ".csv", sep = ""))
+)
 
-
-# write a csv file into the Output directory containing 1. brGDGT_FA
-write.csv(x    = brGDGT.FA,
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-FULL_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 2. brGDGT_MI_FA, sort them acc. the subsets
-write.csv(x    = brGDGT.MI.FA[,c(1,2,5,6,11,12,3,7,8,13,14,4,9,10,15,16)],
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-MI_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 3. brGDGT_METH_5Mep_FA, sort them acc.the subsets
-write.csv(x    = brGDGT.METH.5Mep.FA[,c(1,2,5,6,3,7,8,4,9,10)],
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-5Mep_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 4. brGDGT_METH_6Mep_FA, sort them acc. the subsets
-write.csv(x    = brGDGT.METH.6Mep.FA[,c(1,2,5,6,3,7,8,4,9,10)],
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-6Mep_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 5. brGDGT_METH_5Me_FA, sort them acc.the subsets
-write.csv(x    = brGDGT.METH.5Me.FA,
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-5Me_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 6. brGDGT_METH_6Me_FA, sort them acc. the subsets
-write.csv(x    = brGDGT.METH.6Me.FA,
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-METH-6Me_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 7. brGDGT_METH_FA, sort them acc. the subsets
-write.csv(x    = brGDGT.METH.FA,
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-METH_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 5. brGDGT_CYCL_FA
-write.csv(x    = brGDGT.CYCL.FA,
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-CI_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 6. brGDGT_CYCL_5Me_FA
-write.csv(x    = brGDGT.CYCL.5Me.FA,
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-CYC-5Me_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 7. brGDGT_CYCL_6Me_FA
-write.csv(x    = brGDGT.CYCL.6Me.FA,
-          row.names = F, 
-          file = paste(DirFA.br,"/",data.sets.name,"_FA-CYC-6Me_",Sys.Date(),".csv",sep=""))
-
-
-# write a csv file into the Output directory containing 1. brGDGT_FA
-write.csv(x    = brGDGT.FA,
-          row.names = F, 
-          file = paste(DirFA,"/",data.sets.name,"_FAs_brGDGTs_",Sys.Date(),".csv",sep=""))
-
-#------ isoGDGTs ---------
-
-# write a csv file into the Output directory containing 8-13. fGDGT0-4.2
-write.csv(x    = fGDGTs.FA,
-          row.names = F, 
-          file = paste(DirFA,"/",data.sets.name,"_FAs_isoGDGTs_",Sys.Date(),".csv",sep=""))
-
-
-#------ OHGDGTs ---------
-
-# write a csv file into the Output directory containing 14-16. fOHGDGT0-2
-write.csv(x    = fOHGDGTs.FA,
-          row.names = F, 
-          file = paste(DirFA,"/",data.sets.name,"_FAs_OHGDGTs_",Sys.Date(),".csv",sep=""))
-
-
-#------ GMGTs ---------
-
-# write a csv file into the Output directory containing 14-16. fOHGDGT0-2
-write.csv(x    = fGMGTs.FA,
-          row.names = F, 
-          file = paste(DirFA,"/",data.sets.name,"_FAs_GMGTs_",Sys.Date(),".csv",sep=""))
-
-
-
-
+# Use lapply to iterate over the list and write the CSV files
+lapply(csv_exports, function(x) {
+  write.csv(x$data, row.names = FALSE, file = x$file)
+})
 
 
 ######################################################################################################################################################################
@@ -722,10 +660,10 @@ write.csv(x    = fGMGTs.FA,
 
 #cut out and shape the GDGTs ad the brGDGT Fractional Abundances
 
-GDGTs                  <-   cbind(IS,GDGTs,GMGTs, apply(brGDGT.FA[,-1],2,as.double),GDDs)
+GDGTs                  <-   cbind(IS, GDGTs, GDDs, GMGTs, apply(brGDGT.FA[,-1],2,as.double))
 GDGTs[is.na(GDGTs)]    <-   0
+GDGTs[GDGTs=="NaN"]    <-   0
 GDGTs                  <-   data.frame(GDGTs)
-
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
@@ -733,13 +671,9 @@ GDGTs                  <-   data.frame(GDGTs)
 ###----------------------------------------------------------------------------------------------------------------------###
 
 brGDGT.IND   <- brGDGT_INDICES(GDGTs = GDGTs)
-
 isoGDGT.IND  <- isoGDGT_INDICES(GDGTs = GDGTs)
-
 OHGDGT.IND   <- OHGDGT_INDICES(GDGTs = GDGTs)
-
 GMGT.IND    <- GMGT_INDICES(GDGTs = GDGTs)
-
 GDD.IND    <- GDD_INDICES(GDGTs = GDGTs)
 
 ###----------------------------------------------------------------------------------------------------------------------###
