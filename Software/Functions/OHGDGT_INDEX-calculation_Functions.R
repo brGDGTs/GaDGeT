@@ -32,11 +32,11 @@
 
 #           1.  PERC.OHtot:     Huguet et al. (2013)
 #           2.  OH1318.1316:    Fietz et al. (2013)
-#           2.  SST.FI:         Fietz et al. (2013)
-#           3.  RI.OH:          Lü et al. (2015)
-#           4.  RI.OH':         Lü et al. (2015)
-#           7.  RI.OH.SST:      Lü et al. (2015)
-#           8.  RI.OH'.SST:     Lü et al. (2015)
+#           3.  SST.FI:         Fietz et al. (2013)
+#           4.  RI.OH:          Lü et al. (2015)
+#           5.  RI.OH':         Lü et al. (2015)
+#           6.  RI.OH.SST:      Lü et al. (2015)
+#           7.  RI.OH'.SST:     Lü et al. (2015)
 
 
 
@@ -80,7 +80,7 @@ OHGDGT_INDICES <- function(GDGTs){
                                        rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
   
   #calculate OHGDGT1318/1316 index (Fietz et al., 2013)
-  GDGT.IND$OH1.2         <-      (GDGTs[,c("OH.GDGT.0")] /
+  GDGT.IND$OH0.1         <-      (GDGTs[,c("OH.GDGT.0")] /
                                         rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1")]))
   
   
