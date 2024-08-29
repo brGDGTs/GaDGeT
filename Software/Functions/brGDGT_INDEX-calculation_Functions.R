@@ -407,7 +407,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   
   ### 48
-  #calculate PI.bones
+  #calculate MAP
   GDGT.IND$MAP      <-  913.41*GDGT.IND$PI.bones+112 
   
   
