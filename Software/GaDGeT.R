@@ -15,8 +15,6 @@
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
 # for rapid GDGT index calculations." Organic Geochemistry. DOI: xxxx/yyyy
 
-#software version, don't change this
-software_version <-"GaDGeT v1.0"
 
 # DISCLAIMER
 
@@ -36,7 +34,8 @@ software_version <-"GaDGeT v1.0"
 #   For more information, please read the corresponding article in 
 #   Organic Geochemistry "GaDGeT – GDGT calculations simplified: an 
 #   adaptable R-toolbox for rapid GDGT index calculations" and the 
-#   manual by Schneider and Castaneda (2024).
+#   manual by Schneider and Castaneda (2024). And the corresponding 
+#   software manual.
 
 
 # Requirements:
@@ -64,74 +63,6 @@ software_version <-"GaDGeT v1.0"
 # any files from the "brGDGTs_Functions"-folder.
 
 
-#-------------------------------- FUNCTION DESCRIPTION -----------------------------------------------------------
-
-# the calculation functions are sourced from two files, below.
-
-
-#---------------------------------------------------------------
-#--------- FRACTIONAL ABUNDANCE: -------------------------------
-#---------------------------------------------------------------
-
-#          contains 13 Functions:
-
-#---------------------------------------------------------------
-#--------- FUNCTION CALLS: -------------------------------------
-#---------------------------------------------------------------
-
-#------ brGDGTs ----------
-
-#          1. brGDGT_FA
-
-#          2. brGDGT_MI_FA
-#          3. brGDGT_METH_5Mep_FA
-#          4. brGDGT_METH_6Mep_FA
-#          5. brGDGT_METH_5Me_FA
-#          6. brGDGT_METH_6Me_FA
-#          7. brGDGT_METH_FA
-
-#          8. brGDGT_CYCL_FA
-#          9. brGDGT_CYCL_5Me_FA
-#         10. brGDGT_CYCL_6Me_FA
-
-
-#------ isoGDGTs ---------
-
-#         11. fGDGTs
-
-
-#------ OHDGTs ----------
-
-#         12. fOHGDGTs
-
-
-#------ GMGTs ----------
-
-#         13. fGMGTs
-
-
-#---------------------------------------------------------------
-#--------- GDGT INDICES: -------------------------------
-#---------------------------------------------------------------
-
-#          contains 5 function files:
-
-#--------- FUNCTION CALL:
-
-#         1. brGDGT_INDICES(brGDGTs)
-#         2. isoGDGT_INDICES(isoGDGTs)
-#         3. OHGDGT_INDICES (OHGDGTs)
-#         4. GMGT_INDICES(GMGTs)
-#         5. GDD_INDICES(GDDs)
-
-#--------- GDGT AMOUNTS and CONCENTRATIONS ------------------
-
-#          these calculations are directly implemented in this master file:
-
-#--------- FUNCTION CALL:
-
-#          no extra call needed, implemented in the master file.
-
 
 ######################################################################################################################################################################
 ############################################# SCRIPT TABLE OF CONTENT ######################################################################################################
@@ -141,21 +72,17 @@ software_version <-"GaDGeT v1.0"
 # A. WORKSPACE PREPARATION
 #*******************************
 
-
 #*******************************
 # I. DATA PREPARATION
 #*******************************
-
 
 #*******************************
 # II. FRACTIONAL ABUNDANCES
 #*******************************
 
-
 #*******************************
 # III. INDEX-CALCULATIONS
 #*******************************
-
 
 #*******************************
 # IV. CONCENTRATION-CALCULATIONS
@@ -189,8 +116,8 @@ setwd(workingdir)
 
 packs<-c("stringr", "readxl")
 
-# Install missing packages (uncomment if needed)
-# install.packages(setdiff(packs, installed.packages()[, "Package"]))
+# Install missing packages
+install.packages(setdiff(packs, installed.packages()[, "Package"]))
 
 # Load the packages
 invisible(lapply(packs, library, character.only = TRUE))
@@ -557,8 +484,11 @@ write.csv(GDGTs.conc.IS, file = paste0(DirCONC, data.sets.name, "_CONC_", Sys.Da
 ###----------------------------------------------------------------------------------------------------------------------###
 # Save session info for reproducibility, no need to change anything
 
+#software version, don't change this
+software_version <-"GaDGeT v1.0"
+
 # Prepare a file to store session information including software version
-session_info_file <- paste0("SESSION_INFO_",Sys.Date(),".txt")
+session_info_file <- paste0("Output/SESSION_INFO_",data.sets.name,"_",Sys.Date(),".txt")
 
 # Open the file in write mode
 session_info_con <- file(session_info_file, open = "wt")
