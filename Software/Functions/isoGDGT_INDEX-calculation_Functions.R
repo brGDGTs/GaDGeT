@@ -3,25 +3,33 @@
 #****************************************************        TS         ********************************************************
 
 #-------------------------------------------------------------------------------------------------------------------------------
-#----------------------------------------------------------- AUTHOR -----------------------------------------------------------
+#----------------------------------------------------------- AUTHOR ------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------------
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 19. August 2024
-# Email: tobiaschnei@gmail.com, www.drtobiasschneider.com
+# Last modification: 29. August 2024
+# Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
+
+# Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
+# for rapid GDGT index calculations." Organic Geochemistry. DOI: xxxx/yyyy
+
 
 
 # DISCLAIMER
 
-# The author does not guarantee for the functionality of this script. Please do not hesitate to get back to the author
-# to report problems, or for troubleshooting.
-
+#   This script is provided "as is" without any warranties.Please 
+#   contact the author for troubleshooting or modifications.
 #-------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------- SCRIPT DESCRIPTION --------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------------
 
-# This script contains the functions used for the main script to calculate different GDGT indices.
+# This script contains the functions used for the main script to calculate different isoGDGT indices.
+#   For more information, please read the corresponding article in 
+#   Organic Geochemistry "GaDGeT – GDGT calculations simplified: an 
+#   adaptable R-toolbox for rapid GDGT index calculations" and the 
+#   manual by Schneider and Castaneda (2024). And the corresponding 
+#   software manual.
 # The script contains the following function:
 
 #--------- FUNCTION CALL:
