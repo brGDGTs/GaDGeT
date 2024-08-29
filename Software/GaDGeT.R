@@ -681,103 +681,29 @@ GDD.IND    <- GDD_INDICES(GDGTs = GDGTs)
 ###----------------------------------------------------------------------------------------------------------------------###
 
 
-#------ brGDGTs ----------
+# Define a list of data frames and corresponding file suffixes
+indices.print <- list(
+  list(data = brGDGT.IND, suffix = "BR_INDICES"),
+  list(data = isoGDGT.IND, suffix = "ISO_INDICES"),
+  list(data = OHGDGT.IND, suffix = "OH_INDICES"),
+  list(data = GMGT.IND, suffix = "GMGT_INDICES"),
+  list(data = GDD.IND, suffix = "GDD_INDICES")
+)
 
-# prepare the print file
-
-brGDGT.IND.print              <- cbind(rownames(brGDGT.IND),
-                                       GDGTs$cum.depth,
-                                       GDGTs$Age,
-                                       brGDGT.IND)
-
-colnames(brGDGT.IND.print)[1:3] <- c("Label", 
-                                   "mid.depth",
-                                   "Age")
-
-# print the csv file into the Output directory
-write.csv(brGDGT.IND.print,
-          row.names = F, 
-          file = paste(DirIND,"/",data.sets.name,"_BR_INDICES_",Sys.Date(),".csv",sep=""))
-
-
-#------ isoGDGTs ----------
-
-# prepare the print file
-
-isoGDGT.IND.print              <- cbind(rownames(isoGDGT.IND),
-                                       GDGTs$cum.depth,
-                                       GDGTs$Age,
-                                       isoGDGT.IND)
-
-colnames(isoGDGT.IND.print)[1:3] <- c("Label", 
-                                     "mid.depth",
-                                     "Age")
-
-# print the csv file into the Output directory
-write.csv(isoGDGT.IND.print,
-          row.names = F, 
-          file = paste(DirIND,"/",data.sets.name,"_ISO_INDICES_",Sys.Date(),".csv",sep=""))
-
-
-#------ OHGDGTs ----------
-
-# prepare the print file
-
-OHGDGT.IND.print              <- cbind(rownames(OHGDGT.IND),
-                                        GDGTs$cum.depth,
-                                        GDGTs$Age,
-                                        OHGDGT.IND)
-
-colnames(OHGDGT.IND.print)[1:3] <- c("Label", 
-                                      "mid.depth",
-                                      "Age")
-
-# print the csv file into the Output directory
-write.csv(OHGDGT.IND.print,
-          row.names = F, 
-          file = paste(DirIND,"/",data.sets.name,"_OH_INDICES_",Sys.Date(),".csv",sep=""))
-
-
-
-#------ GMGTs ----------
-
-# prepare the print file
-
-GMGT.IND.print              <- cbind(rownames(GMGT.IND),
-                                       GDGTs$cum.depth,
-                                       GDGTs$Age,
-                                       GMGT.IND)
-
-colnames(GMGT.IND.print)[1:3] <- c("Label", 
-                                     "mid.depth",
-                                     "Age")
-
-# print the csv file into the Output directory
-write.csv(GMGT.IND.print,
-          row.names = F, 
-          file = paste(DirIND,"/",data.sets.name,"_GMGT_INDICES_",Sys.Date(),".csv",sep=""))
-
-
-
-#------ GDDs ----------
-
-# prepare the print file
-
-GDD.IND.print              <- cbind(rownames(GDD.IND),
-                                     GDGTs$cum.depth,
-                                     GDGTs$Age,
-                                     GDD.IND)
-
-colnames(GDD.IND.print)[1:3] <- c("Label", 
-                                   "mid.depth",
-                                   "Age")
-
-# print the csv file into the Output directory
-write.csv(GDD.IND.print,
-          row.names = F, 
-          file = paste(DirIND,"/",data.sets.name,"_GDD_INDICES_",Sys.Date(),".csv",sep=""))
-
-
+# Iterate over the list to prepare and write CSV files
+lapply(indices.print, function(ind) {
+  # Prepare the print file by combining the relevant columns
+  ind_print <- cbind(
+    Label = rownames(ind$data),
+    mid.depth = GDGTs$cum.depth,
+    Age = GDGTs$Age,
+    ind$data
+  )
+  
+  # Write the CSV file into the Output directory
+  write.csv(ind_print, row.names = FALSE, 
+            file = paste0(DirIND, "/", data.sets.name, "_", ind$suffix, "_", Sys.Date(), ".csv"))
+})
 
 
 ######################################################################################################################################################################
@@ -803,23 +729,14 @@ GDGTs.amount <- GDGTs.conc*IS.factor
 GDGTs.conc <- GDGTs.amount/IS[,"SEDIEXTR"]
 
 
-#Prepare the data for printing into file, first amount, then concentration
-GDGTs.amount.IS <- cbind(rownames(IS),IS[,2:4],IS.factor,GDGTs.amount)
+# Prepare and save amounts and concentrations
+GDGTs.amount.IS <- cbind(rownames(IS), IS[, 2:4], IS.factor, GDGTs.amount)
 colnames(GDGTs.amount.IS)[1] <- "Label"
+write.csv(GDGTs.amount.IS, file = paste0(DirCONC, data.sets.name, "_AMOUNT_", Sys.Date(), ".csv"), row.names = FALSE)
 
-GDGTs.conc.IS <- cbind(rownames(IS),IS[,2:4],IS.factor,GDGTs.conc)
+GDGTs.conc.IS <- cbind(rownames(IS), IS[, 2:4], IS.factor, GDGTs.conc)
 colnames(GDGTs.conc.IS)[1] <- "Label"
-
-
-# print the csv file containing the amounts into the Output directory
-write.csv(GDGTs.amount.IS,
-          row.names = F, 
-          file = paste(DirCONC,"/",data.sets.name,"_AMOUNT_",Sys.Date(),".csv",sep=""))
-
-# print the csv file containing the concentrations into the Output directory
-write.csv(GDGTs.conc.IS,
-          row.names = F, 
-          file = paste(DirCONC,"/",data.sets.name,"_CONC_",Sys.Date(),".csv",sep=""))
+write.csv(GDGTs.conc.IS, file = paste0(DirCONC, data.sets.name, "_CONC_", Sys.Date(), ".csv"), row.names = FALSE)
 
 }
 
