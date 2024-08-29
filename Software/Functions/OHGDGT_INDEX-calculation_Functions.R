@@ -85,7 +85,7 @@ OHGDGT_INDICES <- function(GDGTs){
   
   
   #calculate SST.FI=-131.579×OH1.2+122.368 (Fietz et al., 2013, eq. 7) 
-  GDGT.IND$SST.FI         <-      (((-1/0.0076)*GDGT.IND$OH1.2) + (0.93/0.0076))
+  GDGT.IND$SST.FI         <-      ((-1/0.0076)*GDGT.IND$OH0.1) + (0.93/0.0076)
                                    
 
   ### 2
