@@ -15,7 +15,7 @@
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
 # for rapid GDGT index calculations." Organic Geochemistry. DOI: xxxx/yyyy
 
-
+#software version, don't change this
 software_version <-"GaDGeT v1.0"
 
 # DISCLAIMER
@@ -73,7 +73,7 @@ software_version <-"GaDGeT v1.0"
 #--------- FRACTIONAL ABUNDANCE: -------------------------------
 #---------------------------------------------------------------
 
-#          contains 26 Functions:
+#          contains 13 Functions:
 
 #---------------------------------------------------------------
 #--------- FUNCTION CALLS: -------------------------------------
@@ -92,91 +92,29 @@ software_version <-"GaDGeT v1.0"
 
 #          8. brGDGT_CYCL_FA
 #          9. brGDGT_CYCL_5Me_FA
-#          10. brGDGT_CYCL_6Me_FA
+#         10. brGDGT_CYCL_6Me_FA
 
 
 #------ isoGDGTs ---------
 
-#         11. fGDGT0
-#         12. fGDGT1
-#         13. fGDGT2
-#         13. fGDGT3
-#         14. fGDGT4
-#         15. fGDGT4.2
+#         11. fGDGTs
 
 
 #------ OHDGTs ----------
 
-#         17. fOH.0
-#         18. fOH.1
-#         19. fOH.2
+#         12. fOHGDGTs
 
 
 #------ GMGTs ----------
 
-#         20. fGMGT1
-#         21. fGMGT2a
-#         22. fGMGT2b
-#         23. fGMGT2c
-#         24. fGMGT3a
-#         25. fGMGT3b
-#         26. fGMGT3c
-
-#---------------------------------------------------------------
-#--------- CALCULATION-DESCRIPTIONS: ---------------------------
-#---------------------------------------------------------------
-
-#------ brGDGTs ----------
-
-#          1. Fractional Abundances, calculated acc. Raberg et al. (2021) FULL:             Ia/SUM(TOT brGDGT)
-
-#          2. Fractional Abundances, calculated acc. Raberg et al. (2021) MI:               Ia/(Ia+IIa+IIIa+IIa'+IIIa'), same for b and c
-#          3. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-5Me+:        Ia/(Ia+IIa+IIIa), same for b and c
-#          4. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-6Me+:        Ia/(Ia+IIa'+IIIa'), same for b and c
-#          5. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-5Me:         IIa/(IIa+IIIa), same for b and c
-#          6. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-6Me:         IIa´/(IIa'+IIIa'), same for b and c
-#          7. Fractional Abundances, calculated acc. Raberg et al. (2021) METH:             METH-5Me+ and METH-6Me
-
-#          8. Fractional Abundances, calculated acc. Raberg et al. (2021) CI:               IIa/(IIa+IIb+IIc+IIa'+IIb'+IIc'), same for I and III
-#          9. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-5Me+:         IIa/(IIa+IIb+IIc), same for I and III
-#          10. Fractional Abundances, calculated acc. Raberg et al. (2021) CYC-6Me+:        IIa'/(IIa'+IIb'+IIc'), same for I and III
-
-
-#------ isoGDGTs ---------
-
-#         11. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT0 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         12. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT1 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         13. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT2 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         14. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT3 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         15. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT4 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         16. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT4.2 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-
-
-#------ OHDGTs ----------
-
-#         17. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.0 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
-#         18. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.1 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
-#         19. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.2 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
-
-
-#------ GMGTs ----------
-
-#         20. Fractional Abundances of fGMGT1 (H1048), calculated as follows:                H1048  / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         21. Fractional Abundances of fGMGT2a (H1034a), calculated as follows:              H1034a / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         22. Fractional Abundances of fGMGT2b (H1034b), calculated as follows:              H1034b / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         23. Fractional Abundances of fGMGT2c (H1034c), calculated as follows:              H1034c / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         24. Fractional Abundances of fGMGT3a (H1020a), calculated as follows:              H1020a / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         25. Fractional Abundances of fGMGT3b (H1020b), calculated as follows:              H1020b / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         26. Fractional Abundances of fGMGT3c (H1020c), calculated as follows:              H1020c / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-
-
+#         13. fGMGTs
 
 
 #---------------------------------------------------------------
 #--------- GDGT INDICES: -------------------------------
 #---------------------------------------------------------------
 
-#          contains 5 functions:
+#          contains 5 function files:
 
 #--------- FUNCTION CALL:
 
@@ -185,137 +123,6 @@ software_version <-"GaDGeT v1.0"
 #         3. OHGDGT_INDICES (OHGDGTs)
 #         4. GMGT_INDICES(GMGTs)
 #         5. GDD_INDICES(GDDs)
-
-#--------- INDEX-CALCULATION-DESCRIPTIONS:
-
-
-#------ brGDGTs ----------
-
-#           1.  CBT:            de Jonge et al. (2014)
-#           2.  CBT':           de Jonge et al. (2014)
-#           3.  CBT'.5Me:       Russell et al. (2018)
-#           4.  MBT:            Weijers et al. (2007)
-#           5.  MBT':           de Jonge et al. (2014)
-#           6.  MBT.5Me:        de Jonge et al. (2014)
-#           7.  MBT.6Me:        Dang et al. (2018)
-#           8.  IR:             de Jonge et al. (2014)
-#           9.  IR6Me:          de Jonge et al. (2015)
-#          10.  INDEX1:         de Jonge et al. (2014)
-#          11.  pH.DJ:          de Jonge et al. (2014)
-#          12.  pH.DJ2:         de Jonge et al. (2014)
-#          13.  pH.RB:          Raberg et al. (2021)
-#          14.  pH.RU:          Russell et al.(2018)
-#          15.  ln(Cond):       Raberg et al. (2021)
-#          16.  Conduct:        Raberg et al. (2021)
-#          17.  MAT.DJ1:        de Jonge et al. (2014)
-#          18.  MAT.DJ2:        de Jonge et al. (2014)
-#          19.  MAT.mrs:        de Jonge et al. (2014)
-#          20.  GT.DA:          Dang et al. (2018)
-#          21.  UKT.HA:         Harning et al. (2020)
-#          22.  MAAT1.RU:       Russell et al (2018)
-#          23.  MAAT2.RU:       Russell et al (2018)
-#          24.  SFS.RU:         Russell et al (2018)
-#          25.  MWT.ZH:         Zhao et al (2020)
-#          26.  MAF.METH:       Raberg et al (2021)
-#          27.  MAF.FULL:       Raberg et al (2021)
-#          28.  MAAT.trop:      Zhao et al. (2023)
-#          29.  MLR.trop:       Zhao et al. (2023)
-#          30.  MAF.highlat:    Zhao et al. (2023)
-#          31.  MLR.highlat:    Zhao et al. (2023)
-#          32.  MAAT.BA1        Bauersachs et al. (2023)
-#          33.  MAAT.BA2        Bauersachs et al. (2023)
-#          34.  MAF.BA1         Bauersachs et al. (2023)
-#          35.  MAF.BA2         Bauersachs et al. (2023)
-#          36.  IIIa.IIIaIIIa:  Raberg et al (2021)
-#          37.  DO:             Raberg et al (2021)
-#          38.  HP5:            Yao et al (2020)
-#          39.  RINGtetra:      Raberg et al (2021) 
-#          40.  RINGpenta 5Me:  Raberg et al (2021)
-#          41.  RINGpenta 6Me:  Raberg et al (2021)
-#          42.  DC:             Raberg et al (2021)
-#          43.  DC':            de Jonge et al (2024)
-#          44.  IBT:            Ding et al (2015)
-#          45.  CI:             Raberg et al (2021)
-#          46.  BIT:            Hopmans et al (2004), Dang et al (2016)
-#          47.  PI.bones:       Zhao et al (2020)
-#          48.  MAP.bones:      Zhao et al (2020)
-
-
-#------ isoGDGTs ---------
-
-#--------- FUNCTION CALL:
-
-#          isoGDGT_INDICES(GDGTs)
-
-#--------- INDEX-CALCULATION-DESCRIPTIONS:
-
-#           1.  TEX86:          Schouten et al. (2002)
-#           2.  TEX.CASC:       Castaneda and Schouten (2011, 2015)
-#           3.  TEX.PW:         Powers et al. (2010)
-#           4.  TEX.TIER:       Tierney et al. (2010)
-#           5.  TEX.KIM:        Kim et al. (2008)
-#           6.  TEX.L.86:       Kim et al (2010)
-#           7.  TEX.H.86:       Kim et al (2010)
-#           8.  TEX.L.SST:      Kim et al (2010)
-#           9.  TEX.H.SST:      Kim et al (2010)
-#          10.  TEX.OH.86:      Varma et al (2024)
-#          11.  TEX.OH.86.SST:  Varma et al (2024) 
-#          12.  RI.SMPL:        Zhang et al. (2016)
-#          13.  RI.TEX:         Zhang et al. (2016)
-#          14.  Delta.RI:       Zhang et al. (2016)
-#          15.  M.IND:          Zhang et al. (2011)
-#          16.  ANOX:           Blaga et al. (2009)
-#          17.  EXDEPTH:        Taylor et al. (2013)
-
-
-
-#------ OHDGTs ----------
-
-#--------- FUNCTION CALL:
-
-#          OHGDGT_INDICES(GDGTs)
-
-#--------- INDEX-CALCULATION-DESCRIPTIONS:
-
-#           1.  PERC.OHtot:     Feitz et al. (2013)
-#           2.  OH1318.1316:    Feitz et al. (2013)
-#           2.  SST.FI:         Feitz et al. (2013)
-#           3.  RI.OH:          Lü et al. (2015)
-#           4.  RI.OH':         Lü et al. (2015)
-#           7.  RI.OH.SST:      Lü et al. (2015)
-#           8.  RI.OH'.SST:     Lü et al. (2015)
-
-
-
-#------ GMGTs ----------
-
-#--------- FUNCTION CALL:
-
-#          GMGT_INDICES(GDGTs)
-
-#--------- INDEX-CALCULATION-DESCRIPTIONS:
-
-#           1.  brGMGTI:          Baxter et al. (2019)
-#           2.  brGMGTI.MAAT:     Baxter et al. (2019)
-#           3.  brGMGT.MAAT2:     Baxter et al. (2019)
-#           4.  brGMGT%:          Baxter et al. (2021)
-#           5.  DM.brGMGT:        Baxter et al. (2024)
-
-
-
-#------ GDDs ----------
-
-#--------- FUNCTION CALL:
-
-#          GDD_INDICES(GDGTs)
-
-#--------- INDEX-CALCULATION-DESCRIPTIONS:
-
-#           1.  RI.GDD:           Hingley et al. (2024), eq. 2
-#           2.  GDD%:             Hingley et al. (2024), eq. 3
-#           3.  GDD%tot:          Hingley et al. (2024), eq. 4
-
-
 
 #--------- GDGT AMOUNTS and CONCENTRATIONS ------------------
 
@@ -448,7 +255,6 @@ for (i in seq_along(GDGT.files)) {
 # Get dataset names by removing the file extension
 data.sets.names <- str_remove(string = GDGT.files, pattern = ".xlsx")
 
-
 ###----------------------------------------------------------------------------------------------------------------------###
 ###------------------------------------- MAIN PROCESSING LOOP -----------------------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
@@ -459,8 +265,6 @@ for(f in 1:length(data.sets.names)){
 
 # Choose the file according to the list provided above
 data.sets.name <- data.sets.names[f]
-
-
 
 ###----------------------------------------------------------------------------------------------------------------------###
 ###---------------------------------------- PREPARE DATA ----------------------------------------------------------------###
@@ -475,7 +279,9 @@ GDGT.temp <- matrix(GDGT.temp,ncol=ncol(data.sets[[f]]))
 rownames(GDGT.temp) <- unlist(data.sets[[f]][,1])
 colnames(GDGT.temp) <- colnames(data.sets[[f]])
 
-
+if (!all(c("IIIa.5Me", "Ia", "cum.depth") %in% colnames(GDGT.temp))) {
+  stop("The input file does not contain the required columns. Please check the input format.")
+}
 
 ###----------------------------------------------------------------------------------------------------------------------###
 ###------------------------------------------- SEPARATION OF COMPOUNDS --------------------------------------------------###
@@ -743,7 +549,6 @@ write.csv(GDGTs.amount.IS, file = paste0(DirCONC, data.sets.name, "_AMOUNT_", Sy
 GDGTs.conc.IS <- cbind(rownames(IS), IS[, 2:4], IS.factor, GDGTs.conc)
 colnames(GDGTs.conc.IS)[1] <- "Label"
 write.csv(GDGTs.conc.IS, file = paste0(DirCONC, data.sets.name, "_CONC_", Sys.Date(), ".csv"), row.names = FALSE)
-
 
 
 
