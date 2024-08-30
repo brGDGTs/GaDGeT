@@ -168,6 +168,44 @@ save_session_info <- function(output_dir, data_set_name, software_version = "GaD
 
 
 
+
+
+
+# ================ READ AND PROCESS DATAFILES =========================
+
+
+
+# Helper function to read data files and handle parsing issues
+read_and_process_files <- function(file_paths, working_directory) {
+  # Initialize list for data compilation
+  data_sets <- list()
+  
+  # Loop through each file path and read the data
+  suppressWarnings(for (i in seq_along(file_paths)) {
+    file_path <- paste0(working_directory, "/Input/", file_paths[i])
+    
+    # Read data using the updated function to ensure consistent precision
+    data_sets[[i]] <- tryCatch({
+      data <- read_data(file_path)
+      parse_problems <- problems(data)
+      if (nrow(parse_problems) > 0) {
+        message("Parsing issues detected in file: ", file_path)
+        print(parse_problems)
+      }
+      data  # Return the data if no critical issues
+    }, error = function(e) {
+      stop("Error reading file: ", file_path, "\n", e)
+    })
+  })
+  
+  # Get dataset names by removing the file extension
+  data_sets_names <- tools::file_path_sans_ext(file_paths)
+  
+  return(list(data_sets = data_sets, data_sets_names = data_sets_names))
+}
+
+
+
 #**************************************************************************************************************************#
 #******************************************************* END **************************************************************#
 #**************************************************************************************************************************#
