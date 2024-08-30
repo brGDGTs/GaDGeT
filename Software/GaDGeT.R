@@ -207,9 +207,7 @@ GDGT.temp <- matrix(GDGT.temp,ncol=ncol(data.sets[[f]]))
 rownames(GDGT.temp) <- unlist(data.sets[[f]][,1])
 colnames(GDGT.temp) <- colnames(data.sets[[f]])
 
-if (!all(c("IIIa.5Me", "Ia", "cum.depth") %in% colnames(GDGT.temp))) {
-  stop("The input file does not contain the required columns. Please check the input format.")
-}
+
 
 ###----------------------------------------------------------------------------------------------------------------------###
 ###------------------------------------------- SEPARATION OF COMPOUNDS --------------------------------------------------###
@@ -230,6 +228,14 @@ GMGTs_cols   <- c("H1048", "H1034a", "H1034b","H1034c", "H1020a", "H1020b", "H10
 GDDs_cols    <- c("isoGDD0", "isoGDD1","isoGDD2","isoGDD3", "isoGDDCren")
 
 IS_cols      <- c("Label", "cum.depth", "Age", "SEDIEXTR", "IS_AREA","IS_AMOUNT")
+
+
+# column check, are all required columns available?
+
+if (!all(c(brGDGTs_cols,GDGTs_cols,GMGTs_cols,GDDs_cols, IS_cols) %in% colnames(GDGT.temp))) {
+  stop("The input file does not contain the required columns. Please use the column header names as provided in the template.")
+}
+
 
 
 # === Extract relevant data, filling NAs with 0 ===
