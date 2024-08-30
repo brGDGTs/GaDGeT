@@ -105,7 +105,7 @@ cat("\014")  # Clear console
 graphics.off()  # Close all graphics windows
 
 
-# Set working directory (you can change to `choose.dir()` for flexibility)
+# Set working directory
 workingdir <- getwd() # Use default working directory
 workingdir<-"C:/Users/tobia/Dropbox/UMASS/Papers/ongoing/GaDGeT/GaDGeT/GaDGeT/Software/"
 
@@ -114,8 +114,7 @@ setwd(workingdir)
 
 # ================ Load Required Packages ===================
 
-
-packs<-c("stringr", "readxl", "readr")
+packs <- c("stringr", "readxl", "readr")
 
 # Install missing packages
 install.packages(setdiff(packs, installed.packages()[, "Package"]))
@@ -155,20 +154,10 @@ if (length(GDGT.files) == 0) {
 ###----------------------------------------------------------------------------------------------------------------------###
 
 # Initialize list for data compilation
-data.sets <- list()
+files_info <- read_and_process_files(GDGT.files, workingdir)# read in datafiles based on the helper function
 
-# Loop through each file and read data
-for (i in seq_along(GDGT.files)) {
-  file_path <- paste0(workingdir, "/Input/", GDGT.files[i])
-  
-  # Read data using the updated function to ensure consistent precision
-  data.sets[[i]] <- read_data(file_path)
-}
-
-# Get dataset names by removing the file extension
-data.sets.names <- tools::file_path_sans_ext(GDGT.files)
-
-
+data.sets <- files_info$data_sets
+data.sets.names <- files_info$data_sets_names
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
@@ -361,7 +350,6 @@ output_directory <- list(
 export_data_to_csv(data_sets, output_directory, data.sets.name)
 
 
-
 ######################################################################################################################################################################
 ############################################### III. INDEX-CALCULATIONS ################################################################################################
 ######################################################################################################################################################################
@@ -457,26 +445,7 @@ write.csv(GDGTs.conc.IS, file = paste0(DirCONC, data.sets.name, "_CONC_", Sys.Da
 ###----------------------------------------------------------------------------------------------------------------------###
 # Save session info for reproducibility, no need to change anything
 
-#software version, don't change this
-software_version <-"GaDGeT v1.0"
-
-# Prepare a file to store session information including software version
-session_info_file <- paste0("Output/SESSION_INFO_",data.sets.name,"_",Sys.Date(),".txt")
-
-# Open the file in write mode
-session_info_con <- file(session_info_file, open = "wt")
-
-# Write the software version at the top of the session info file
-writeLines(paste("Software Version:", software_version), session_info_con)
-
-# Write the current date and time
-writeLines(paste("Date:", Sys.time()), session_info_con)
-
-# Append the session information
-writeLines(capture.output(sessionInfo()), session_info_con)
-
-# Close the connection
-close(session_info_con)
+save_session_info("Output", data.sets.name)
 
 
 }
