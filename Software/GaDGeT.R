@@ -107,7 +107,9 @@ graphics.off()  # Close all graphics windows
 
 # Set working directory
 workingdir <- getwd() # Use default working directory
-workingdir<-"C:/Users/tobia/Dropbox/UMASS/Papers/ongoing/GaDGeT/GaDGeT/GaDGeT/Software/"
+
+#uncomment below and add the workingdir mannually
+#workingdir<-"C:/Users/..."
 
 setwd(workingdir)
 
