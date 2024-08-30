@@ -306,7 +306,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 26
   #calculate MAF.METH; Raberg et al. (2021)
-  brGDGT.ME.FA        <- as.matrix(cbind(brGDGT.METH.5Me.FA,brGDGT.METH.6Me.FA))# for col assignment
+  brGDGT.ME.FA        <- as.matrix(cbind(brGDGT.METH.5Mep.FA,brGDGT.METH.6Me.FA))# for col assignment
   
   
   for(i in 1:nrow(brGDGT.ME.FA)){
