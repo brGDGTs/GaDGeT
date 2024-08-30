@@ -447,7 +447,6 @@ write.csv(GDGTs.conc.IS, file = paste0(DirCONC, data.sets.name, "_CONC_", Sys.Da
 
 save_session_info("Output", data.sets.name)
 
-
 }
 
 
