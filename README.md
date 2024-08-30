@@ -1,14 +1,59 @@
-# GaDGeT
- GaDGeT- GDGT calculations simplified: an adaptable R-toolbox for rapid index calculations
+ # GaDGeT
+ *GaDGeT- GDGT calculations simplified: an adaptable R-toolbox for rapid index calculations*
+ GaDGeT is an adaptable R script designed to calculate various fractional abundances and GDGT-indices from isoGDGTs, OHGDGTs, brGDGTs, GMGTs, and GDDs. The script processes data from Excel (.xlsx; .csv) files located in the 
+ 'Input' directory and outputs CSV files with the calculated results into the 'Output' directory.
+ This tool was developed as part of the research presented in the article:
+ Schneider, T., & Castañeda, I.S. (2024). *GaDGeT – GDGT calculations simplified: an adaptable R-toolbox for rapid GDGT index calculations*. Organic Geochemistry. DOI: [insert DOI here]
+ 
 
  # Features
- Automated workflow converting HPLC-derived isoGDGT, brGDGT, OH-GDGT, GMGT, and GDD data into concentrations, and calculates various proxies.
- provide a spreadsheet with HPLC-peak areas per sample and compound and GaDGeT will calculate everything for you
+ *Fractional Abundance Calculations:* Calculates fractional abundances for a wide range of GDGTs.
+ *GDGT Index Calculations:* Computes multiple GDGT indices based on published methods.
+ *Output Files:* Generates CSV files for each calculation, organized by dataset and index type.
+ *Error Handling:* Includes robust error handling for file reading and data processing.
 
  # Original publication
  Please find the original, open access publication in SoftwareX: Schneider and Castañeda (2024): *GaDGeT- GDGT calculations simplified: an adaptable R-toolbox for rapid index calculations*
  # User manual
  Please follow the instructions in the user manual.
 
- # Abstract
- Membrane lipids such as glycerol dialkyl glycerol tetraethers (GDGTs) are increasingly recognized as vital proxies for paleoenvironmental and climatic reconstructions. This field is rapidly evolving, with frequent publications introducing new calibrations, indices, and ratios derived from a diverse range of compounds. Despite the availability of software for high-performance liquid chromatography (HPLC) data extraction, there is a notable lack of automated workflows for subsequent data processing. In response, we introduce “GaDGeT”, a comprehensive R-based software solution designed to calculate concentrations, fractional abundances, and published GDGT-indices and ratios. Users input HPLC-derived peak area datasets, and GaDGeT automatically processes these data, organizing the results into a structured directory system. GaDGeT’s advantages lie in its implementation in R, known for its data manipulation, analysis, and visualization capabilities, and its open-source nature, ensuring reproducibility and transparency. The platform-independent design of GaDGeT makes it accessible and adaptable for researchers of varying expertise levels in GDGT research. Additionally, users can easily add new calculations, allowing the software to evolve with advancements in the field. This software aims to streamline GDGT data analysis, enhancing the efficiency and accuracy of paleoenvironmental and climatic studies.
+ # Requirements
+ R Version: 3.5 or above
+ 
+ R Packages: stringr, readxl, readr
+
+ # Installation
+ Clone or Download the Repository: Download the script and associated function files to your local machine and don't change the folder structure.
+ Follow the explanation in the user manual.
+
+ # Usage
+1. Prepare Input Data
+Place your Excel files containing the HPLC areas in the 'Input' directory.
+Ensure that each Excel file contains a sheet named "GDGTs" with the correct structure as per the template.
+If concentration calculations are required, include the dry sediment weight and internal standard (IS) data.
+
+2. Run the Script
+Open the GaDGeT.R script in R or RStudio and run the script. Ensure that the working directory is set correctly (you can modify it at the start of the script).
+
+3. Output
+The script will generate CSV files in the 'Output' directory.
+Each output will be saved in a subfolder corresponding to the dataset name, and further organized by calculation type.
+
+# License
+This script is provided "as is" without any warranties. You are free to use, modify, and distribute it under a Ta Creative Commons Attribution 4.0 International License.
+Users must give appropriate credit (cite the original publication, Schneider and Castañeda (2024), provide a link to the license, and indicate if changes were made. 
+
+
+# Contributing
+If you'd like to contribute to the development of GaDGeT, please reach out to the author at the contact information below.
+
+# Contact
+For troubleshooting, suggestions, or modifications, please contact:
+
+Tobias Schneider
+
+Email: tobiaschnei@gmail.com
+Website: www.drtobiasschneider.com
+
+
+
