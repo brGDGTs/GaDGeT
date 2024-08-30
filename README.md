@@ -13,7 +13,8 @@
  *Error Handling:* Includes robust error handling for file reading and data processing.
 
  # Original publication
- Please find the original, open access publication in SoftwareX: Schneider and Castañeda (2024): *GaDGeT- GDGT calculations simplified: an adaptable R-toolbox for rapid index calculations*
+ Please find the original, open access publication in Organic Geochemistry: Schneider and Castañeda (2024): *GaDGeT- GDGT calculations simplified: an adaptable R-toolbox for rapid index calculations*
+ 
  # User manual
  Please follow the instructions in the user manual.
 
