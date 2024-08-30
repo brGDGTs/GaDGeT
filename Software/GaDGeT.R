@@ -115,7 +115,7 @@ setwd(workingdir)
 # ================ Load Required Packages ===================
 
 
-packs<-c("stringr", "readxl")
+packs<-c("stringr", "readxl", "readr")
 
 # Install missing packages
 install.packages(setdiff(packs, installed.packages()[, "Package"]))
@@ -132,20 +132,11 @@ function_files <- c("GDGT_FA-calculation_Functions.R",
                     "isoGDGT_INDEX-calculation_Functions.R",
                     "OHGDGT_INDEX-calculation_Functions.R",
                     "GMGT_INDEX-calculation_Functions.R",
-                    "GDD_INDEX-calculation_Functions.R")
+                    "GDD_INDEX-calculation_Functions.R",
+                    "Helper_Functions.R")
 
 # Source all files in the list
 invisible(lapply(function_files, function(file) source(file.path("Functions", file))))
-
-
-# ================ Helper Functions =========================
-# Function to create directories if they don't exist
-create_dir <- function(path) {
-  if (!dir.exists(path)) {
-    dir.create(path, recursive = TRUE)
-  }
-}
-
 
 
 ######################################################################################################################################################################
@@ -153,7 +144,7 @@ create_dir <- function(path) {
 ######################################################################################################################################################################
 
 # Get list of Excel files in the 'Input' directory
-GDGT.files <- list.files(path = paste0(workingdir, "/Input/"), pattern = "\\.xlsx$")
+GDGT.files <- list.files(path = paste0(workingdir, "/Input/"), pattern = "\\.(xlsx|csv)$")
 
 if (length(GDGT.files) == 0) {
   stop("No input files found in the 'Input' directory. Please add input files according to the template.")
@@ -164,28 +155,28 @@ if (length(GDGT.files) == 0) {
 ###----------------------------------------------------------------------------------------------------------------------###
 
 # Initialize list for data compilation
-data.sets<-list()
+data.sets <- list()
 
 # Loop through each file and read data
 for (i in seq_along(GDGT.files)) {
   file_path <- paste0(workingdir, "/Input/", GDGT.files[i])
   
-  # Read data from the specified sheet
-  table.temp <- tryCatch({
-    read_xlsx(path = file_path, sheet = "GDGTs")
-  }, error = function(e) {
-    stop("Error reading Excel file: ", file_path, "\n", e)
-  })
-  
-  data.sets[[i]] <- table.temp
+  # Read data using the updated function to ensure consistent precision
+  data.sets[[i]] <- read_data(file_path)
 }
 
 # Get dataset names by removing the file extension
-data.sets.names <- str_remove(string = GDGT.files, pattern = ".xlsx")
+data.sets.names <- tools::file_path_sans_ext(GDGT.files)
+
+
+
 
 ###----------------------------------------------------------------------------------------------------------------------###
 ###------------------------------------- MAIN PROCESSING LOOP -----------------------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
+
+# Set global precision for numeric outputs
+options(digits = 15)
 
 # build a loop to browse through all files and calculate all the FAs for all Excel sheets
 
@@ -346,54 +337,29 @@ fGMGTs.FA         <- fGMGTs(GMGTs = GMGTs)
 
 
 # Define a list of datasets and corresponding filenames
-csv_exports <- list(
-  list(data = brGDGT.FA, 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-FULL_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.MI.FA[, c(1,2,5,6,11,12,3,7,8,13,14,4,9,10,15,16)], 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-MI_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.METH.5Mep.FA[, c(1,2,5,6,3,7,8,4,9,10)], 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH-5Mep_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.METH.6Mep.FA[, c(1,2,5,6,3,7,8,4,9,10)], 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH-6Mep_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.METH.5Me.FA, 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH-5Me_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.METH.6Me.FA, 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH-6Me_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.METH.FA, 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-METH_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.CYCL.FA, 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-CI_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.CYCL.5Me.FA, 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-CYC-5Me_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.CYCL.6Me.FA, 
-       file = paste(DirFA.br, "/", data.sets.name, "_FA-CYC-6Me_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = brGDGT.FA, 
-       file = paste(DirFA, "/", data.sets.name, "_FAs_brGDGTs_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = fGDGTs.FA, 
-       file = paste(DirFA, "/", data.sets.name, "_FAs_isoGDGTs_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = fOHGDGTs.FA, 
-       file = paste(DirFA, "/", data.sets.name, "_FAs_OHGDGTs_", Sys.Date(), ".csv", sep = "")),
-  
-  list(data = fGMGTs.FA, 
-       file = paste(DirFA, "/", data.sets.name, "_FAs_GMGTs_", Sys.Date(), ".csv", sep = ""))
+data_sets <- list(
+  brGDGT.FA = brGDGT.FA,
+  brGDGT.MI.FA = brGDGT.MI.FA,
+  brGDGT.METH.5Mep.FA = brGDGT.METH.5Mep.FA,
+  brGDGT.METH.6Mep.FA = brGDGT.METH.6Mep.FA,
+  brGDGT.METH.5Me.FA = brGDGT.METH.5Me.FA,
+  brGDGT.METH.6Me.FA = brGDGT.METH.6Me.FA,
+  brGDGT.METH.FA = brGDGT.METH.FA,
+  brGDGT.CYCL.FA = brGDGT.CYCL.FA,
+  brGDGT.CYCL.5Me.FA = brGDGT.CYCL.5Me.FA,
+  brGDGT.CYCL.6Me.FA = brGDGT.CYCL.6Me.FA,
+  fGDGTs.FA = fGDGTs.FA,
+  fOHGDGTs.FA = fOHGDGTs.FA,
+  fGMGTs.FA = fGMGTs.FA
 )
 
-# Use lapply to iterate over the list and write the CSV files
-lapply(csv_exports, function(x) {
-  write.csv(x$data, row.names = FALSE, file = x$file)
-})
+output_directory <- list(
+  DirFA.br = DirFA.br,
+  DirFA = DirFA
+)
+
+export_data_to_csv(data_sets, output_directory, data.sets.name)
+
 
 
 ######################################################################################################################################################################
