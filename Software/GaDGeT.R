@@ -61,7 +61,7 @@
 
 
 # !!! start the script by double clicking on the GaDGeT.R file. Do not change folder names, nor move
-# any files from the "brGDGTs_Functions"-folder.
+# any files from the "Functions"-folder.
 
 
 
@@ -158,7 +158,7 @@ if (length(GDGT.files) == 0) {
 files_info <- read_and_process_files(GDGT.files, workingdir)# read in datafiles based on the helper function
 
 data.sets <- files_info$data_sets
-data.sets.names <- files_info$data_sets_names
+data.sets.names <- files_info$data_sets_names #lists all available datasets
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
