@@ -28,15 +28,15 @@
  Follow the explanation in the user manual.
 
  # Usage
-1. Prepare Input Data
+## 1. Prepare Input Data
 Place your Excel files containing the HPLC areas in the 'Input' directory.
 Ensure that each Excel file contains a sheet named "GDGTs" with the correct structure as per the template.
 If concentration calculations are required, include the dry sediment weight and internal standard (IS) data.
 
-2. Run the Script
+## 2. Run the Script
 Open the GaDGeT.R script in R or RStudio and run the script. Ensure that the working directory is set correctly (you can modify it at the start of the script).
 
-3. Output
+## 3. Output
 The script will generate CSV files in the 'Output' directory.
 Each output will be saved in a subfolder corresponding to the dataset name, and further organized by calculation type.
 
