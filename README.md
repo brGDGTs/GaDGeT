@@ -41,8 +41,9 @@ The script will generate CSV files in the 'Output' directory.
 Each output will be saved in a subfolder corresponding to the dataset name, and further organized by calculation type.
 
 # License
-This script is provided "as is" without any warranties. You are free to use, modify, and distribute it under a Ta Creative Commons Attribution 4.0 International License.
+This script is provided "as is" without any warranties. You are free to use, modify, and distribute it under a Creative Commons Attribution 4.0 International License.
 Users must give appropriate credit (cite the original publication, Schneider and Castañeda (2024), provide a link to the license, and indicate if changes were made. 
+Please find more information in the license file.
 
 
 # Contributing
