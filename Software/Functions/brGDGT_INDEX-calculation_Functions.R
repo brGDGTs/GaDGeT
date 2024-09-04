@@ -59,7 +59,7 @@
 #          17.  MAT.DJ1:        de Jonge et al. (2014)
 #          18.  MAT.DJ2:        de Jonge et al. (2014)
 #          19.  MAT.mrs:        de Jonge et al. (2014)
-#          20.  GT.DA:          Dang et al. (2018)
+
 #          21.  UKT.HA:         Harning et al. (2020)
 #          22.  MAAT1.RU:       Russell et al (2018)
 #          23.  MAAT2.RU:       Russell et al (2018)
@@ -104,7 +104,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 48
+  n= 47
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -131,7 +131,6 @@ brGDGT_INDICES <- function(GDGTs){
                            "MAT.DJ1",
                            "MAT.DJ2",
                            "MAT.mrs",
-                           "GT.DA",
                            "UKT.HA",
                            "MAAT1.RU",
                            "MAAT2.RU",
@@ -280,9 +279,6 @@ brGDGT_INDICES <- function(GDGTs){
   #calculate MAT.mrs; deJonge et al (2014)
   GDGT.IND$MAT.mrs       <-   5.58 + (17.91*GDGTs$Ia) + (18.77*GDGTs$IIa.5Me)
    
-  ### 20
-  #calculate Growth Temperature; Dang et al (2018)
-  GDGT.IND$GT.DA        <-   NA
   ### 21
   #calculate UK37-temp, Harning et al (2020)
   GDGT.IND$UKT.HA       <-   (-0.154*GDGTs$IIIa.5Me)+(0.3538*GDGTs$Ia)+(1.0016*GDGTs$IIIa.6Me)-0.7537
