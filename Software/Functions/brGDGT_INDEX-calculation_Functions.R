@@ -278,7 +278,8 @@ brGDGT_INDICES <- function(GDGTs){
   ### 19
   #calculate MAT.mrs; deJonge et al (2014)
   GDGT.IND$MAT.mrs       <-   5.58 + (17.91*GDGTs$Ia) + (18.77*GDGTs$IIa.5Me)
-   
+
+     
   ### 21
   #calculate UK37-temp, Harning et al (2020)
   GDGT.IND$UKT.HA       <-   (-0.154*GDGTs$IIIa.5Me)+(0.3538*GDGTs$Ia)+(1.0016*GDGTs$IIIa.6Me)-0.7537
