@@ -46,8 +46,11 @@
 #           5.  RI.OH':         Lü et al. (2015)
 #           6.  RI.OH.SST:      Lü et al. (2015)
 #           7.  RI.OH'.SST:     Lü et al. (2015)
-
-
+#           8.  MAAT.WU1:       Wu et al. (2024)
+#           9.  MAAT.WU2:       Wu et al. (2024)
+#          10.  OHC:            Varma et al. (2024)
+#          11.  SST:VA1:        Varma et al. (2024)
+#          12.  SST:VA2:        Varma et al. (2024)
 
 
 ############################################################################################################################
@@ -63,7 +66,7 @@ OHGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 7
+  n= 12
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -77,7 +80,12 @@ OHGDGT_INDICES <- function(GDGTs){
                            "RI.OH",
                            "RI.OH.",
                            "RI.OH.SST",
-                           "RI.OH..SST")
+                           "RI.OH..SST",
+                           "MAAT.WU1",
+                           "MAAT.WU2",
+                           "OHC",
+                           "SST.VA1",
+                           "SST.VA2")
   
   GDGT.IND <- data.frame(GDGT.IND)
   
@@ -115,7 +123,27 @@ OHGDGT_INDICES <- function(GDGTs){
   #calculate SST based RI-OH' (Lü et al., 2015 eq. 14)
   GDGT.IND$RI.OH..SST    <-    (((1/0.0382)*GDGT.IND$RI.OH.) - (0.1/0.0382))
   
-
+  ### 8
+  #calculate MAAT.WU 1 Wu et al. (2024)
+  GDGT.IND$MAAT.WU1    <-    28.55*GDGT.IND$RI.OH - 37.84
+  
+  ### 9
+  #calculate MAAT.WU 2 Wu et al. (2024)
+  GDGT.IND$MAAT.WU2    <-    32.39*GDGT.IND$RI.OH - 43.17
+  
+  ### 10
+  #calculate SST.VA1 Varma et al. (2024)
+  GDGT.IND$OHC       <-     (rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")])- GDGTs[,c("OH.GDGT.0")]) /
+                             rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4.2")])
+ 
+  ### 11
+  #calculate SST.VA1 Varma et al. (2024)
+  GDGT.IND$SST.VA1    <-    12.8261 + 21.7391*GDGT.IND$OHC
+  
+  ### 12
+  #calculate SST.VA1 Varma et al. (2024)
+  GDGT.IND$SST.VA1    <-    43.75- 1.25*sqrt(641-800*GDGT.IND$OHC)
+  
   return(GDGT.IND)
 }
 
