@@ -46,7 +46,12 @@
 #           5.  RI.OH':         Lü et al. (2015)
 #           6.  RI.OH.SST:      Lü et al. (2015)
 #           7.  RI.OH'.SST:     Lü et al. (2015)
-
+#           8.  MAAT.WU1:       Wu et al. (2024)
+#           9.  MAAT.WU2:       Wu et al. (2024)
+#          10.  OHC:            Varma et al. (2024)
+#          11.  SST:VA1:        Varma et al. (2024)
+#          12.  SST:VA2:        Varma et al. (2024)
+#          13.  SST.VA3:        Varma et al. (2024)
 
 
 
@@ -63,7 +68,7 @@ OHGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 7
+  n= 13
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -77,7 +82,13 @@ OHGDGT_INDICES <- function(GDGTs){
                            "RI.OH",
                            "RI.OH.",
                            "RI.OH.SST",
-                           "RI.OH..SST")
+                           "RI.OH..SST",
+                           "MAAT.WU1",
+                           "MAAT.WU2",
+                           "OHC",
+                           "SST.VA1",
+                           "SST.VA2",
+                           "SST.VA3")
   
   GDGT.IND <- data.frame(GDGT.IND)
   
