@@ -117,7 +117,7 @@ isoGDGT_INDICES <- function(GDGTs){
   
   ### 4
   #calculate TEX temp Tierney calib (Tierney et al., 2010)
-  GDGT.IND$TEX.TIER        <-   39.781*GDGT.IND$TEX86-4.0133
+  GDGT.IND$TEX.TIER        <-   39.541*GDGT.IND$TEX86-4.0133
   
   ### 5
   #calculate TEX temp Kim et al. (2008) calib (Kim et al., 2008)
