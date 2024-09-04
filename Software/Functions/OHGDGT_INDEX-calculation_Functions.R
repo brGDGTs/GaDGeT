@@ -144,7 +144,7 @@ OHGDGT_INDICES <- function(GDGTs){
   
   ### 12
   #calculate SST.VA1 Varma et al. (2024)
-  GDGT.IND$SST.VA1    <-    43.75- 1.25*sqrt(641-800*GDGT.IND$OHC)
+  GDGT.IND$SST.VA2    <-    43.75- 1.25*sqrt(641-800*GDGT.IND$OHC)
   
   return(GDGT.IND)
 }
