@@ -51,6 +51,11 @@
 #          10.  OHC:            Varma et al. (2024)
 #          11.  SST:VA1:        Varma et al. (2024)
 #          12.  SST:VA2:        Varma et al. (2024)
+<<<<<<< HEAD
+=======
+#          13.  SST.VA3:        Varma et al. (2024)
+
+>>>>>>> 40a77208322cb03e928a96a9660c42088cc1ec1e
 
 
 ############################################################################################################################
@@ -66,7 +71,11 @@ OHGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
+<<<<<<< HEAD
   n= 12
+=======
+  n= 13
+>>>>>>> 40a77208322cb03e928a96a9660c42088cc1ec1e
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -85,7 +94,12 @@ OHGDGT_INDICES <- function(GDGTs){
                            "MAAT.WU2",
                            "OHC",
                            "SST.VA1",
+<<<<<<< HEAD
                            "SST.VA2")
+=======
+                           "SST.VA2",
+                           "SST.VA3")
+>>>>>>> 40a77208322cb03e928a96a9660c42088cc1ec1e
   
   GDGT.IND <- data.frame(GDGT.IND)
   
