@@ -50,47 +50,50 @@
 #           8.  IR:             de Jonge et al. (2014)
 #           9.  IR6Me:          de Jonge et al. (2015)
 #          10.  IR7Me:          Martin et al. (2019)
-#          10.  INDEX1:         de Jonge et al. (2014)
-#          11.  pH.DJ:          de Jonge et al. (2014)
-#          12.  pH.DJ2:         de Jonge et al. (2014)
-#          13.  pH.RB:          Raberg et al. (2021)
-#          14.  pH.RU:          Russell et al.(2018)
-#          15.  ln(Cond):       Raberg et al. (2021)
-#          16.  Conduct:        Raberg et al. (2021)
-#          17.  MAT.DJ1:        de Jonge et al. (2014)
-#          18.  MAT.DJ2:        de Jonge et al. (2014)
-#          19.  MAT.mrs:        de Jonge et al. (2014)
+#          11.  INDEX1:         de Jonge et al. (2014)
+#          12.  pH.DJ:          de Jonge et al. (2014)
+#          13.  pH.DJ2:         de Jonge et al. (2014)
+#          14.  pH.RB:          Raberg et al. (2021)
+#          15.  pH.RB2:         Raberg et al. (2024)
+#          16.  pH.RU:          Russell et al.(2018)
+#          17.  ln(Cond):       Raberg et al. (2021)
+#          18.  Conduct:        Raberg et al. (2021)
+#          19.  MAT.DJ1:        de Jonge et al. (2014)
+#          20.  MAT.DJ2:        de Jonge et al. (2014)
+#          21.  MAT.mrs:        de Jonge et al. (2014)
+#          22.  UKT.HA:         Harning et al. (2020)
+#          23.  MAAT1.RU:       Russell et al (2018)
+#          24.  MAAT2.RU:       Russell et al (2018)
+#          25.  SFS.RU:         Russell et al (2018)
+#          26.  MWT.ZH:         Zhao et al (2020)
+#          27.  MAF.METH:       Raberg et al (2021)
+#          28.  MAF.FULL:       Raberg et al (2021)
+#          29.  MSST:           Raberg et al (2024)
+#          30.  WMST:           Raberg et al (2024)
+#          31.  MAST:           Raberg et al (2024)
+#          32.  MAAT.trop:      Zhao et al. (2023)
+#          33.  MLR.trop:       Zhao et al. (2023)
+#          34.  MAF.highlat:    Zhao et al. (2023)
+#          35.  MLR.highlat:    Zhao et al. (2023)
+#          36.  MAAT.BA1        Bauersachs et al. (2023)
+#          37.  MAAT.BA2        Bauersachs et al. (2023)
+#          38.  MAF.BA1         Bauersachs et al. (2023)
+#          39.  MAF.BA2         Bauersachs et al. (2023)
 
-#          21.  UKT.HA:         Harning et al. (2020)
-#          22.  MAAT1.RU:       Russell et al (2018)
-#          23.  MAAT2.RU:       Russell et al (2018)
-#          24.  SFS.RU:         Russell et al (2018)
-#          25.  MWT.ZH:         Zhao et al (2020)
-#          26.  MAF.METH:       Raberg et al (2021)
-#          27.  MAF.FULL:       Raberg et al (2021)
-#          28.  MAAT.trop:      Zhao et al. (2023)
-#          29.  MLR.trop:       Zhao et al. (2023)
-#          30.  MAF.highlat:    Zhao et al. (2023)
-#          31.  MLR.highlat:    Zhao et al. (2023)
-#          32.  MAAT.BA1        Bauersachs et al. (2023)
-#          33.  MAAT.BA2        Bauersachs et al. (2023)
-#          34.  MAF.BA1         Bauersachs et al. (2023)
-#          35.  MAF.BA2         Bauersachs et al. (2023)
+#          40.  IIIa.IIIaIIIa:  Raberg et al (2021)
+#          41.  DO:             Raberg et al (2021)
 
-#          36.  IIIa.IIIaIIIa:  Raberg et al (2021)
-#          37.  DO:             Raberg et al (2021)
-
-#          38.  HP5:            Yao et al (2020)
-#          39.  RINGtetra:      Raberg et al (2021) 
-#          40.  RINGpenta 5Me:  Raberg et al (2021)
-#          41.  RINGpenta 6Me:  Raberg et al (2021)
-#          42.  DC:             Raberg et al (2021)
-#          43.  DC':            de Jonge et al (2024)
-#          44.  IBT:            Ding et al (2015)
-#          45.  CI:             Raberg et al (2021)
-#          46.  BIT:            Hopmans et al (2004), Dang et al (2016)
-#          47.  PI.bones:       Zhao et al (2020)
-#          48.  MAP.bones:      Zhao et al (2020)
+#          42.  HP5:            Yao et al (2020)
+#          43.  RINGtetra:      Raberg et al (2021) 
+#          44.  RINGpenta 5Me:  Raberg et al (2021)
+#          45.  RINGpenta 6Me:  Raberg et al (2021)
+#          46.  DC:             Raberg et al (2021)
+#          47.  DC':            de Jonge et al (2024)
+#          48.  IBT:            Ding et al (2015)
+#          49.  CI:             Raberg et al (2021)
+#          50.  BIT:            Hopmans et al (2004), Dang et al (2016)
+#          51.  PI.bones:       Zhao et al (2020)
+#          52.  MAP.bones:      Zhao et al (2020)
 
 ############################################################################################################################
 ############################################# INDEX CALCULATIONS ###########################################################
@@ -127,6 +130,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "pH.DJ",
                            "pH.DJ2",
                            "pH.RB",
+                           "pH.RB2",
                            "pH.RU",
                            "ln.Cond.",
                            "Conduct",
@@ -140,6 +144,9 @@ brGDGT_INDICES <- function(GDGTs){
                            "MWT.ZH",
                            "MAF.METH",
                            "MAF.FULL",
+                           "MSST",
+                           "WMST",
+                           "MAST",
                            "MAAT.trop",
                            "MLR.trop",
                            "MAF.highlat",
