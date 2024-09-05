@@ -346,12 +346,12 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 29
   #calculate MSST, Raberg et al. (2024)
-  GDGT.IND$MSST      <-  (-1.78)+31.01*GDGT.IND$MBT.5Me
+  GDGT.IND$MSST      <-  NA
   
   
   ### 30
   #calculate MSST, Raberg et al. (2024)
-  GDGT.IND$WMST      <-  (-1.78)+31.01*GDGT.IND$MBT.5Me 
+  GDGT.IND$WMST      <-  NA
   
   
   ### 31
