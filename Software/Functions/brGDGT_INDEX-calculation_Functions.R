@@ -343,18 +343,18 @@ brGDGT_INDICES <- function(GDGTs){
                                     +(58.15*(as.numeric(brGDGT.F[r,c("IIIa.6Me")])^2))+(12.79*as.numeric(brGDGT.F[r,c("IIIa.5Me")])))
   }
   
-  brGDGT.FA.MI <- as.matrix(brGDGT.FA.MI)
+ 
   
   ### 29
   #calculate MSST, Raberg et al. (2024)
-  for(i in 1:nrow(brGDGT.FA.MI)){
-  GDGT.IND$MSST[i]      <-  as.numeric(brGDGT.FA.MI[i,c("Ic")])
+  for(i in 1:nrow(brGDGT.MI.FA)){
+  GDGT.IND$MSST[i]      <-  as.numeric(brGDGT.MI.FA[i,c("Ic")])
   }
   
   ### 30
   #calculate MSST, Raberg et al. (2024)
-  for(i in 1:nrow(brGDGT.FA.MI)){
-   GDGT.IND$WMST[i]      <-  as.numeric(brGDGT.FA.MI[i,c("IIIc.5Me")])
+  for(i in 1:nrow(brGDGT.MI.FA)){
+   GDGT.IND$WMST[i]      <-  as.numeric(brGDGT.MI.FA[i,c("IIIc.5Me")])
   }
   
   ### 31
