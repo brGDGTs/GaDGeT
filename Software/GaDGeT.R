@@ -9,7 +9,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 04. September 2024
+# Last modification: 05. September 2024
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
@@ -197,9 +197,9 @@ colnames(GDGT.temp) <- colnames(data.sets[[f]])
 # === Select Relevant Data Columns ===
 
 # Define the sets of compounds to extract
-brGDGTs_cols <- c("IIIa.5Me", "IIIa.6Me", "IIIb.5Me", "IIIb.6Me", "IIIc.5Me", "IIIc.6Me",
-                  "IIa.5Me", "IIa.6Me","IIb.5Me", "IIb.6Me", "IIc.5Me",
-                  "IIc.6Me", "Ia", "Ib", "Ic")
+brGDGTs_cols <- c("IIIa.5Me", "IIIa.6Me","IIIa.7Me", "IIIb.5Me", "IIIb.6Me","IIIb.7Me", "IIIc.5Me", 
+                  "IIIc.6Me","IIIc.7Me", "IIa.5Me", "IIa.6Me","IIa.7Me","IIb.5Me", "IIb.6Me","IIb.7Me", 
+                  "IIc.5Me", "IIc.6Me","IIc.7Me", "Ia", "Ib", "Ic")
 
 GDGTs_cols   <- c("GDGT.0", "GDGT.1", "OH-GDGT.0", "GDGT.2", "OH-GDGT.1", "2OH-GDGT.0", 
                 "GDGT.3", "OH-GDGT.2", "GDGT.4","GDGT.4.2")
