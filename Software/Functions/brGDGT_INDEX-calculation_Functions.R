@@ -358,7 +358,10 @@ brGDGT_INDICES <- function(GDGTs){
   ### 30
   #calculate MSST, Raberg et al. (2024)
   for(i in 1:nrow(brGDGT.MI.FA)){
-   GDGT.IND$WMST[i]      <-  as.numeric(brGDGT.MI.FA[i,c("IIIc.5Me")])
+   GDGT.IND$WMST[i]      <-   23.5 + 5.0*as.numeric(brGDGT.MI.FA[i,c("Ic")]) + 45.9*as.numeric(brGDGT.MI.FA[i,c("IIa.5Me")])^2 -
+                              43.8*as.numeric(brGDGT.MI.FA[i,c("IIa.5Me")]) - 7.4*as.numeric(brGDGT.MI.FA[i,c("IIb.5Me")])^2 +
+                              26.5*as.numeric(brGDGT.MI.FA[i,c("IIc.6Me")]) + 111.0*as.numeric(brGDGT.MI.FA[i,c("IIIa.5Me")])^2 -
+                              47.3*as.numeric(brGDGT.MI.FA[i,c("IIIa.5Me")])
   }
   
   ### 31
@@ -366,10 +369,10 @@ brGDGT_INDICES <- function(GDGTs){
  
   for(i in 1:nrow(brGDGT.ME.FA)){
    GDGT.IND$MAST[i]     <-  16.3 + 10.6*as.numeric(brGDGT.ME.FA[i,c("Ib")])^2 - 15.1*as.numeric(brGDGT.ME.FA[i,c("Ic")])^2 + 
-                        16.3*as.numeric(brGDGT.ME.FA[i,c("Ic")]) - 35.1*as.numeric(brGDGT.ME.FA[i,c("IIa.5Me")]) - 
-                        10.3*as.numeric(brGDGT.ME.FA[i,c("IIc.5Me")]) + 23.8*as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])^2 - 
-                        28.3*as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")]) - 14.4*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])^2 +
-                        12.7*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")]) + 12.7*as.numeric(brGDGT.ME.FA[i,c("IIb.6Me")])^2
+                            16.3*as.numeric(brGDGT.ME.FA[i,c("Ic")]) - 35.1*as.numeric(brGDGT.ME.FA[i,c("IIa.5Me")]) - 
+                            10.3*as.numeric(brGDGT.ME.FA[i,c("IIc.5Me")]) + 23.8*as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])^2 - 
+                            28.3*as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")]) - 14.4*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])^2 +
+                            12.7*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")]) + 12.7*as.numeric(brGDGT.ME.FA[i,c("IIb.6Me")])^2
   }
   
   ### 28
