@@ -49,6 +49,7 @@
 #           7.  MBT.6Me:        Dang et al. (2018)
 #           8.  IR:             de Jonge et al. (2014)
 #           9.  IR6Me:          de Jonge et al. (2015)
+#          10.  IR7Me:          Martin et al. (2019)
 #          10.  INDEX1:         de Jonge et al. (2014)
 #          11.  pH.DJ:          de Jonge et al. (2014)
 #          12.  pH.DJ2:         de Jonge et al. (2014)
@@ -104,7 +105,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 47
+  n= 48
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -121,6 +122,7 @@ brGDGT_INDICES <- function(GDGTs){
                            "MBT.6Me",
                            "IR",
                            "IR6Me",
+                           "IR7Me",
                            "INDEX1",
                            "pH.DJ",
                            "pH.DJ2",
@@ -233,6 +235,12 @@ brGDGT_INDICES <- function(GDGTs){
   GDGT.IND$IR6Me            <-   (rowSums(GDGTs[,c("IIa.6Me","IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")])/
                                  rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me","IIa.6Me",
                                                   "IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")]))
+  
+  ### 10
+  #calculate IR7Me; Martin et al. (2019)
+  GDGT.IND$IR7Me            <-   (rowSums(GDGTs[,c("IIa.7Me","IIIa.7Me","IIIb.7Me")])/
+                                    rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me","IIa.6Me",
+                                                     "IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")]))
   
   ### 10
   #calculate INDEX1; deJonge et al (2014)
