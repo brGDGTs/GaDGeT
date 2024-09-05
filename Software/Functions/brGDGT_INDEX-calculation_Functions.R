@@ -108,7 +108,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 48
+  n= 52
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -249,74 +249,77 @@ brGDGT_INDICES <- function(GDGTs){
                                     rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me","IIa.6Me",
                                                      "IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")]))
   
-  ### 10
+  ### 11
   #calculate INDEX1; deJonge et al (2014)
   GDGT.IND$INDEX1        <-   (log(rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.6Me","IIIa.6Me")])/
                                      rowSums(GDGTs[,c("Ic","IIa.5Me","IIc.5Me","IIIa.5Me","IIIa.6Me")]),
                                    base = 10))
   
-  ### 11
+  ### 12
   #calculate pH; deJonge et al (2014)
   GDGT.IND$pH.DJ   <-   7.84 - 1.73*GDGT.IND$CBT5Me
  
-  ### 12
+  ### 13
   #calculate pH; deJonge et al (2014)
   GDGT.IND$pH.DJ2   <-   7.15 + 1.59*GDGT.IND$CBT.
   
-  ### 13
+  ### 14
   #calculate pH; Raberg et al (2021)
   GDGT.IND$pH.RB    <-   8.93 - (3.84*(as.numeric(brGDGT.CYCL.FA[,"Ia"])^2)) + (2.63*(as.numeric(brGDGT.CYCL.FA[,"IIa.6Me"])))
   
-  ### 14
+  ### 15
+  #calculate pH; Raberg et al (2021)
+  GDGT.IND$pH.RB2    <-   5.51 + 0.55*GDGT.IND$CBT. + 2.41*GDGT.IND$IR6Me
+  
+  ### 16
   #calculate pH; Russell et al. (2018)
   GDGT.IND$pH.RU    <-   8.95 + (2.65*GDGT.IND$CBT.)
   
-  ### 15
+  ### 17
   #calculate ln(Cond); Raberg et al (2021)
   GDGT.IND$ln.Cond.     <-   6.62 + 8.87*as.numeric(brGDGT.CYCL.FA[,"Ib"]) + 5.12*(as.numeric(brGDGT.CYCL.FA[,"IIa.6Me"])^2) +
                              10.64*(as.numeric(brGDGT.CYCL.FA[,"IIa.5Me"])^2) - 8.59*as.numeric(brGDGT.CYCL.FA[,"IIa.5Me"]) -
                              4.32*(as.numeric(brGDGT.CYCL.FA[,"IIIa.6Me"])^2) - 5.31*(as.numeric(brGDGT.CYCL.FA[,"IIIa.5Me"])^2) -
                              142.67*(as.numeric(brGDGT.CYCL.FA[,"IIIb.5Me"])^2)
   
-  ### 16
+  ### 18
   #calculate Conduct; Raberg et al. (2021)
   GDGT.IND$Conduct      <-   exp(GDGT.IND$ln.Cond.)
   
-  ### 17
+  ### 19
   #calculate MAT; deJonge et al (2014)
   GDGT.IND$MAT.DJ1       <-   -8.57 + 31.45*GDGT.IND$MBT.5Me
  
-  ### 18
+  ### 20
   #calculate MAT; deJonge et al (2014)
   GDGT.IND$MAT.DJ2       <-   5.05+ (14.86*GDGT.IND$INDEX1) 
   
-  ### 19
+  ### 21
   #calculate MAT.mrs; deJonge et al (2014)
   GDGT.IND$MAT.mrs       <-   5.58 + (17.91*GDGTs$Ia) + (18.77*GDGTs$IIa.5Me)
 
-  
-  ### 21
+  ### 22
   #calculate UK37-temp, Harning et al (2020)
   GDGT.IND$UKT.HA       <-   (-0.154*GDGTs$IIIa.5Me)+(0.3538*GDGTs$Ia)+(1.0016*GDGTs$IIIa.6Me)-0.7537
   
-  ### 22
+  ### 23
   #calculate MAAT; Russell et al (2018)
   GDGT.IND$MAAT1.RU     <-   (-1.21)+(32.42*GDGT.IND$MBT.5Me)
   
-  ### 23
+  ### 24
   #calculate MAAT; Russell et al (2018)
   GDGT.IND$MAAT2.RU     <-   12.22+(18.79*GDGT.IND$INDEX1)
 
-  ### 24
+  ### 25
   #calculate MAAT SFS; Russell et al (2018)
   GDGT.IND$SFS.RU     <-   23.81 -(31.02*GDGTs[,c("IIIa.5Me")])-(41.91*GDGTs[,c("IIb.5Me")])
                             -(51.59*GDGTs[,c("IIb.6Me")])-(24.7*GDGTs[,c("IIa.5Me")])+(68.8*GDGTs[,c("Ib")])
   
-  ### 25
+  ### 26
   #calculate MWT; Zhao et al. (2020)
   GDGT.IND$MWT.ZH       <-    -1.82 + 56.06*GDGT.IND$MBT.5Me
   
-  ### 26
+  ### 27
   #calculate MAF.METH; Raberg et al. (2021)
   brGDGT.ME.FA        <- as.matrix(cbind(brGDGT.METH.5Mep.FA,brGDGT.METH.6Me.FA))# for col assignment
   
@@ -329,7 +332,7 @@ brGDGT_INDICES <- function(GDGTs){
                                   -(40.54*as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")]))-(80.47*as.numeric(brGDGT.ME.FA[i,c("IIIb.5Me")])))
   }
 
-  ### 27
+  ### 28
   #calculate MAF.FULL; Raberg et al. (2021)
   brGDGT.F  <- as.matrix(brGDGT.FA) #for col assignment
   
@@ -339,6 +342,27 @@ brGDGT_INDICES <- function(GDGTs){
                                     +(133.42*as.numeric(brGDGT.F[r,c("Ib")]))+(100.85*(as.numeric(brGDGT.F[r,c("IIa.6Me")])^2))
                                     +(58.15*(as.numeric(brGDGT.F[r,c("IIIa.6Me")])^2))+(12.79*as.numeric(brGDGT.F[r,c("IIIa.5Me")])))
   }
+  
+  
+  ### 29
+  #calculate MSST, Raberg et al. (2024)
+  GDGT.IND$MSST      <-  (-1.78)+31.01*GDGT.IND$MBT.5Me
+  
+  
+  ### 30
+  #calculate MSST, Raberg et al. (2024)
+  GDGT.IND$WMST      <-  (-1.78)+31.01*GDGT.IND$MBT.5Me 
+  
+  
+  ### 31
+  #calculate MSST, Raberg et al. (2024)
+  GDGT.IND$MAST     <-  16.3 + 10.6*as.numeric(brGDGT.ME.FA[i,c("Ib")])^2 - 15.1*as.numeric(brGDGT.ME.FA[i,c("Ic")])^2 + 
+                        16.3*as.numeric(brGDGT.ME.FA[i,c("Ic")]) - 35.1*as.numeric(brGDGT.ME.FA[i,c("IIa.5Me")]) - 
+                        10.3*as.numeric(brGDGT.ME.FA[i,c("IIc.5Me")]) + 23.8*as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])^2 - 
+                        28.3*as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")]) - 14.4*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])^2 +
+                        12.7*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")]) + 12.7*as.numeric(brGDGT.ME.FA[i,c("IIb.6Me")])^2
+  
+  
   
   ### 28
   #calculate MAAT.trop, zhao et al. (2023)
