@@ -346,13 +346,15 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 29
   #calculate MSST, Raberg et al. (2024)
-  GDGT.IND$MSST      <-  NA
-  
+  for(i in 1:nrow(brGDGT.FA.MI)){
+  GDGT.IND$MSST[i]      <-  as.numeric(brGDGT.FA.MI[i,c("Ic")])
+  }
   
   ### 30
   #calculate MSST, Raberg et al. (2024)
-  GDGT.IND$WMST      <-  NA
-  
+  for(i in 1:nrow(brGDGT.FA.MI)){
+   GDGT.IND$WMST[i]      <-  as.numeric(brGDGT.FA.MI[i,c("IIIc.5Me")])
+  }
   
   ### 31
   #calculate MSST, Raberg et al. (2024)
