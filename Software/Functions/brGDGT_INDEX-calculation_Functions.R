@@ -356,13 +356,14 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 31
   #calculate MSST, Raberg et al. (2024)
-  GDGT.IND$MAST     <-  16.3 + 10.6*as.numeric(brGDGT.ME.FA[i,c("Ib")])^2 - 15.1*as.numeric(brGDGT.ME.FA[i,c("Ic")])^2 + 
+ 
+  for(i in 1:nrow(brGDGT.ME.FA)){
+   GDGT.IND$MAST[i]     <-  16.3 + 10.6*as.numeric(brGDGT.ME.FA[i,c("Ib")])^2 - 15.1*as.numeric(brGDGT.ME.FA[i,c("Ic")])^2 + 
                         16.3*as.numeric(brGDGT.ME.FA[i,c("Ic")]) - 35.1*as.numeric(brGDGT.ME.FA[i,c("IIa.5Me")]) - 
                         10.3*as.numeric(brGDGT.ME.FA[i,c("IIc.5Me")]) + 23.8*as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])^2 - 
                         28.3*as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")]) - 14.4*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])^2 +
                         12.7*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")]) + 12.7*as.numeric(brGDGT.ME.FA[i,c("IIb.6Me")])^2
-  
-  
+  }
   
   ### 28
   #calculate MAAT.trop, zhao et al. (2023)
