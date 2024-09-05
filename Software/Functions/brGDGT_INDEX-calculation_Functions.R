@@ -343,6 +343,7 @@ brGDGT_INDICES <- function(GDGTs){
                                     +(58.15*(as.numeric(brGDGT.F[r,c("IIIa.6Me")])^2))+(12.79*as.numeric(brGDGT.F[r,c("IIIa.5Me")])))
   }
   
+  brGDGT.FA.MI <- as.matrix(brGDGT.FA.MI)
   
   ### 29
   #calculate MSST, Raberg et al. (2024)
