@@ -366,7 +366,7 @@ export_data_to_csv(data_sets, output_directory, data.sets.name)
 #cut out and shape the GDGTs ad the brGDGT Fractional Abundances for Index calculation
 
 #rename the 7Me fractional abundances to avoid confusion for the software.
-colnames(brGDGT.7Me.FA) <- paste0("7Me.",colnames(brGDGT.7Me.FA))
+colnames(brGDGT.7Me.FA) <- paste0("7Me.",colnames(brGDGT.7Me.FA), sep="")
 
 GDGTs                  <-   cbind(IS, GDGTs, GDDs, GMGTs, apply(brGDGT.FA[,-1],2,as.double),apply(brGDGT.7Me.FA[,-1],2,as.double))
 GDGTs[is.na(GDGTs)]    <-   0
