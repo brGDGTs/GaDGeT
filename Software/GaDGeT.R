@@ -351,6 +351,7 @@ output_directory <- list(
   DirFA = DirFA
 )
 
+# write csv files into output directory using helper function.
 export_data_to_csv(data_sets, output_directory, data.sets.name)
 
 
@@ -362,9 +363,12 @@ export_data_to_csv(data_sets, output_directory, data.sets.name)
 ###-------------------------------------------------- PREPARE DATASET ---------------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
-#cut out and shape the GDGTs ad the brGDGT Fractional Abundances
+#cut out and shape the GDGTs ad the brGDGT Fractional Abundances for Index calculation
 
-GDGTs                  <-   cbind(IS, GDGTs, GDDs, GMGTs, apply(brGDGT.FA[,-1],2,as.double))
+#rename the 7Me fractional abundances to avoid confusion for the software.
+colnames(brGDGT.7Me.FA) <- paste0("7Me.",colnames(brGDGT.7Me.FA))
+
+GDGTs                  <-   cbind(IS, GDGTs, GDDs, GMGTs, apply(brGDGT.FA[,-1],2,as.double),apply(brGDGT.7Me.FA[,-1],2,as.double))
 GDGTs[is.na(GDGTs)]    <-   0
 GDGTs[GDGTs=="NaN"]    <-   0
 GDGTs                  <-   data.frame(GDGTs)
@@ -387,9 +391,9 @@ GDD.IND    <- GDD_INDICES(GDGTs = GDGTs)
 
 # Define a list of data frames and corresponding file suffixes
 indices.print <- list(
-  list(data = brGDGT.IND, suffix = "BR_INDICES"),
-  list(data = isoGDGT.IND, suffix = "ISO_INDICES"),
-  list(data = OHGDGT.IND, suffix = "OH_INDICES"),
+  list(data = brGDGT.IND, suffix = "BR-GDGT_INDICES"),
+  list(data = isoGDGT.IND, suffix = "ISO-GDGT_INDICES"),
+  list(data = OHGDGT.IND, suffix = "OH-GDGT_INDICES"),
   list(data = GMGT.IND, suffix = "GMGT_INDICES"),
   list(data = GDD.IND, suffix = "GDD_INDICES")
 )
