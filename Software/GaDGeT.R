@@ -9,7 +9,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 05. September 2024
+# Last modification: 06. September 2024
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
@@ -275,6 +275,9 @@ create_dir(DirCONC)
 # calculate the FA following 1. brGDGT_FA
 brGDGT.FA            <- brGDGT_FA(brGDGTs = brGDGTs)
 
+# calculate the FA following 1a. brGDGT.7Me_FA
+brGDGT.7Me.FA        <- brGDGT.7Me_FA(brGDGTs = brGDGTs)
+
 # calculate the FA following 2. brGDGT_MI_FA
 brGDGT.MI.FA         <- brGDGT_MI_FA(brGDGTs = brGDGTs)
 
@@ -329,6 +332,7 @@ fGMGTs.FA         <- fGMGTs(GMGTs = GMGTs)
 # Define a list of datasets and corresponding filenames
 data_sets <- list(
   brGDGT.FA = brGDGT.FA,
+  brGDGT.7Me.FA = brGDGT.7Me.FA,
   brGDGT.MI.FA = brGDGT.MI.FA,
   brGDGT.METH.5Mep.FA = brGDGT.METH.5Mep.FA,
   brGDGT.METH.6Mep.FA = brGDGT.METH.6Mep.FA,
