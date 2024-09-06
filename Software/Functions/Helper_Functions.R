@@ -87,7 +87,7 @@ export_data_to_csv <- function(data_sets, output_directory, data_set_name) {
          file = paste(output_directory$DirFA.br, "/", data_set_name, "_FA-FULL_", Sys.Date(), ".csv", sep = "")),
     
     list(data = data_sets$brGDGT.7Me.FA, 
-         file = paste(output_directory$DirFA, "/", data_set_name, "_FA-7Me_", Sys.Date(), ".csv", sep = "")),
+         file = paste(output_directory$DirFA, "/", data_set_name, "_FAs_brGDGTs_7Me_", Sys.Date(), ".csv", sep = "")),
     
     list(data = data_sets$brGDGT.MI.FA[, c(1,2,5,6,11,12,3,7,8,13,14,4,9,10,15,16)], 
          file = paste(output_directory$DirFA.br, "/", data_set_name, "_FA-MI_", Sys.Date(), ".csv", sep = "")),
