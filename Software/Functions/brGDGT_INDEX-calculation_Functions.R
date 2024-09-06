@@ -187,6 +187,11 @@ brGDGT_INDICES <- function(GDGTs){
   fIII.LO      <- GDGTs[,c("IIIa.5Me")] / rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me")])
   
   
+  
+  
+  
+    
+    
   ###-------------------------------------------- INDEX CALC --------------------------------------------------------------###
   
   GDGT.IND <- data.frame(GDGT.IND)
@@ -245,9 +250,9 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 10
   #calculate IR7Me; Martin et al. (2019)
-  GDGT.IND$IR7Me            <-   (rowSums(GDGTs[,c("IIa.7Me","IIIa.7Me","IIIb.7Me")])/
-                                    rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me","IIIa.5Me","IIIb.5Me","IIIc.5Me","IIa.6Me",
-                                                     "IIb.6Me","IIc.6Me","IIIa.6Me","IIIb.6Me","IIIc.6Me")]))
+  GDGT.IND$IR7Me            <-   (rowSums(GDGTs[,c("7Me.IIa.7Me","7Me.IIIa.7Me","7Me.IIIb.7Me")])/
+                                    rowSums(GDGTs[,c("7Me.IIa.5Me","7Me.IIb.5Me","7Me.IIc.5Me","7Me.IIIa.5Me","7Me.IIIb.5Me","7Me.IIIc.5Me","7Me.IIa.6Me",
+                                                     "7Me.IIb.6Me","7Me.IIc.6Me","7Me.IIIa.6Me","7Me.IIIb.6Me","7Me.IIIc.6Me")]))
   
   ### 11
   #calculate INDEX1; deJonge et al (2014)
