@@ -88,6 +88,7 @@
 #------ brGDGTs ----------
 
 #          1. Fractional Abundances, calculated acc. Raberg et al. (2021) FULL:             Ia/SUM(TOT brGDGT)
+#         1a. Fractional Abundances, calculated acc. Raberg et al. (2021) FULL+ 7Me:        Ia/SUM(TOT brGDGT)
 
 #          2. Fractional Abundances, calculated acc. Raberg et al. (2021) MI:               Ia/(Ia+IIa+IIIa+IIa'+IIIa'), same for b and c
 #          3. Fractional Abundances, calculated acc. Raberg et al. (2021) METH-5Me+:        Ia/(Ia+IIa+IIIa), same for b and c
@@ -157,8 +158,8 @@ brGDGT_FA <- function(brGDGTs){
   # put GDGTs in correct order for follow up script
   brGDGT.FA<-cbind(rownames(brGDGTs),
                    brGDGT.FA[,c("Ia", "Ib", "Ic")],
-                   brGDGT.FA[,c("IIa.5Me", "IIa.6Me","IIa.7Me", "IIb.5Me", "IIb.6Me","IIb.7Me", "IIc.5Me", "IIc.6Me","IIc.7Me")],
-                   brGDGT.FA[,c("IIIa.5Me", "IIIa.6Me","IIIa.7Me", "IIIb.5Me","IIIb.6Me","IIIb.7Me", "IIIc.5Me", "IIIc.6Me","IIIc.7Me")])
+                   brGDGT.FA[,c("IIa.5Me", "IIa.6Me", "IIb.5Me", "IIb.6Me", "IIc.5Me", "IIc.6Me")],
+                   brGDGT.FA[,c("IIIa.5Me", "IIIa.6Me","IIIb.5Me","IIIb.6Me", "IIIc.5Me", "IIIc.6Me")])
   
   colnames(brGDGT.FA)[1] <- "Label"
   
@@ -168,6 +169,37 @@ brGDGT_FA <- function(brGDGTs){
 ###----------------------------------------------- FUNCTION ENDS ---------------------------------------------------------###
 
 
+###----------------------------------------------------------------------------------------------------------------------###
+###---------------------------------------- 1a. brGDGTs.7Me FA COMMON-FUNCTION ------------------------------------------###
+###----------------------------------------------------------------------------------------------------------------------###
+
+#Initialize Function
+brGDGT.7Me_FA <- function(brGDGTs){
+  
+  # initialize FA matrix
+  brGDGT.7Me.FA    <- brGDGTs
+  
+  # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
+  for(c in 1: ncol(brGDGT.7Me.FA)){
+    
+    brGDGT.7Me.FA[,c] <- brGDGTs[,c]/rowSums(brGDGTs)
+    
+  }
+  
+  ###---------------------------------------------- FA TOTAL PRINT --------------------------------------------------------###
+  
+  # put GDGTs in correct order for follow up script
+  brGDGT.7Me.FA<-cbind(rownames(brGDGTs),
+                   brGDGT.7Me.FA[,c("Ia", "Ib", "Ic")],
+                   brGDGT.7Me.FA[,c("IIa.5Me", "IIa.6Me","IIa.7Me", "IIb.5Me", "IIb.6Me","IIb.7Me", "IIc.5Me", "IIc.6Me","IIc.7Me")],
+                   brGDGT.7Me.FA[,c("IIIa.5Me", "IIIa.6Me","IIIa.7Me", "IIIb.5Me","IIIb.6Me","IIIb.7Me", "IIIc.5Me", "IIIc.6Me","IIIc.7Me")])
+  
+  colnames(brGDGT.7Me.FA)[1] <- "Label"
+  
+  return(brGDGT.7Me.FA)
+}
+
+###----------------------------------------------- FUNCTION ENDS ---------------------------------------------------------###
 
 
 
