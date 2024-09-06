@@ -8,7 +8,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 05. September 2024
+# Last modification: 06. September 2024
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
