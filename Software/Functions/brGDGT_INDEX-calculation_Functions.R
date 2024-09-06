@@ -250,9 +250,9 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 10
   #calculate IR7Me; Martin et al. (2019)
-  GDGT.IND$IR7Me            <-   (rowSums(GDGTs[,c("7Me.IIa.7Me","7Me.IIIa.7Me","7Me.IIIb.7Me")])/
-                                    rowSums(GDGTs[,c("7Me.IIa.5Me","7Me.IIb.5Me","7Me.IIc.5Me","7Me.IIIa.5Me","7Me.IIIb.5Me","7Me.IIIc.5Me","7Me.IIa.6Me",
-                                                     "7Me.IIb.6Me","7Me.IIc.6Me","7Me.IIIa.6Me","7Me.IIIb.6Me","7Me.IIIc.6Me")]))
+  GDGT.IND$IR7Me            <-   (rowSums(GDGTs[,c("X7Me.IIa.7Me","X7Me.IIIa.7Me","X7Me.IIIb.7Me")])/
+                                    rowSums(GDGTs[,c("X7Me.IIa.5Me","X7Me.IIb.5Me","X7Me.IIc.5Me","X7Me.IIIa.5Me","X7Me.IIIb.5Me","X7Me.IIIc.5Me","X7Me.IIa.6Me",
+                                                     "X7Me.IIb.6Me","X7Me.IIc.6Me","X7Me.IIIa.6Me","X7Me.IIIb.6Me","X7Me.IIIc.6Me")]))
   
   ### 11
   #calculate INDEX1; deJonge et al (2014)
