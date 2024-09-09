@@ -403,8 +403,8 @@ lapply(indices.print, function(ind) {
   # Prepare the print file by combining the relevant columns
   ind_print <- cbind(
     Label = rownames(ind$data),
-    mid.depth = GDGTs$cum.depth,
-    Age = GDGTs$Age,
+    mid.depth = GDGTs$DEPTH,
+    Age = GDGTs$AGE,
     ind$data
   )
   
