@@ -8,7 +8,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 29. August 2024
+# Last modification: 9. September 2024
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
@@ -96,7 +96,7 @@ OHGDGT_INDICES <- function(GDGTs){
   ### 1
   #calculate percent total OH-GDGTs vs iGDGTs (Fietz et al., 2013)
   GDGT.IND$PERC.OH.tot   <-      100*((rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2")])) /
-                                       rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+                                       rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.")]))
   
   #calculate OHGDGT1318/1316 index (Fietz et al., 2013)
   GDGT.IND$OH0.1         <-      (GDGTs[,c("OH.GDGT.0")] /
@@ -135,8 +135,8 @@ OHGDGT_INDICES <- function(GDGTs){
   
   ### 10
   #calculate SST.VA1 Varma et al. (2024)
-  GDGT.IND$OHC       <-     (rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")])- GDGTs[,c("OH.GDGT.0")]) /
-                             rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4.2")])
+  GDGT.IND$OHC       <-     (rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.")])- GDGTs[,c("OH.GDGT.0")]) /
+                             rowSums(GDGTs[,c("OH.GDGT.0", "OH.GDGT.1", "OH.GDGT.2", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4.")])
  
   ### 11
   #calculate SST.VA1 Varma et al. (2024)
