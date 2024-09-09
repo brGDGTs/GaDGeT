@@ -380,95 +380,95 @@ brGDGT_INDICES <- function(GDGTs){
                             12.7*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")]) + 12.7*as.numeric(brGDGT.ME.FA[i,c("IIb.6Me")])^2
   }
   
-  ### 28
+  ### 32
   #calculate MAAT.trop, zhao et al. (2023)
   GDGT.IND$MAAT.trop      <-  (-1.78)+31.01*GDGT.IND$MBT.5Me
   
-  ### 29
+  ### 33
   #calculate MLR-lowlat, zhao et al. (2023)
   GDGT.IND$MLR.trop       <-  (-4.11)+31.63*fIa.Zh+64.5*fIb.Zh+32.28*fIIa.Zh
   
-  ### 30
+  ### 34
   #calculate MLR-highlat
   GDGT.IND$MAF.highlat      <-  3.36+17.25*GDGT.IND$MBT.5Me
   
-  ### 31
+  ### 35
   #calculate MLR-highlat
   GDGT.IND$MLR.highlat      <-  1.44+15.88*fIa.Zh+66.92*fIb.Zh+8.33*fIIa.Zh+7.02*fIIIa.Zh
   
-  ### 32
+  ### 36
   #calculate MAAT.BA1
   GDGT.IND$MAAT.BA1      <-  (-2.19)+ (31.91*GDGT.IND$MBT.5Me) 
   
-  ### 33
+  ### 37
   #calculate MAAT.BA2
   GDGT.IND$MAAT.BA2      <-  7.11 + (67.66*GDGTs$Ib) - (13.54*GDGTs$IIIa.5Me)
   
-  ### 34
+  ### 38
   #calculate MAF.BA1
   GDGT.IND$MAF.BA1      <-  4.81 + (15.64*GDGT.IND$MBT.5Me) 
   
-  ### 35
+  ### 39
   #calculate MAF.BA2
   GDGT.IND$MAF.BA2      <-  5.91 + (16.22*GDGTs$Ia)
   
-  ### 36
+  ### 40
   #calculate IIIa/(IIIa+IIIa')
   GDGT.IND$IIIa.IIIaIIIa  <-   GDGTs$IIIa.5Me/ rowSums(GDGTs[,c("IIIa.5Me","IIIa.6Me")])
   
-  ### 37
+  ### 41
   #calculate DO, Raberg et al. (2021)
   GDGT.IND$DO            <-  (7.6-(12.03*(as.numeric(brGDGT.ME.FA[i,c("Ia")])^2))-(2.1*(as.numeric(brGDGT.ME.FA[i,c("Ic")])^2))
                             -(28.66*(as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])^2))+(31.09*(as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])))
                             +(36.85*(as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")])^2))-(35.89*(as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")])))
                             -(15.29*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])^2)+(15.82*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])))
   
-  ### 38
+  ### 42
   #calculate HP 5Me
   GDGT.IND$HP5        <-   GDGTs$IIIa.5Me/rowSums(GDGTs[,c("IIIa.5Me","IIa.5Me")])
   
-  ### 39
+  ### 43
   #calculate RING tetra
   GDGT.IND$RINGtetra    <-   (GDGTs$Ib + 2*GDGTs$Ic)/rowSums(GDGTs[,c("Ia","Ib","Ic")])
   
-  ### 40
+  ### 44
   #calculate RING penta 5Me
   GDGT.IND$RINGpenta5    <-   (GDGTs$IIb.5Me + 2*GDGTs$IIc.5Me)/rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me")])
   
-  ### 41
+  ### 45
   #calculate RING penta 6Me
   GDGT.IND$RINGpenta6    <-   (GDGTs$IIb.6Me + 2*GDGTs$IIc.6Me)/rowSums(GDGTs[,c("IIa.6Me","IIb.6Me","IIc.6Me")])
   
-  ### 42
+  ### 46
   #calculate DC
   GDGT.IND$DC          <-   (GDGTs$Ib + 2*GDGTs$Ic + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
                             rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me")])
 
-  ### 43
+  ### 47
   #calculate DC'
   GDGT.IND$DC.          <-   (GDGTs$Ib + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
                               rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","Ib","IIb.5Me","IIb.6Me")])
   
-  ### 44
+  ### 48
   #calculate IBT
   GDGT.IND$IBT      <-   (-log(rowSums(GDGTs[,c("IIa.6Me","IIIa.6Me")])/
                                       rowSums(GDGTs[,c("IIa.5Me","IIIa.5Me")]),
                                     base = 10))
   
-  ### 45
+  ### 49
   #calculate CI
   GDGT.IND$CI      <-   GDGTs$Ia/rowSums(GDGTs[,c("Ia","IIa.5Me","IIIa.5Me")])
  
-  ### 46
+  ### 50
   #calculate BIT
   GDGT.IND$BIT      <-  rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me")])/rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me","GDGT.4")]) 
   
-  ### 47
+  ### 51
   #calculate PI.bones
   GDGT.IND$PI.bones      <-  rowSums(GDGTs[,c("Ia","Ib")])/rowSums(GDGTs[,c("Ia","Ib", "IIIa.5Me","IIa.6Me","IIIa.6Me")]) 
   
   
-  ### 48
+  ### 52
   #calculate MAP
   GDGT.IND$MAP.bones      <-  913.41*GDGT.IND$PI.bones+112 
   
