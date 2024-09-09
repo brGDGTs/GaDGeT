@@ -82,13 +82,13 @@ GDD_INDICES <- function(GDGTs){
   #calculate GDD% (Hingley et al., 2024) 
   GDGT.IND$GDD.P           <-   rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) /
                                 (rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) +  
-                                           rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.2")]))
+                                           rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.")]))
   
   ### 3
   #calculate GDD% total (Hingley et al., 2024)
   GDGT.IND$GDD.Ptot       <-   rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) /
                               (rowSums(GDGTs[,c("isoGDD0","isoGDD1","isoGDD2", "isoGDD3", "isoGDDCren")]) +  
-                                       rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.2")]) +
+                                       rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.")]) +
                                        rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me","IIc.5Me","IIc.6Me","IIIa.5Me","IIIa.6Me","IIIb.5Me","IIIb.6Me","IIIc.5Me","IIIc.6Me")]))
 
   
