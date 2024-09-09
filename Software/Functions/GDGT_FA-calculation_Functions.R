@@ -8,7 +8,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 06. September 2024
+# Last modification: 09. September 2024
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
@@ -693,15 +693,15 @@ brGDGT_CYCL_6Me_FA <- function(brGDGTs){
 
 
 #Initialize Function
-fGDGTs <- function(isoGDGTs){
+isoGDGT_FA <- function(isoGDGTs){
   
   # Calculate the fGDGTs per GDGT
-  fGDGT0    <-   GDGTs[,"GDGT.0"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT1    <-   GDGTs[,"GDGT.1"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT2    <-   GDGTs[,"GDGT.2"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT3    <-   GDGTs[,"GDGT.3"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT4    <-   GDGTs[,"GDGT.4"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT4.2  <-   GDGTs[,"GDGT.4.2"] / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  iGDGT0    <-   GDGTs[,"GDGT.0"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  iGDGT1    <-   GDGTs[,"GDGT.1"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  iGDGT2    <-   GDGTs[,"GDGT.2"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  iGDGT3    <-   GDGTs[,"GDGT.3"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  iGDGT4    <-   GDGTs[,"GDGT.4"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  iGDGT4.2  <-   GDGTs[,"GDGT.4.2"] / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
   
 
   ###------------------------------------------ fGDGTs PRINT ------------------------------------------------------------###
@@ -732,12 +732,12 @@ fGDGTs <- function(isoGDGTs){
 
 
 #Initialize Function
-fOHGDGTs <- function(OHGDGTs){
+OHGDGT_FA <- function(OHGDGTs){
   
   # Calculate the fGDGTs per GDGT
-  fOHGDGT0    <-   GDGTs[,"OH-GDGT.0"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
-  fOHGDGT1    <-   GDGTs[,"OH-GDGT.1"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
-  fOHGDGT2    <-   GDGTs[,"OH-GDGT.2"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
+  OHGDGT0    <-   GDGTs[,"OH-GDGT.0"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
+  OHGDGT1    <-   GDGTs[,"OH-GDGT.1"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
+  OHGDGT2    <-   GDGTs[,"OH-GDGT.2"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
 
   ###------------------------------------------ fGDGTs PRINT ------------------------------------------------------------###
   
@@ -767,16 +767,16 @@ fOHGDGTs <- function(OHGDGTs){
 
 
 #Initialize Function
-fGMGTs <- function(GMGTs){
+GMGT_FA <- function(GMGTs){
   
   # Calculate the fGDGTs per GDGT
-  fGMGT1     <-   GMGTs[,"H1048"]    / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT2a    <-   GMGTs[,"H1034a"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT2b    <-   GMGTs[,"H1034b"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT2c    <-   GMGTs[,"H1034c"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT3a    <-   GMGTs[,"H1020a"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT3b    <-   GMGTs[,"H1020b"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT3c    <-   GMGTs[,"H1020c"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT1     <-   GMGTs[,"H1048"]    / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT2a    <-   GMGTs[,"H1034a"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT2b    <-   GMGTs[,"H1034b"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT2c    <-   GMGTs[,"H1034c"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT3a    <-   GMGTs[,"H1020a"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT3b    <-   GMGTs[,"H1020b"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT3c    <-   GMGTs[,"H1020c"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
   
   ###------------------------------------------ fGDGTs PRINT ------------------------------------------------------------###
   
