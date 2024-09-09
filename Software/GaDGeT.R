@@ -202,7 +202,7 @@ brGDGTs_cols <- c("IIIa.5Me", "IIIa.6Me","IIIa.7Me", "IIIb.5Me", "IIIb.6Me","III
                   "IIc.5Me", "IIc.6Me","IIc.7Me", "Ia", "Ib", "Ic")
 
 GDGTs_cols   <- c("GDGT.0", "GDGT.1", "OH-GDGT.0", "GDGT.2", "OH-GDGT.1", "2OH-GDGT.0", 
-                "GDGT.3", "OH-GDGT.2", "GDGT.4","GDGT.4.2")
+                "GDGT.3", "OH-GDGT.2", "GDGT.4","GDGT.4.")
 
 GMGTs_cols   <- c("H1048", "H1034a", "H1034b","H1034c", "H1020a", "H1020b", "H1020c")
 
