@@ -105,30 +105,16 @@
 #------ isoGDGTs ---------
 
 #         11. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT0 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         12. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT1 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         13. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT2 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         14. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT3 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         15. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT4 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
-#         16. Fractional Abundances of isoGDGTs, calculated as follows:                     GDGT4.2 / (GDGT0 + GDGT1 + GDGT2 + GDGT3 +GDGT4 + GDGT4.2)
 
 
 #------ OHDGTs ----------
 
-#         17. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.0 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
-#         18. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.1 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
-#         19. Fractional Abundances of isoGDGTs, calculated as follows:                     OHGDGT.2 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
+#         12. Fractional Abundances of OHGDGTs, calculated as follows:                     OHGDGT.0 / (OHGDGT.0 + OHGDGT.1 + OHGDGT.2)
 
 
 #------ GMGTs ----------
 
-#         20. Fractional Abundances of fGMGT1 (H1048), calculated as follows:                H1048  / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         21. Fractional Abundances of fGMGT2a (H1034a), calculated as follows:              H1034a / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         22. Fractional Abundances of fGMGT2b (H1034b), calculated as follows:              H1034b / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         23. Fractional Abundances of fGMGT2c (H1034c), calculated as follows:              H1034c / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         24. Fractional Abundances of fGMGT3a (H1020a), calculated as follows:              H1020a / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         25. Fractional Abundances of fGMGT3b (H1020b), calculated as follows:              H1020b / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-#         26. Fractional Abundances of fGMGT3c (H1020c), calculated as follows:              H1020c / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
-
+#         13. Fractional Abundances of GMGT1 (H1048), calculated as follows:                H1048  / (H1048 + H1034a + H1034b + H1034c + H1020a + H1020b + H1020c)
 
 
 
@@ -688,7 +674,7 @@ brGDGT_CYCL_6Me_FA <- function(brGDGTs){
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
-###----------------------------------------------- 11-16. GDGTs FA-FUNCTION ----------------------------------------------###
+###------------------------------------------------ 11. GDGTs FA-FUNCTION -----------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
 
@@ -727,7 +713,7 @@ isoGDGT_FA <- function(isoGDGTs){
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
-###----------------------------------------------- 17-19. OHGDGTs FA-FUNCTION -------------------------------------------###
+###------------------------------------------------ 12. OHGDGTs FA-FUNCTION ---------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
 
@@ -762,7 +748,7 @@ OHGDGT_FA <- function(OHGDGTs){
 
 
 ###----------------------------------------------------------------------------------------------------------------------###
-###-------------------------------------------------- 20-26. GMGTs FA-FUNCTION ------------------------------------------###
+###--------------------------------------------------- 13. GMGTs FA-FUNCTION --------------------------------------------###
 ###----------------------------------------------------------------------------------------------------------------------###
 
 
