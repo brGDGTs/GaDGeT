@@ -682,18 +682,18 @@ brGDGT_CYCL_6Me_FA <- function(brGDGTs){
 isoGDGT_FA <- function(isoGDGTs){
   
   # Calculate the fGDGTs per GDGT
-  fGDGT0    <-   GDGTs[,"GDGT.0"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT1    <-   GDGTs[,"GDGT.1"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT2    <-   GDGTs[,"GDGT.2"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT3    <-   GDGTs[,"GDGT.3"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT4    <-   GDGTs[,"GDGT.4"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
-  fGDGT4.2  <-   GDGTs[,"GDGT.4.2"] / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  GDGT0    <-   GDGTs[,"GDGT.0"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  GDGT1    <-   GDGTs[,"GDGT.1"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  GDGT2    <-   GDGTs[,"GDGT.2"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  GDGT3    <-   GDGTs[,"GDGT.3"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  GDGT4    <-   GDGTs[,"GDGT.4"]   / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
+  GDGT4.2  <-   GDGTs[,"GDGT.4.2"] / (rowSums(GDGTs[,c("GDGT.0", "GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")]))
   
 
   ###------------------------------------------ fGDGTs PRINT ------------------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  GDGTs_FA <- cbind(rownames(GDGTs), fGDGT0, fGDGT1, fGDGT2, fGDGT3, fGDGT4, fGDGT4.2)
+  GDGTs_FA <- cbind(rownames(GDGTs), GDGT0, GDGT1, GDGT2, GDGT3, GDGT4, GDGT4.2)
   
   colnames(GDGTs_FA)[1] <- c("Label")
   
@@ -721,14 +721,14 @@ isoGDGT_FA <- function(isoGDGTs){
 OHGDGT_FA <- function(OHGDGTs){
   
   # Calculate the fGDGTs per GDGT
-  fOHGDGT0    <-   GDGTs[,"OH-GDGT.0"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
-  fOHGDGT1    <-   GDGTs[,"OH-GDGT.1"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
-  fOHGDGT2    <-   GDGTs[,"OH-GDGT.2"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
+  OHGDGT0    <-   GDGTs[,"OH-GDGT.0"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
+  OHGDGT1    <-   GDGTs[,"OH-GDGT.1"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
+  OHGDGT2    <-   GDGTs[,"OH-GDGT.2"]   / (rowSums(GDGTs[,c("OH-GDGT.0", "OH-GDGT.1","OH-GDGT.2")]))
 
   ###------------------------------------------ fGDGTs PRINT ------------------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  OHGDGTs_FA <- cbind(rownames(GDGTs), fOHGDGT0, fOHGDGT1, fOHGDGT2)
+  OHGDGTs_FA <- cbind(rownames(GDGTs), OHGDGT0, OHGDGT1, OHGDGT2)
   
   colnames(OHGDGTs_FA)[1] <- c("Label")
   
@@ -756,18 +756,18 @@ OHGDGT_FA <- function(OHGDGTs){
 GMGT_FA <- function(GMGTs){
   
   # Calculate the fGDGTs per GDGT
-  fGMGT1     <-   GMGTs[,"H1048"]    / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT2a    <-   GMGTs[,"H1034a"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT2b    <-   GMGTs[,"H1034b"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT2c    <-   GMGTs[,"H1034c"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT3a    <-   GMGTs[,"H1020a"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT3b    <-   GMGTs[,"H1020b"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
-  fGMGT3c    <-   GMGTs[,"H1020c"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT1     <-   GMGTs[,"H1048"]    / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT2a    <-   GMGTs[,"H1034a"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT2b    <-   GMGTs[,"H1034b"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT2c    <-   GMGTs[,"H1034c"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT3a    <-   GMGTs[,"H1020a"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT3b    <-   GMGTs[,"H1020b"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
+  GMGT3c    <-   GMGTs[,"H1020c"]   / (rowSums(GMGTs[,c("H1048", "H1034a","H1034b","H1034c", "H1020a", "H1020b", "H1020c")]))
   
   ###------------------------------------------ fGDGTs PRINT ------------------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  GMGTs_FA <- cbind(rownames(GDGTs), fGMGT1,fGMGT2a, fGMGT2b, fGMGT2c, fGMGT3a, fGMGT3b, fGMGT3c)
+  GMGTs_FA <- cbind(rownames(GDGTs), GMGT1,GMGT2a, GMGT2b, GMGT2c, GMGT3a, GMGT3b, GMGT3c)
   
   colnames(GMGTs_FA)[1] <- c("Label")
   
