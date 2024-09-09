@@ -430,7 +430,7 @@ IS.factor <- IS[,"IS_AMOUNT"] / IS[,"IS_AREA"]
 #set all inf values to NA
 IS.factor[is.infinite(IS.factor)] <- NA
 
-#Calculate the amount per substance and sample based on the Internal standard and add the sample information
+#Calculate the amount per substance and sample based on the Internal standard (IS) and add the sample information
 GDGTs.amount <- GDGTs.conc*IS.factor
 
 #Calculate the concentration per dry sediment mass
