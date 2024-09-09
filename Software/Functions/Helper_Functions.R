@@ -119,13 +119,13 @@ export_data_to_csv <- function(data_sets, output_directory, data_set_name) {
     list(data = data_sets$brGDGT.FA, 
          file = paste(output_directory$DirFA, "/", data_set_name, "_FAs_brGDGTs_", Sys.Date(), ".csv", sep = "")),
     
-    list(data = data_sets$fGDGTs.FA, 
+    list(data = data_sets$isoGDGTs.FA, 
          file = paste(output_directory$DirFA, "/", data_set_name, "_FAs_isoGDGTs_", Sys.Date(), ".csv", sep = "")),
     
-    list(data = data_sets$fOHGDGTs.FA, 
+    list(data = data_sets$OHGDGTs.FA, 
          file = paste(output_directory$DirFA, "/", data_set_name, "_FAs_OHGDGTs_", Sys.Date(), ".csv", sep = "")),
     
-    list(data = data_sets$fGMGTs.FA, 
+    list(data = data_sets$GMGTs.FA, 
          file = paste(output_directory$DirFA, "/", data_set_name, "_FAs_GMGTs_", Sys.Date(), ".csv", sep = ""))
   )
   
