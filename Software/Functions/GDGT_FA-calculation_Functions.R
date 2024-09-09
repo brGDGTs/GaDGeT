@@ -693,7 +693,7 @@ isoGDGT_FA <- function(isoGDGTs){
   ###------------------------------------------ fGDGTs PRINT ------------------------------------------------------------###
   
   # put GDGTs in correct order for follow up scripts
-  GDGTs_FA <- cbind(rownames(GDGTs), GDGT0, GDGT1, GDGT2, GDGT3, GDGT4, GDGT4.2)
+  GDGTs_FA <- cbind(rownames(GDGTs), GDGT0, GDGT1, GDGT2, GDGT3, GDGT4, GDGT4.)
   
   colnames(GDGTs_FA)[1] <- c("Label")
   
