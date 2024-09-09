@@ -308,7 +308,7 @@ brGDGT.CYCL.6Me.FA   <- brGDGT_CYCL_6Me_FA(brGDGTs = brGDGTs)
 #------ isoGDGTs ---------
 
 # calculate the FA following 11
-GDGTs.FA           <- GDGT_FA(isoGDGTs = GDGTs)
+isoGDGTs.FA           <- isoGDGT_FA(isoGDGTs = GDGTs)
 
 
 #------ OHDGTs ----------
@@ -341,9 +341,9 @@ data_sets <- list(
   brGDGT.CYCL.FA = brGDGT.CYCL.FA,
   brGDGT.CYCL.5Me.FA = brGDGT.CYCL.5Me.FA,
   brGDGT.CYCL.6Me.FA = brGDGT.CYCL.6Me.FA,
-  GDGTs.FA = fGDGTs.FA,
-  OHGDGTs.FA = fOHGDGTs.FA,
-  GMGTs.FA = fGMGTs.FA
+  isoGDGTs.FA = isoGDGTs.FA,
+  OHGDGTs.FA = OHGDGTs.FA,
+  GMGTs.FA = GMGTs.FA
 )
 
 output_directory <- list(
