@@ -438,11 +438,11 @@ GDGTs.conc <- GDGTs.amount/IS[,"EXTRACTEDSAMPLEWEIGHT"]
 
 
 # Prepare and save amounts and concentrations
-GDGTs.amount.IS <- cbind(rownames(IS), IS[, 2:4], IS.factor, GDGTs.amount)
+GDGTs.amount.IS <- cbind(rownames(IS), IS[, 2:6], IS.factor, GDGTs.amount)
 colnames(GDGTs.amount.IS)[1] <- "Label"
 write.csv(GDGTs.amount.IS, file = paste0(DirCONC, data.sets.name, "_AMOUNT_", Sys.Date(), ".csv"), row.names = FALSE)
 
-GDGTs.conc.IS <- cbind(rownames(IS), IS[, 2:4], IS.factor, GDGTs.conc)
+GDGTs.conc.IS <- cbind(rownames(IS), IS[, 2:6], IS.factor, GDGTs.conc)
 colnames(GDGTs.conc.IS)[1] <- "Label"
 write.csv(GDGTs.conc.IS, file = paste0(DirCONC, data.sets.name, "_CONC_", Sys.Date(), ".csv"), row.names = FALSE)
 
