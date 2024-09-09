@@ -8,7 +8,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 29. August 2024
+# Last modification: 09. September 2024
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
@@ -104,8 +104,8 @@ isoGDGT_INDICES <- function(GDGTs){
   
   ### 1
   #calculate TEX86 (Schouten et al., 2002)
-  GDGT.IND$TEX86           <-   rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")]) /
-                                rowSums(GDGTs[,c("GDGT.1","GDGT.2", "GDGT.3", "GDGT.4.2")])
+  GDGT.IND$TEX86           <-   rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.")]) /
+                                rowSums(GDGTs[,c("GDGT.1","GDGT.2", "GDGT.3", "GDGT.4.")])
   
   ### 2
   #calculate TEX temp C and S calib (Castaneda & Schouten 2011; 2015)
@@ -131,8 +131,8 @@ isoGDGT_INDICES <- function(GDGTs){
   
   ### 7
   #calculate TEX Kim et al. (2010) GDGT Index 2 (high temp)
-  GDGT.IND$TEX.H.86      <-    log(rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")]) /
-                                     rowSums(GDGTs[,c("GDGT.1","GDGT.2","GDGT.3", "GDGT.4.2")]),
+  GDGT.IND$TEX.H.86      <-    log(rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.")]) /
+                                     rowSums(GDGTs[,c("GDGT.1","GDGT.2","GDGT.3", "GDGT.4.")]),
                                      base = 10)
   ### 8
   #calculate temp Kim et al. (2010) low temp calib
@@ -146,8 +146,8 @@ isoGDGT_INDICES <- function(GDGTs){
   ### 10.  
   #calculate TEX.OH.86: Varma et al (2024)
   
-  GDGT.IND$TEX.OH.86            <-   rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.2")]) /
-                                     rowSums(GDGTs[,c("GDGT.1","GDGT.2", "GDGT.3", "GDGT.4.2","OH.GDGT.0")])
+  GDGT.IND$TEX.OH.86            <-   rowSums(GDGTs[,c("GDGT.2", "GDGT.3", "GDGT.4.")]) /
+                                     rowSums(GDGTs[,c("GDGT.1","GDGT.2", "GDGT.3", "GDGT.4.","OH.GDGT.0")])
   
   ### 11.  
   # calculate TEX.OH.86.SST:  Varma et al (2024) 
@@ -156,8 +156,8 @@ isoGDGT_INDICES <- function(GDGTs){
   
   ### 12
   #calculate RingIndex Sample (Zhang et al., 2016)
-  GDGT.IND$RI.SMPL            <-   (0*GDGTs[,"GDGT.0"]+1*GDGTs[,"GDGT.1"]+2*GDGTs[,"GDGT.2"]+3*GDGTs[,"GDGT.3"]+4*GDGTs[,"GDGT.4"]+4*GDGTs[,"GDGT.4.2"]) / 
-                                rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.2")])
+  GDGT.IND$RI.SMPL            <-   (0*GDGTs[,"GDGT.0"]+1*GDGTs[,"GDGT.1"]+2*GDGTs[,"GDGT.2"]+3*GDGTs[,"GDGT.3"]+4*GDGTs[,"GDGT.4"]+4*GDGTs[,"GDGT.4."]) / 
+                                rowSums(GDGTs[,c("GDGT.0","GDGT.1","GDGT.2","GDGT.3","GDGT.4","GDGT.4.")])
 
   ### 13
   #calculate RingIndex TEX (Zhang et al., 2016)
@@ -170,7 +170,7 @@ isoGDGT_INDICES <- function(GDGTs){
   ### 15
   #calculate Methane Index (Zhang et al. 2011)
   GDGT.IND$M.IND           <-   rowSums(GDGTs[,c("GDGT.1", "GDGT.2", "GDGT.3")]) /
-                                rowSums(GDGTs[,c("GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.2")])
+                                rowSums(GDGTs[,c("GDGT.1","GDGT.2","GDGT.3", "GDGT.4", "GDGT.4.")])
   
   ### 16
   #calculate GDGT0/GDGT4, anoxia
