@@ -9,7 +9,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 06. September 2024
+# Last modification: 09. September 2024
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
@@ -307,20 +307,20 @@ brGDGT.CYCL.6Me.FA   <- brGDGT_CYCL_6Me_FA(brGDGTs = brGDGTs)
 
 #------ isoGDGTs ---------
 
-# calculate the FA following 11-16. fGDGTs0-4.2
-fGDGTs.FA           <- fGDGTs(isoGDGTs = GDGTs)
+# calculate the FA following 11
+GDGTs.FA           <- GDGT_FA(isoGDGTs = GDGTs)
 
 
 #------ OHDGTs ----------
 
-# calculate the FA following 17-19. fOHGDGTs0-2
-fOHGDGTs.FA         <- fOHGDGTs(OHGDGTs = GDGTs)
+# calculate the FA following 12.
+OHGDGTs.FA         <- OHGDGT_FA(OHGDGTs = GDGTs)
 
 
 #------ GMGTs ----------
 
-# calculate the FA following 20-26. fGMGTs1-3
-fGMGTs.FA         <- fGMGTs(GMGTs = GMGTs)
+# calculate the FA following 13.
+GMGTs.FA         <- GMGT_FA(GMGTs = GMGTs)
 
 
 ###-------------------------------------------------------------------------------------------------------------------------###
@@ -341,9 +341,9 @@ data_sets <- list(
   brGDGT.CYCL.FA = brGDGT.CYCL.FA,
   brGDGT.CYCL.5Me.FA = brGDGT.CYCL.5Me.FA,
   brGDGT.CYCL.6Me.FA = brGDGT.CYCL.6Me.FA,
-  fGDGTs.FA = fGDGTs.FA,
-  fOHGDGTs.FA = fOHGDGTs.FA,
-  fGMGTs.FA = fGMGTs.FA
+  GDGTs.FA = fGDGTs.FA,
+  OHGDGTs.FA = fOHGDGTs.FA,
+  GMGTs.FA = fGMGTs.FA
 )
 
 output_directory <- list(
