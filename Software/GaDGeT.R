@@ -9,7 +9,7 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 09. September 2024
+# Last modification: 11. September 2024
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
 # Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
@@ -208,7 +208,7 @@ GMGTs_cols   <- c("H1048", "H1034a", "H1034b","H1034c", "H1020a", "H1020b", "H10
 
 GDDs_cols    <- c("isoGDD0", "isoGDD1","isoGDD2","isoGDD3", "isoGDDCren")
 
-IS_cols      <- c("Label", "DEPTH", "AGE", "EXTRACTEDSAMPLEWEIGHT", "IS_AREA","IS_AMOUNT")
+IS_cols      <- c("Label", "DEPTH", "AGE", "WEIGHT", "IS_AREA","IS_AMOUNT")
 
 
 # column check, are all required columns available?
@@ -434,7 +434,7 @@ IS.factor[is.infinite(IS.factor)] <- NA
 GDGTs.amount <- GDGTs.conc*IS.factor
 
 #Calculate the concentration per dry sediment mass
-GDGTs.conc <- GDGTs.amount/IS[,"EXTRACTEDSAMPLEWEIGHT"]
+GDGTs.conc <- GDGTs.amount/IS[,"WEIGHT"]
 
 
 # Prepare and save amounts and concentrations
