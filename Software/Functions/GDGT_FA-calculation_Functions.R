@@ -178,7 +178,7 @@ brGDGT.7Me_FA <- function(brGDGTs){
   brGDGT.7Me.FA<-cbind(rownames(brGDGTs),
                    brGDGT.7Me.FA[,c("Ia", "Ib", "Ic")],
                    brGDGT.7Me.FA[,c("IIa.5Me", "IIa.6Me","IIa.7Me", "IIb.5Me", "IIb.6Me","IIc.5Me", "IIc.6Me")],
-                   brGDGT.7Me.FA[,c("IIIa.5Me", "IIIa.6Me","IIIa.7Me","IIIa.7Me.", "IIIb.5Me","IIIb.6Me","IIIb.7Me", "IIIc.5Me", "IIIc.6Me")])
+                   brGDGT.7Me.FA[,c("IIIa.5Me", "IIIa.6Me","IIIa.7Me","IIIb.5Me","IIIb.6Me","IIIb.7Me", "IIIc.5Me", "IIIc.6Me")])
   
   colnames(brGDGT.7Me.FA)[1] <- "Label"
   
