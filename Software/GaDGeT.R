@@ -197,7 +197,7 @@ colnames(GDGT.temp) <- colnames(data.sets[[f]])
 # === Select Relevant Data Columns ===
 
 # Define the sets of compounds to extract
-brGDGTs_cols <- c("IIIa.5Me", "IIIa.6Me","IIIa.7Me","IIIa.7Me.", "IIIb.5Me", "IIIb.6Me","IIIb.7Me", "IIIc.5Me", 
+brGDGTs_cols <- c("IIIa.5Me", "IIIa.6Me","IIIa.7Me", "IIIb.5Me", "IIIb.6Me","IIIb.7Me", "IIIc.5Me", 
                   "IIIc.6Me", "IIa.5Me", "IIa.6Me","IIa.7Me","IIb.5Me", "IIb.6Me", "IIc.5Me", "IIc.6Me",
                   "Ia", "Ib", "Ic")
 
