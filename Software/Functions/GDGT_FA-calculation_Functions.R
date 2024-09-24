@@ -135,7 +135,9 @@ brGDGT_FA <- function(brGDGTs){
   # for loops browsing through rows and cols and calculating the FAs and saving them in the matrix
   for(c in 1: ncol(brGDGT.FA)){
     
-    brGDGT.FA[,c] <- brGDGTs[,c]/rowSums(brGDGTs)
+    brGDGT.FA[,c] <- brGDGTs[,c]/rowSums(brGDGTs[,c("Ia", "Ib", "Ic",
+                                                    "IIa.5Me", "IIa.6Me", "IIb.5Me", "IIb.6Me", "IIc.5Me", "IIc.6Me",
+                                                    "IIIa.5Me", "IIIa.6Me","IIIb.5Me","IIIb.6Me", "IIIc.5Me", "IIIc.6Me")])
     
   }
   
