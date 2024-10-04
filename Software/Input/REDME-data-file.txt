@@ -1,0 +1,12 @@
+Please make sure to follow the instructions provided in the user manual.
+Table 1 in the user manual provides the necessary information about the header column-naming.
+
+Line1: header containing header names
+
+Line 2-175: Samples of Lake Elgygytgyn from Lindberg et al. (2022): Details in the manuscript
+
+Line 176-245: Samples of Lake 578 from Zhao et al. (2021): Details in the manuscript
+
+Line 246-355: Various isoGDD samples from Hingley et al. (2024): Details in the manuscript
+
+Line 356-385: Various brGDGT 7Me data from Martin et al. (2019, 2020): Details in the manuscript
