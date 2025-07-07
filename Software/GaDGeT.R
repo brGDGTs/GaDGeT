@@ -1,4 +1,4 @@
-#*************************************************      GaDGeT      **************************************************************
+#*************************************************  GaDGeT v.1.0.0  **************************************************************
 #*************************************************   CALCULATIONS   **************************************************************
 #*************************************************        TS        **************************************************************
 
@@ -9,11 +9,17 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 11. September 2024
+# Last modification: 07.July 2025
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
-# Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
-# for rapid GDGT index calculations." Organic Geochemistry. DOI: xxxx/yyyy
+# References:
+
+# Schneider, T. & Castañeda, I.S. (2025). GaDGeT: An open-source R-workflow for fast and flexible GDGT 
+# index calculations. SoftwareX. DOI: xxxx/yyyy
+
+# Schneider, T., & Castañeda, I.S. (2025). GaDGeT: An open-source R-workflow for fast and flexible 
+# GDGT index calculations. (v.1.0.0). Zenodo. doi: https://doi.org/10.5281/zenodo.15827945
+
 
 
 
