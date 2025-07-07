@@ -41,7 +41,7 @@
 #   For more information, please read the corresponding article in 
 #   Organic Geochemistry "GaDGeT – GDGT calculations simplified: an 
 #   adaptable R-toolbox for rapid GDGT index calculations" and the 
-#   manual by Schneider and Castaneda (2024). And the corresponding 
+#   manual by Schneider and Castaneda (2025). And the corresponding 
 #   software manual.
 
 
