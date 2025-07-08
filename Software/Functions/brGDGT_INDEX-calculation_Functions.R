@@ -442,8 +442,7 @@ brGDGT_INDICES <- function(GDGTs){
   
   ### 44
   #calculate MAF.ZHU2
-  GDGT.IND$MAF.ZHU2      <-  (19.901*GDGTs$Ia + 43.622*GDGTs$Ib - 16.041*GDGTs$IIa + 9.706*GDGTs$IIa.6Me - 
-                             7.293*GDGTs$IIIa.5Me - 5.578*GDGTs$IIIa.6Me + 8.233)
+  GDGT.IND$MAF.ZHU2      <-  19.901*GDGTs$Ia + 43.622*GDGTs$Ib - 16.041*GDGTs$IIa + 9.706*GDGTs$IIa.6Me - 7.293*GDGTs$IIIa.5Me - 5.578*GDGTs$IIIa.6Me + 8.233
   
   ### 45
   #calculate MAF.ZHU3
