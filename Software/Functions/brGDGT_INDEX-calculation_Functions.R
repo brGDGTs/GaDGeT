@@ -79,22 +79,24 @@
 #          37.  MAAT.BA2        Bauersachs et al. (2023)
 #          38.  MAF.BA1         Bauersachs et al. (2023)
 #          39.  MAF.BA2         Bauersachs et al. (2023)
-#          40.  MAF.OT          Otiniano et al (2024)
+#          40.  MAF.OT          Otiniano et al. (2024)
+#          41.  MAF.LEI1        Lei et al. (2023)
+#          42.  MAF.LEI2        Lei et al. (2023)
 
-#          41.  IIIa.IIIaIIIa:  Raberg et al (2021)
-#          42.  DO:             Raberg et al (2021)
+#          43.  IIIa.IIIaIIIa:  Raberg et al (2021)
+#          44.  DO:             Raberg et al (2021)
 
-#          43.  HP5:            Yao et al (2020)
-#          44.  RINGtetra:      Raberg et al (2021) 
-#          45.  RINGpenta 5Me:  Raberg et al (2021)
-#          46.  RINGpenta 6Me:  Raberg et al (2021)
-#          47.  DC:             Raberg et al (2021)
-#          48.  DC':            de Jonge et al (2024)
-#          49.  IBT:            Ding et al (2015)
-#          50.  CI:             Raberg et al (2021)
-#          51.  BIT:            Hopmans et al (2004), Dang et al (2016)
-#          52.  PI.bones:       Zhao et al (2020)
-#          53.  MAP.bones:      Zhao et al (2020)
+#          45.  HP5:            Yao et al (2020)
+#          46.  RINGtetra:      Raberg et al (2021) 
+#          47.  RINGpenta 5Me:  Raberg et al (2021)
+#          48.  RINGpenta 6Me:  Raberg et al (2021)
+#          49.  DC:             Raberg et al (2021)
+#          50.  DC':            de Jonge et al (2024)
+#          51.  IBT:            Ding et al (2015)
+#          52.  CI:             Raberg et al (2021)
+#          53.  BIT:            Hopmans et al (2004), Dang et al (2016)
+#          54.  PI.bones:       Zhao et al (2020)
+#          55.  MAP.bones:      Zhao et al (2020)
 
 ############################################################################################################################
 ############################################# INDEX CALCULATIONS ###########################################################
@@ -109,7 +111,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 53
+  n= 55
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -157,6 +159,8 @@ brGDGT_INDICES <- function(GDGTs){
                            "MAF.BA1",
                            "MAF.BA2",
                            "MAF.OT",
+                           "MAF.LEI1",
+                           "MAF.LEI2",
                            "IIIa.IIIaIIIa",
                            "DO",
                            "HP5",
@@ -417,6 +421,14 @@ brGDGT_INDICES <- function(GDGTs){
   ### 40
   #calculate MAF.OT
   GDGT.IND$MAF.OT       <-  17.0 - (11.4*GDGTs$IIa.5Me) - (17.4*GDGTs$IIIa.5Me) - (15.9*GDGTs$IIa.6Me) - (124.4*GDGTs$IIIb.5Me)
+  
+  ### 41
+  #calculate MAF.LEI1
+  GDGT.IND$MAF.LEI1      <-  (2.1) + (28.9*GDGT.IND$MBT.5Me)
+  
+  ### 42
+  #calculate MAF.LEI2
+  GDGT.IND$MAF.LEI2      <-  (18.9) + (49.5*GDGTs$Ib) - (68.5*GDGTs$IIIa.5Me)
   
   ### 41
   #calculate IIIa/(IIIa+IIIa')
