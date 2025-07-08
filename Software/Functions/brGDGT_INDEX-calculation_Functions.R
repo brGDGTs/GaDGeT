@@ -8,11 +8,11 @@
 
 # Author: Tobias Schneider
 # Date: 05.12.2020
-# Last modification: 11. September 2024
+# Last modification: 08. July 2025
 # Contact: tobiaschnei@gmail.com, www.drtobiasschneider.com
 
-# Reference: Schneider, T., & Castaneda, I.S. (2024). "GaDGeT – GDGT calculations simplified: an adaptable R-toolbox 
-# for rapid GDGT index calculations." Organic Geochemistry. DOI: xxxx/yyyy
+# Reference: Schneider, T., & Castaneda, I.S. (2025). GaDGeT: An open-source R-workflow for fast and flexible GDGT 
+# index calculations. SoftwareX. DOI: xxxx/yyyy
 
 
 
