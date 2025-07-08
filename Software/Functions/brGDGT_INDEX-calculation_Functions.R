@@ -79,22 +79,24 @@
 #          37.  MAAT.BA2        Bauersachs et al. (2023)
 #          38.  MAF.BA1         Bauersachs et al. (2023)
 #          39.  MAF.BA2         Bauersachs et al. (2023)
-#          40.  MAF.OT          Otiniano et al (2024)
+#          40.  MAF.OT          Otiniano et al. (2024)
+#          41.  MAF.LEI1        Lei et al. (2023)
+#          42.  MAF.LEI2        Lei et al. (2023)
 
-#          41.  IIIa.IIIaIIIa:  Raberg et al (2021)
-#          42.  DO:             Raberg et al (2021)
+#          43.  IIIa.IIIaIIIa:  Raberg et al (2021)
+#          44.  DO:             Raberg et al (2021)
 
-#          43.  HP5:            Yao et al (2020)
-#          44.  RINGtetra:      Raberg et al (2021) 
-#          45.  RINGpenta 5Me:  Raberg et al (2021)
-#          46.  RINGpenta 6Me:  Raberg et al (2021)
-#          47.  DC:             Raberg et al (2021)
-#          48.  DC':            de Jonge et al (2024)
-#          49.  IBT:            Ding et al (2015)
-#          50.  CI:             Raberg et al (2021)
-#          51.  BIT:            Hopmans et al (2004), Dang et al (2016)
-#          52.  PI.bones:       Zhao et al (2020)
-#          53.  MAP.bones:      Zhao et al (2020)
+#          45.  HP5:            Yao et al (2020)
+#          46.  RINGtetra:      Raberg et al (2021) 
+#          47.  RINGpenta 5Me:  Raberg et al (2021)
+#          48.  RINGpenta 6Me:  Raberg et al (2021)
+#          49.  DC:             Raberg et al (2021)
+#          50.  DC':            de Jonge et al (2024)
+#          51.  IBT:            Ding et al (2015)
+#          52.  CI:             Raberg et al (2021)
+#          53.  BIT:            Hopmans et al (2004), Dang et al (2016)
+#          54.  PI.bones:       Zhao et al (2020)
+#          55.  MAP.bones:      Zhao et al (2020)
 
 ############################################################################################################################
 ############################################# INDEX CALCULATIONS ###########################################################
@@ -109,7 +111,7 @@ brGDGT_INDICES <- function(GDGTs){
   # Initialize dataframe with nrows from input file and 20 Index-columns
   
   #enter the amount of Indices here as "n"
-  n= 53
+  n= 55
   
   GDGT.IND <- data.frame(matrix(nrow = nrow(GDGTs),ncol = n))
   
@@ -157,6 +159,8 @@ brGDGT_INDICES <- function(GDGTs){
                            "MAF.BA1",
                            "MAF.BA2",
                            "MAF.OT",
+                           "MAF.LEI1",
+                           "MAF.LEI2",
                            "IIIa.IIIaIIIa",
                            "DO",
                            "HP5",
@@ -419,62 +423,70 @@ brGDGT_INDICES <- function(GDGTs){
   GDGT.IND$MAF.OT       <-  17.0 - (11.4*GDGTs$IIa.5Me) - (17.4*GDGTs$IIIa.5Me) - (15.9*GDGTs$IIa.6Me) - (124.4*GDGTs$IIIb.5Me)
   
   ### 41
+  #calculate MAF.LEI1
+  GDGT.IND$MAF.LEI1      <-  (2.1) + (28.9*GDGT.IND$MBT.5Me)
+  
+  ### 42
+  #calculate MAF.LEI2
+  GDGT.IND$MAF.LEI2      <-  (18.9) + (49.5*GDGTs$Ib) - (68.5*GDGTs$IIIa.5Me)
+  
+  ### 43
   #calculate IIIa/(IIIa+IIIa')
   GDGT.IND$IIIa.IIIaIIIa  <-   GDGTs$IIIa.5Me/ rowSums(GDGTs[,c("IIIa.5Me","IIIa.6Me")])
   
-  ### 42
+  ### 44
   #calculate DO, Raberg et al. (2021)
   GDGT.IND$DO            <-  (7.6-(12.03*(as.numeric(brGDGT.ME.FA[i,c("Ia")])^2))-(2.1*(as.numeric(brGDGT.ME.FA[i,c("Ic")])^2))
                             -(28.66*(as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])^2))+(31.09*(as.numeric(brGDGT.ME.FA[i,c("IIIa.6Me")])))
                             +(36.85*(as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")])^2))-(35.89*(as.numeric(brGDGT.ME.FA[i,c("IIIa.5Me")])))
                             -(15.29*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])^2)+(15.82*as.numeric(brGDGT.ME.FA[i,c("IIIb.6Me")])))
   
-  ### 43
+  ### 45
   #calculate HP 5Me
   GDGT.IND$HP5        <-   GDGTs$IIIa.5Me/rowSums(GDGTs[,c("IIIa.5Me","IIa.5Me")])
   
-  ### 44
+  ### 46
   #calculate RING tetra
   GDGT.IND$RINGtetra    <-   (GDGTs$Ib + 2*GDGTs$Ic)/rowSums(GDGTs[,c("Ia","Ib","Ic")])
   
-  ### 45
+  ### 47
   #calculate RING penta 5Me
   GDGT.IND$RINGpenta5    <-   (GDGTs$IIb.5Me + 2*GDGTs$IIc.5Me)/rowSums(GDGTs[,c("IIa.5Me","IIb.5Me","IIc.5Me")])
   
-  ### 46
+  ### 48
   #calculate RING penta 6Me
   GDGT.IND$RINGpenta6    <-   (GDGTs$IIb.6Me + 2*GDGTs$IIc.6Me)/rowSums(GDGTs[,c("IIa.6Me","IIb.6Me","IIc.6Me")])
   
-  ### 47
+  ### 49
   #calculate DC
   GDGT.IND$DC          <-   (GDGTs$Ib + 2*GDGTs$Ic + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
                             rowSums(GDGTs[,c("Ia","Ib","Ic","IIa.5Me","IIa.6Me","IIb.5Me","IIb.6Me")])
 
-  ### 48
+  ### 50
   #calculate DC'
   GDGT.IND$DC.          <-   (GDGTs$Ib + GDGTs$IIb.5Me + GDGTs$IIb.6Me)/
                               rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","Ib","IIb.5Me","IIb.6Me")])
   
-  ### 49
+  ### 51
   #calculate IBT
   GDGT.IND$IBT      <-   (-log(rowSums(GDGTs[,c("IIa.6Me","IIIa.6Me")])/
                                       rowSums(GDGTs[,c("IIa.5Me","IIIa.5Me")]),
                                     base = 10))
   
-  ### 50
+  ### 52
   #calculate CI
   GDGT.IND$CI      <-   GDGTs$Ia/rowSums(GDGTs[,c("Ia","IIa.5Me","IIIa.5Me")])
  
-  ### 51
+  ### 53
   #calculate BIT
   GDGT.IND$BIT      <-  rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me")])/rowSums(GDGTs[,c("Ia","IIa.5Me","IIa.6Me","IIIa.5Me","IIIa.6Me","GDGT.4")]) 
   
-  ### 52
+  ### 54
   #calculate PI.bones
   GDGT.IND$PI.bones      <-  rowSums(GDGTs[,c("Ia","Ib")])/rowSums(GDGTs[,c("Ia","Ib", "IIIa.5Me","IIa.6Me","IIIa.6Me")]) 
   
   
-  ### 53
+  ### 55
   #calculate MAP
   GDGT.IND$MAP.bones      <-  913.41*GDGT.IND$PI.bones+112 
   
