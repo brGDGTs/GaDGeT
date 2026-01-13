@@ -3,7 +3,8 @@
  GaDGeT is an adaptable R script designed to calculate various fractional abundances and GDGT-indices from isoGDGTs, OHGDGTs, brGDGTs, GMGTs, and GDDs. The script processes data from Excel (.xlsx; .csv) files located in the 
  'Input' directory and outputs CSV files with the calculated results into the 'Output' directory.
  This tool was developed as part of the research presented in the article:
- Schneider, T., & Castañeda, I.S. (2025). *GaDGeT: An open-source R-workflow for fast and flexible GDGT index calculations*. SoftwareX (32, 102374). DOI: 10.1016/j.softx.2025.102374.
+ Schneider, T., & Castañeda, I.S. (2025). *GaDGeT: An open-source R-workflow for fast and flexible GDGT index calculations*. SoftwareX (32, 102374). DOI: 10.1016/j.softx.2025.102374. https://doi.org/10.1016/j.softx.2025.102374
+ 
  Schneider, T., & Castañeda, I. (2025). *GaDGeT: An open-source R-workflow for fast and flexible GDGT index calculations*. Initial Public Release. (v.1.0.0). Zenodo. https://doi.org/10.5281/zenodo.15827945
 
  # Features
