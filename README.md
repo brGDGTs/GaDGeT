@@ -6,7 +6,7 @@
  
  Schneider, T., & Castañeda, I.S. (2025). *GaDGeT: An open-source R-workflow for fast and flexible GDGT index calculations*. SoftwareX (32, 102374). DOI: 10.1016/j.softx.2025.102374. https://doi.org/10.1016/j.softx.2025.102374
  
- Schneider, T., & Castañeda, I. (2025). *GaDGeT: An open-source R-workflow for fast and flexible GDGT index calculations*. Initial Public Release. (v.1.0.0). Zenodo. https://doi.org/10.5281/zenodo.15827945
+ Schneider, T., & Castañeda, I. (2025). *GaDGeT: An open-source R-workflow for fast and flexible GDGT index calculations*. Initial Public Release. (v.1.0.1). Zenodo. https://zenodo.org/records/15843225
 
  # Features
  *Fractional Abundance Calculations:* Calculates fractional abundances for a wide range of GDGTs.
